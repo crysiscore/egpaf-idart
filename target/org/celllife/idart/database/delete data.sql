@@ -1,0 +1,20 @@
+delete from appointment;
+delete from episode;
+delete from prescribeddrugs;
+delete from packagedruginfotmp;
+delete from packageddrugs;
+update package set packageid='packageid';
+delete from package;
+delete from patientattribute;
+delete from patientidentifier;
+delete from prescription;
+delete from alternatepatientidentifier;
+delete from patient;
+delete from stocklevel;
+delete from stock;
+delete from stockadjustment;
+delete from stocktake;
+delete from users where id <> 1;
+delete from registadosnoidart;
+delete from  doctor where id <> 36748;
+delete from clinicuser where userid <> 1

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/ColacoVM/Desktop/idart-Edias/idart/src/org/ccs/openmrs/migracao/connection/hibernate.cfg.xml</file>
+            <file>file:/C:/Users/ColacoVM/Desktop/idart-Edias/idart/src/org/ccs/openmrs/migracao/swingreverse/Task2.java</file>
+            <file>file:/C:/Users/ColacoVM/Desktop/idart-Edias/idart/src/org/ccs/openmrs/migracao/swingreverse/DadosPaciente.java</file>
+            <file>file:/C:/Users/ColacoVM/Desktop/idart-Edias/idart/src/org/ccs/openmrs/migracao/connection/hibernateRemote.cfg.xml</file>
+            <file>file:/C:/Users/ColacoVM/Desktop/idart-Edias/idart/src/org/ccs/openmrs/migracao/entidadesHibernate/ImportDao/PatientIdentifierImportDao.java</file>
+            <file>file:/C:/Users/ColacoVM/Desktop/idart-Edias/idart/src/org/ccs/openmrs/migracao/entidadesHibernate/importPatient/PatientIdentifierImportService.java</file>
+        </group>
+    </open-files>
+</project-private>

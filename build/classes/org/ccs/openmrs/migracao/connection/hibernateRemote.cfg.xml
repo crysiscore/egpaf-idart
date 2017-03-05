@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://192.168.10.10:3306/openmrs</property>
+    <property name="hibernate.connection.username">idart</property>
+    <property name="hibernate.connection.password">idart</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <property name="hibernate.show_sql">false</property>
+    <property name="hibernate.jdbc.fetch_size">1</property>
+    <mapping class="org.ccs.openmrs.migracao.entidades.EncounterProvider"/>
+    <mapping class="org.ccs.openmrs.migracao.entidades.Provider"/>
+    <mapping class="org.ccs.openmrs.migracao.entidades.CareSetting"/>
+    <mapping class="org.ccs.openmrs.migracao.entidades.EncounterRole"/>
+    <mapping class="org.ccs.openmrs.migracao.entidades.Form"/>
+    <mapping class="org.ccs.openmrs.migracao.entidades.VisitType"/>
+    <mapping class="org.ccs.openmrs.migracao.entidades.Encounter"/>
+    <mapping class="org.ccs.openmrs.migracao.entidades.ConceptClass"/>
+    <mapping class="org.ccs.openmrs.migracao.entidades.Concept"/>
+    <mapping class="org.ccs.openmrs.migracao.entidades.PersonAddress"/>
+    <mapping class="org.ccs.openmrs.migracao.entidades.Person"/>
+    <mapping class="org.ccs.openmrs.migracao.entidades.Location"/>
+    <mapping class="org.ccs.openmrs.migracao.entidades.Users"/>
+    <mapping class="org.ccs.openmrs.migracao.entidades.EncounterType"/>
+    <mapping class="org.ccs.openmrs.migracao.entidades.PatientIdentifier"/>
+    <mapping class="org.ccs.openmrs.migracao.entidades.Obs"/>
+    <mapping class="org.ccs.openmrs.migracao.entidades.Orders"/>
+    <mapping class="org.ccs.openmrs.migracao.entidades.OrderType"/>
+    <mapping class="org.ccs.openmrs.migracao.entidades.Tribe"/>
+    <mapping class="org.ccs.openmrs.migracao.entidades.ConceptDatatype"/>
+    <mapping class="org.ccs.openmrs.migracao.entidades.Patient"/>
+    <mapping class="org.ccs.openmrs.migracao.entidades.Drug"/>
+    <mapping class="org.ccs.openmrs.migracao.entidades.PersonName"/>
+    <mapping class="org.ccs.openmrs.migracao.entidades.PatientIdentifierType"/>
+    <mapping class="org.ccs.openmrs.migracao.entidades.Program"/>
+    <mapping class="org.ccs.openmrs.migracao.entidades.PatientProgram"/>
+    <mapping class="org.ccs.openmrs.migracao.entidades.ConceptName"/>
+    <mapping class="org.ccs.openmrs.migracao.entidades.Visit"/>
+  </session-factory>
+</hibernate-configuration>

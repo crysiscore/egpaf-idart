@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.7.0_09" class="java.beans.XMLDecoder">
+ <object class="model.manager.exports.PatientExportObject">
+  <void property="allPatients">
+   <boolean>true</boolean>
+  </void>
+  <void property="columns">
+   <void method="add">
+    <object class="model.manager.exports.SimpleColumn">
+     <void property="columnName">
+      <string>Patient Number</string>
+     </void>
+     <void property="returnValue">
+      <object class="model.manager.exports.columns.SimpleColumnsEnum">
+       <void property="columnName">
+        <string>Patient Number</string>
+       </void>
+       <void property="template">
+        <string>$!{fn.replaceSeperator($fn.getPatientField(&quot;Patient&quot;, &quot;patientId&quot;))}</string>
+       </void>
+      </object>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="model.manager.exports.SimpleColumn">
+     <void property="columnName">
+      <string>First Name</string>
+     </void>
+     <void property="returnValue">
+      <object class="model.manager.exports.columns.SimpleColumnsEnum">
+       <void property="columnName">
+        <string>First Name</string>
+       </void>
+       <void property="template">
+        <string>$!{fn.replaceSeperator($fn.getPatientField(&quot;Patient&quot;, &quot;firstNames&quot;))}</string>
+       </void>
+      </object>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="model.manager.exports.SimpleColumn">
+     <void property="columnName">
+      <string>Surname</string>
+     </void>
+     <void property="returnValue">
+      <object class="model.manager.exports.columns.SimpleColumnsEnum">
+       <void property="columnName">
+        <string>Surname</string>
+       </void>
+       <void property="template">
+        <string>$!{fn.replaceSeperator($fn.getPatientField(&quot;Patient&quot;, &quot;lastname&quot;))}</string>
+       </void>
+      </object>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="model.manager.exports.SimpleColumn">
+     <void property="columnName">
+      <string>Account Status</string>
+     </void>
+     <void property="returnValue">
+      <object class="model.manager.exports.columns.SimpleColumnsEnum">
+       <void property="columnName">
+        <string>Account Status</string>
+       </void>
+       <void property="template">
+        <string>$!{fn.getPatientField(&quot;Patient&quot;, &quot;accountStatus&quot;)}</string>
+       </void>
+      </object>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="model.manager.exports.SimpleColumn">
+     <void property="columnName">
+      <string>Date of Birth</string>
+     </void>
+     <void property="returnValue">
+      <object class="model.manager.exports.columns.SimpleColumnsEnum">
+       <void property="columnName">
+        <string>Date of Birth</string>
+       </void>
+       <void property="template">
+        <string>$!{fn.formatDate(&apos;ymd&apos;, $fn.getPatientField(&quot;Patient&quot;, &quot;dateOfBirth&quot;))}</string>
+       </void>
+      </object>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="model.manager.exports.SimpleColumn">
+     <void property="columnName">
+      <string>Sex</string>
+     </void>
+     <void property="returnValue">
+      <object class="model.manager.exports.columns.SimpleColumnsEnum">
+       <void property="columnName">
+        <string>Sex</string>
+       </void>
+       <void property="template">
+        <string>$!{fn.getPatientField(&quot;Patient&quot;, &quot;sex&quot;)}</string>
+       </void>
+      </object>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="model.manager.exports.SimpleColumn">
+     <void property="columnName">
+      <string>Home Telephone Number</string>
+     </void>
+     <void property="returnValue">
+      <object class="model.manager.exports.columns.SimpleColumnsEnum">
+       <void property="columnName">
+        <string>Home Telephone Number</string>
+       </void>
+       <void property="template">
+        <string>$!{fn.getPatientField(&quot;Patient&quot;, &quot;homePhone&quot;)}</string>
+       </void>
+      </object>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="model.manager.exports.SimpleColumn">
+     <void property="columnName">
+      <string>Cellphone Number</string>
+     </void>
+     <void property="returnValue">
+      <object class="model.manager.exports.columns.SimpleColumnsEnum">
+       <void property="columnName">
+        <string>Cellphone Number</string>
+       </void>
+       <void property="template">
+        <string>$!{fn.getPatientField(&quot;Patient&quot;, &quot;cellphone&quot;)}</string>
+       </void>
+      </object>
+     </void>
+    </object>
+   </void>
+  </void>
+  <void property="description">
+   <string></string>
+  </void>
+  <void property="name">
+   <string>Lista de Pacintes</string>
+  </void>
+ </object>
+</java>
