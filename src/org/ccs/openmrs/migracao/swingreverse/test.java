@@ -20,7 +20,7 @@ public class test {
         
         Task2 ta = new Task2();
         
-        String loc = ta.getLogFileLocation();
+       // String loc = ta.getLogFileLocation();
         
         
     }

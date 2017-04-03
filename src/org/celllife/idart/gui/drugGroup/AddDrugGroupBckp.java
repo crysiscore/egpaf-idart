@@ -64,7 +64,7 @@ import org.hibernate.Transaction;
 /**
  *
  */
-public class AddDrugGroup extends GenericFormGui {
+public class AddDrugGroupBckp extends GenericFormGui {
 
 	private Button btnAddDrug;
 
@@ -124,7 +124,7 @@ public class AddDrugGroup extends GenericFormGui {
 	 * @param parent
 	 *            Shell
 	 */
-	public AddDrugGroup(Shell parent) {
+	public AddDrugGroupBckp(Shell parent) {
 		super(parent, HibernateUtil.getNewSession());
 	}
 
