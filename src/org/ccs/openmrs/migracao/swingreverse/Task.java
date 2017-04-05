@@ -75,6 +75,9 @@ class Task
                         return "Done";
                     }
                     for (PatientProgram patientProgram : patientProgramlist) {
+                        
+                        try {
+                                 
                         ++current;
                         String dataTarv = null;
                         // if (patientImportService.findByPatientId(patientProgram.getPatientId().getPatientId().toString()) != null && (patientImportService.findByPatientId(patientProgram.getPatientId().getPatientId().toString()) == null))
@@ -98,8 +101,20 @@ class Task
                         //   obj.setComments("Imported");
                         //   obsServiceActualizacao.update(obj);
                         System.err.println(personName.getGivenName() + " " + personName.getFamilyName() + " Paciente com o NID " + patientIdentifier.getIdentifier() + " Inserido com Sucesso");
+                        
+                           } catch (Exception e) {
+                              PersonName personName = personNameService.findByPersonId(patientProgram.getPatientId().toString());
+                               System.err.println("Dados do paciente em falta: (NID) " + personName.getGivenName()+" "+personName.getMiddleName()+" "+personName.getFamilyName());
+                               break;
+                               
+                        }
+                        finally{
+                        
+                        continue;
+                        }
                     }
                 } catch (InterruptedException ie) {
+                    ie.printStackTrace();
                     return "Interrupted";
                 }
                 System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
@@ -109,7 +124,9 @@ class Task
                 current = lengthOfTask * 2;
             }
         } catch (Exception e) {
+            
             System.err.println("ACONTECEU UM ERRO INESPERADO, Ligue o Servidor OpenMRS e Tente Novamente ou Contacte o Administrador \n" + e);
+              e.printStackTrace();
         }
         return "Done";
     }

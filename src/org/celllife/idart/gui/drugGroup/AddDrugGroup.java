@@ -35,6 +35,9 @@ import org.celllife.idart.database.hibernate.Regimen;
 import org.celllife.idart.database.hibernate.RegimenDrugs;
 import org.celllife.idart.database.hibernate.util.HibernateUtil;
 import org.celllife.idart.gui.platform.GenericFormGui;
+import static org.celllife.idart.gui.platform.GenericFormGuiInterface.OPTION_isAddNotUpdate;
+import static org.celllife.idart.gui.platform.GenericGui.getInitialisationOption;
+import static org.celllife.idart.gui.platform.GenericGuiInterface.EMPTY;
 import org.celllife.idart.gui.prescription.PrescriptionObject;
 import org.celllife.idart.gui.search.Search;
 import org.celllife.idart.gui.utils.ResourceUtils;
@@ -718,9 +721,10 @@ public class AddDrugGroup extends GenericFormGui {
 
 		// else, we're updating an existing drug group, so open up a search GUI
 		else {
-			Search regimenSearch = new Search(getHSession(), getShell(),
-					CommonObjects.REGIMEN) {};
-
+		
+                        Search regimenSearch = new Search(getHSession(), getShell(),
+					CommonObjects.REGIME) {};
+                        
 			if (regimenSearch.getValueSelected() != null) {
 				clearForm();
 				localRegimen = DrugManager.getRegimen(getHSession(),

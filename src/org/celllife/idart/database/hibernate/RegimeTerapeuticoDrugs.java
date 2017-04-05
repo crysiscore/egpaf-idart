@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-@Entity (name ="regimeterapeuticodrugs")
+@Entity
 public class RegimeTerapeuticoDrugs implements Comparable<RegimeTerapeuticoDrugs>{
 	
 	@Id

@@ -56,13 +56,10 @@ public class PrintLabel {
 	 * Label width for label 750mm x 500mm in 1/72 of an inch (Adjusted for
 	 * printing optimisation)
 	 */
-	
-
-	
 	public static int NEW_LABEL_WIDTH = 216;
 
 	public static int EPL2_LABEL_WIDTH = 600;
-	
+
 	/**
 	 * This method iterates the list of labels that need to be printed, and
 	 * systematically calls the print() method of each of the labels.
@@ -118,20 +115,13 @@ public class PrintLabel {
 		Paper paper = new Paper();
 
 		if (iDartProperties.labelType.equals(iDartProperties.LabelType.EKAPA)) {
-			paper.setSize(150, 300); // eKapa labels
+			paper.setSize(285, 135); // eKapa labels
 		} else {
-			paper.setSize(150, 205); // normal iDART labels
-		
+			paper.setSize(216, 135); // normal iDART labels
 		}
-//		if (iDartProperties.labelType.equals(iDartProperties.LabelType.EKAPA)) {
-//			paper.setSize(285, 135); // eKapa labels
-//		} else {
-//			paper.setSize(216, 135); // normal iDART labels
-//		}sus
 		paper.setImageableArea(0.0, 0.0, paper.getWidth(), paper.getHeight());
 		pf.setPaper(paper);
-		//pf.setOrientation(PageFormat.PORTRAIT);
-		pf.setOrientation(PageFormat.LANDSCAPE);
+		pf.setOrientation(PageFormat.PORTRAIT);
 
 		Book book = new Book();
 

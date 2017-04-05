@@ -663,12 +663,12 @@ ConexaoJDBC conn=new ConexaoJDBC();
 						: btnCaptureDate.getDate());
 
 				theCal.setTime(newPack.getPackDate());
-                                if(newPack.getWeekssupply() <= 4)
-                                    theCal.add(Calendar.DATE, newPack.getWeekssupply() * 7);
-                                else{
-                                    int numMeses = (newPack.getWeekssupply()/4) - 1;
-                                     theCal.add(Calendar.DATE, (newPack.getWeekssupply() * 7)+(numMeses*2));
-                                }
+                                // if(newPack.getWeekssupply() <= 4)
+                                theCal.add(Calendar.DATE, newPack.getWeekssupply() * 7);
+                                //  else{
+                                //      int numMeses = (newPack.getWeekssupply()/4) - 1;
+                                //      theCal.add(Calendar.DATE, (newPack.getWeekssupply() * 7)+(numMeses*2));
+                                //  }
 				adjustForNewAppointmentDate(theCal.getTime());
 			}
 		}
@@ -692,29 +692,7 @@ ConexaoJDBC conn=new ConexaoJDBC();
 	 * @throws Exception 
 	 */
 	@SuppressWarnings("unchecked")
-	private void cmdDispenseDrugsSelected(boolean dispenseNow) throws Exception {
-		
-		String title = EMPTY;
-		String message = EMPTY;
-		
-		if (!rdBtnNoAppointmentDate.getSelection() && !rdBtnYesAppointmentDate.getSelection()) { //$NON-NLS-1$
-			
-			showMessage(MessageDialog.ERROR, "Seleccione se o paciente levou ou não cotrimoxazol",
-					"Seleccione se o paciente levou ou não cotrimoxazol.");
-		 
-			return;
-		}
-		else
-if (!rdBtnPrintSummaryLabelNo.getSelection() && !rdBtnPrintSummaryLabelYes.getSelection()) { //$NON-NLS-1$
-			
-			showMessage(MessageDialog.ERROR, "Seleccione se o paciente levou ou não isoniazida",
-					"Seleccione se o paciente levou ou não isoniazida.");
-		 
-			return;
-		}
-
-		
-		else {
+     private void cmdDispenseDrugsSelected(boolean dispenseNow) throws Exception {
 		java.util.List<PackageDrugInfo> allPackagedDrugsList = new ArrayList<PackageDrugInfo>();
 		// remove pdis with none dispensed
 		for (int i = 0; i < tblPrescriptionInfo.getItemCount(); i++) {
@@ -732,20 +710,15 @@ if (!rdBtnPrintSummaryLabelNo.getSelection() && !rdBtnPrintSummaryLabelYes.getSe
 				}
 			}
 		}
-                
 		Set<AccumulatedDrugs> accumDrugSet = getAccumDrugsToSave();
-		if (fieldsOkay(allPackagedDrugsList) && ((allPackagedDrugsList.size() > 0) || (accumDrugSet.size() > 0))) {
-                        submitForm(dispenseNow, allPackagedDrugsList);
+		if (fieldsOkay(allPackagedDrugsList)
+				&& ((allPackagedDrugsList.size() > 0) || (accumDrugSet.size() > 0))) {
+			submitForm(dispenseNow, allPackagedDrugsList);
 			getLog().info("submitForm() called");
-			int meses = allPackagedDrugsList.get(0).getWeeksSupply()/4;
-                       if(meses > 1)
-                           for(int i = 1; i < meses;i++)
-                            saveDispenseQty0(allPackagedDrugsList,i);
-                        initialiseSearchList();
+			initialiseSearchList();
 			clearForm();
 		}
 	}
-}
 
 	private void initialiseSearchList() {
 		java.util.List<PatientIdAndName> patients = null;
@@ -2790,8 +2763,7 @@ if ( newPack.getPrescription().getReasonForUpdate().contains("nici") && conn.jaT
 	 */
 	private void savePackageAndPackagedDrugs(boolean dispenseNow,
 			java.util.List<PackageDrugInfo> allPackageDrugsList) {
-
-		// if pack date is today, store the time too, else store 12am
+            // if pack date is today, store the time too, else store 12am
 		Date today = new Date();
 		Date packDate = new Date();
 		packDate.setTime(newPack.getPackDate().getTime());
@@ -2843,8 +2815,8 @@ if ( newPack.getPrescription().getReasonForUpdate().contains("nici") && conn.jaT
 			pd.setStock(StockManager.getStock(getHSession(), pdi.getStockId()));
 			pd.setModified('T');
 			packagedDrugsList.add(pd);
-			if (rdBtnDispenseNow.getSelection()) {
-				pdi.setDateExpectedString(sdf.format(btnNextAppDate.getDate()));
+			if (rdBtnDispenseNow.getSelection()) {                                  //Review
+				pdi.setDateExpectedString(sdf.format(btnNextAppDate.getDate()));// pid is no longer used
 			} else {
 				
 				Appointment nextApp = PatientManager
@@ -2855,8 +2827,10 @@ if ( newPack.getPrescription().getReasonForUpdate().contains("nici") && conn.jaT
 					pdi.setDateExpectedString(sdf.format(nextApp.getAppointmentDate()));
 			}
 			pdi.setPackagedDrug(pd);
+                        
 			pdi.setNotes(localPatient.getCurrentClinic().getNotes());
-			pdi.setPackageId(newPack.getPackageId());
+                        
+                        pdi.setPackageId(newPack.getPackageId());
 
 		}
 
@@ -2866,7 +2840,10 @@ if ( newPack.getPrescription().getReasonForUpdate().contains("nici") && conn.jaT
 		// de-normalise table to speed up reports 
 		if(newPack.hasARVDrug()) 
 			newPack.setDrugTypes("ARV");
+		
 		PackageManager.savePackage(getHSession(), newPack);
+
+
 	}
 
         // Add for dispense more than 1 month with Qty = 0
@@ -3264,231 +3241,16 @@ if ( newPack.getPrescription().getReasonForUpdate().contains("nici") && conn.jaT
 	@SuppressWarnings({ "static-access", "null" })
 	private void submitForm(boolean dispenseNow, java.util.List<PackageDrugInfo> allPackagedDrugsList) throws Exception {
 
+
 		Transaction tx = null;
-               
 		Map<Object, Integer> labelQuantities = new HashMap<Object, Integer>();
 		try {
-			if(conn.dispensadonoperiodo(allPackagedDrugsList.get(0).getPatientId())){
-				System.out.println("Num of Days: "+dias);
-				MessageBox mbox = new MessageBox(new Shell(), SWT.YES | SWT.NO| SWT.ICON_WARNING);
-				mbox.setText("Levantamento de ARVs");
-				mbox.setMessage("ATENÇÃO:\nO PACIENTE "+txtPatientId.getText()+" JÁ FOI DISPENSADO MEDICAMENTOS NESTE PERÍODO!\n \nA ÚLTIMA DISPENSA FOI À "+dias+" DIA(s)\n \nQUER DISPENSAR DE NOVO?");
-	
-				switch (mbox.open()) {
-				case SWT.YES:
-				{
-					//***************Ainda a configurar a informacao mais correcta 
-					ConfirmWithPasswordDialogAdapter passwordDialog = new ConfirmWithPasswordDialogAdapter(
-							getShell(), getHSession());
-					passwordDialog
-					.setMessage("Por favor insserir a Password");
-					// if password verified
-					String messg = passwordDialog.open();
-					if (messg.equalsIgnoreCase("verified")) {
-						 
-					}
-					
-					tx = getHSession().beginTransaction();
-                                            if (newPack.getPrescription() != null) {
-						if (previousPack != null) {
-							savePillCounts();
-						}
-						
-						if(rdBtnNoAppointmentDate.getSelection()) newPack.getPrescription().setTpc('F'); else newPack.getPrescription().setTpc('T');
-						
-									if(rdBtnPrintSummaryLabelNo.getSelection()) newPack.getPrescription().setTpi('F'); else newPack.getPrescription().setTpi('T');
-									
-										System.out.println(" nnnnnnnnnnnnn "+newPack.getPrescription().getId());	
-
-						// Check if package contains ARV, and
-						// do ARV Start date check.
-						// Should be moved to a facade or manager class
-						for (PackageDrugInfo info : allPackagedDrugsList) {
-							if (!info.isSideTreatment()) {
-								// Check the ARV Start Date if an
-								// ARV package is present.
-								checkARVStartDate();
-								break;
-							}
-						}
-
-						savePackageAndPackagedDrugs(dispenseNow, allPackagedDrugsList);
-						getLog().info("savePackageAndPackagedDrugs() called");
-						setNextAppointmentDate();
-
-						if (allPackagedDrugsList.size() > 0) {
-
-							// This map keeps a track of drugs dispensed in separate
-							// batches
-							Map<String, String> drugNames = new HashMap<String, String>();
-
-							// Update pdi's to include accum drugs
-							for (PackageDrugInfo info : allPackagedDrugsList) {
-
-								info.setQtyInHand(PackageManager
-										.getQuantityDispensedForLabel(
-												newPack.getAccumulatedDrugs(),
-												info.getDispensedQty(),
-												info.getDrugName(), info
-														.getPackagedDrug().getStock()
-														.getDrug().getPackSize(),
-												false, true));
-
-								labelQuantities.put(info, 1);
-								// set the String that will print out on each drug label
-								// to indicate
-								// (<amount dispensed> + <accumulated amount>)
-
-								if (drugNames.containsKey(info.getDrugName())) {
-									// not first batch, exclude pillcount value
-									info.setSummaryQtyInHand(PackageManager
-											.getQuantityDispensedForLabel(
-													newPack.getAccumulatedDrugs(),
-													info.getDispensedQty(),
-													info.getDrugName(),
-													info.getDispensedQty(), false,
-													false));
-								} else {
-
-									info.setSummaryQtyInHand(PackageManager
-											.getQuantityDispensedForLabel(
-													newPack.getAccumulatedDrugs(),
-													info.getDispensedQty(),
-													info.getDrugName(),
-													info.getDispensedQty(), false, true));
-								}
-								drugNames.put(info.getDrugName(), "test");
-								// set the String that will print out on the
-								// prescription summary label to indicate
-								// for each drug the (<total amount dispensed> + <total
-								// accumulated amount>)
-
-								// before printing the labels, save pdi List
-								TemporaryRecordsManager.savePackageDrugInfosToDB(
-										getHSession(), allPackagedDrugsList);
-								getHSession().flush();
-
-							}
-						}
-						tx.commit();
-						
-			
-						
-						if (iDartProperties.printDrugLabels) {
-							// Add the qty for the summary label
-							labelQuantities.put(ScriptSummaryLabel.KEY,
-									rdBtnPrintSummaryLabelYes.getSelection() ? 1 : 0);
-							//Add the qty for the next appointment
-							labelQuantities.put(CommonObjects.NEXT_APPOINTMENT_KEY, ( (rdBtnDispenseLater.getSelection()  ||  rdBtnYesAppointmentDate.getSelection()) ? 1 : 0));
-							// Add the qty for the package label
-							labelQuantities.put(PackageCoverLabel.KEY,
-							 rdBtnDispenseLater.getSelection() ? 1 : 0);
-							// print labels
-							PackageManager.printLabels(getHSession(),allPackagedDrugsList, labelQuantities);
-						}
-					}
-					
-					/*
-					 * 
-					 * 
-					 * Leitura da dispensa de ARV no formulario pelo botao create package, e a posterior insercao na tabela t_tarv do MS ACCESS
-					 * 
-					 */
-						
-					Vector<String> vMedicamentos=new Vector<String>();
-					//ConexaoJDBC conn=new ConexaoJDBC();
-					ConexaoODBC conn2=new ConexaoODBC();
-					
-					//Inicializa as variaveis para a insercao n acess
-					int dispensedQty=allPackagedDrugsList.get(0).getDispensedQty();
-					String notes=allPackagedDrugsList.get(0).getNotes();
-					String patientId =allPackagedDrugsList.get(0).getPatientId();
-					String specialInstructions1 =allPackagedDrugsList.get(0).getSpecialInstructions1();
-					String specialInstructions2=allPackagedDrugsList.get(0).getSpecialInstructions2();
-					Date dispenseDate =allPackagedDrugsList.get(0).getDispenseDate();
-					int weeksSupply =allPackagedDrugsList.get(0).getWeeksSupply();
-					int prescriptionDuration=allPackagedDrugsList.get(0).getPrescriptionDuration();
-					String dateExpectedString=allPackagedDrugsList.get(0).getDateExpectedString();
-					
-					 List<PrescriptionToPatient> lp=conn.listPtP(allPackagedDrugsList.get(0).getPatientId());
-					 String reasonforupdate  = lp.get(0).getReasonforupdate();
-					 String regime= lp.get(0).getRegimeesquema();
-					 int idade=lp.get(0).getIdade();
-					 Date dataInicioNoutroServico=lp.get(0).getDataInicionoutroservico();
-					 String motivomudanca=lp.get(0).getMotivomudanca();
-					 String linha=lp.get(0).getLinha();
-					for (int i=0;i<allPackagedDrugsList.size();i++)
-					{
-						//adiciona os medicantos no vector
-						  vMedicamentos.add( new String(allPackagedDrugsList.get(i).getDrugName()));
-						}
-				if(vMedicamentos!=null)
-					for(int i=0; i<vMedicamentos.size();i++ )
-						System.out.println("Medicamento "+i+" " +vMedicamentos.get(i));
-				System.out.println(" Quantidade: "+allPackagedDrugsList.get(0).getDispensedQty());
-				System.out.println(" Notes: "+allPackagedDrugsList.get(0).getNotes());
-				System.out.println(" NID: "+allPackagedDrugsList.get(0).getPatientId());
-				System.out.println(" Instucaao1: "+allPackagedDrugsList.get(0).getSpecialInstructions1());
-				System.out.println(" Instruncao2: "+allPackagedDrugsList.get(0).getSpecialInstructions2());
-				System.out.println(" Data de dispensa: "+allPackagedDrugsList.get(0).getDispenseDate());
-				System.out.println(" Semanas: "+allPackagedDrugsList.get(0).getWeeksSupply());
-				System.out.println(" duracao da prescricao semanas: "+allPackagedDrugsList.get(0).getPrescriptionDuration());
-				System.out.println(" data proxima visita: "+allPackagedDrugsList.get(0).getDateExpectedString());
-				System.out.println(" tipotarv: "+lp.get(0).getReasonforupdate());
-				System.out.println(" Regime: "+lp.get(0).getRegimeesquema());
-				System.out.println(" Idade: "+lp.get(0).getIdade());
-				 
-				System.out.println(" DAta inicio noutro servico: "+dataInicioNoutroServico);
-				System.out.println(" Motivo da mudanca: "+ motivomudanca);
-				System.out.println(" Linha Terapeutica: "+ linha);
-				 
-				 //convertendo a data para adequar com a coluna datatarv do ms access - t_tarv 
-				 SimpleDateFormat parseFormat = 
-						    new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
-						Date datatarv = parseFormat.parse(dispenseDate.toString());
-						SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-						String resultdatatarv = format.format(datatarv);
-						
-						
-				//Convertendo a data de String para Date. proxima visita
-						Date dateproximavisita=conn.converteData(dateExpectedString);
-				 System.out.println(" Date proxima: "+dateproximavisita);
-				 
-				 SimpleDateFormat parseFormat2 = 
-						    new SimpleDateFormat("yyyy-MM-dd");
-						Date dateproxima = parseFormat2.parse( dateproximavisita.toString());
-						SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd");
-						String resultdataproximaconsulta = format2.format(dateproxima);
-						
-				       String dataNoutroServico="";
-				       if(dataInicioNoutroServico!=null)
-				    	   dataNoutroServico=format2.format(dataInicioNoutroServico);
-				
-				       if(!conn2.jaDispensado(patientId,resultdatatarv))
-				 {
-					 
-				if(motivomudanca!=null && motivomudanca.length()>0)
-					//quando ha motivo de mudanca
-					conn2.insereT_tarvMotivo(vMedicamentos,patientId, resultdatatarv,dispensedQty,regime,weeksSupply,reasonforupdate,resultdataproximaconsulta,idade,motivomudanca,linha);
-				else  if(dataInicioNoutroServico!=null)
-					//Quando é transferido de 
-					conn2.insereT_tarvTransferidoDE(vMedicamentos,patientId, resultdatatarv,dispensedQty,regime,weeksSupply,reasonforupdate,resultdataproximaconsulta,idade,dataNoutroServico,linha);
-				else
-				       //metodo invocado para a insercao em t_tarv no ms access	
-				conn2.insereT_tarv(vMedicamentos,patientId, resultdatatarv,dispensedQty,regime,weeksSupply,reasonforupdate,resultdataproximaconsulta,idade,linha);
-				 }
-				}
-					break;
-				}
-		  }else {
 			tx = getHSession().beginTransaction();
 			if (newPack.getPrescription() != null) {
 				if (previousPack != null) {
 					savePillCounts();
 				}
-				if(rdBtnNoAppointmentDate.getSelection()) newPack.getPrescription().setTpc('F'); else newPack.getPrescription().setTpc('T');
-				if(rdBtnPrintSummaryLabelNo.getSelection()) newPack.getPrescription().setTpi('F'); else newPack.getPrescription().setTpi('T');
-					System.out.println(" nnnnnnnnnnnnn "+newPack.getPrescription().getId());
+
 				// Check if package contains ARV, and
 				// do ARV Start date check.
 				// Should be moved to a facade or manager class
@@ -3506,11 +3268,14 @@ if ( newPack.getPrescription().getReasonForUpdate().contains("nici") && conn.jaT
 				setNextAppointmentDate();
 
 				if (allPackagedDrugsList.size() > 0) {
+
 					// This map keeps a track of drugs dispensed in separate
 					// batches
 					Map<String, String> drugNames = new HashMap<String, String>();
+
 					// Update pdi's to include accum drugs
 					for (PackageDrugInfo info : allPackagedDrugsList) {
+
 						info.setQtyInHand(PackageManager
 								.getQuantityDispensedForLabel(
 										newPack.getAccumulatedDrugs(),
@@ -3524,6 +3289,7 @@ if ( newPack.getPrescription().getReasonForUpdate().contains("nici") && conn.jaT
 						// set the String that will print out on each drug label
 						// to indicate
 						// (<amount dispensed> + <accumulated amount>)
+
 						if (drugNames.containsKey(info.getDrugName())) {
 							// not first batch, exclude pillcount value
 							info.setSummaryQtyInHand(PackageManager
@@ -3534,6 +3300,7 @@ if ( newPack.getPrescription().getReasonForUpdate().contains("nici") && conn.jaT
 											info.getDispensedQty(), false,
 											false));
 						} else {
+
 							info.setSummaryQtyInHand(PackageManager
 									.getQuantityDispensedForLabel(
 											newPack.getAccumulatedDrugs(),
@@ -3546,14 +3313,19 @@ if ( newPack.getPrescription().getReasonForUpdate().contains("nici") && conn.jaT
 						// prescription summary label to indicate
 						// for each drug the (<total amount dispensed> + <total
 						// accumulated amount>)
+
 						// before printing the labels, save pdi List
 						TemporaryRecordsManager.savePackageDrugInfosToDB(
 								getHSession(), allPackagedDrugsList);
 						getHSession().flush();
+
 					}
 				}
 				tx.commit();
-			/*	if (iDartProperties.printDrugLabels) {
+				
+	
+				
+				if (iDartProperties.printDrugLabels) {
 					// Add the qty for the summary label
 					labelQuantities.put(ScriptSummaryLabel.KEY,
 							rdBtnPrintSummaryLabelYes.getSelection() ? 1 : 0);
@@ -3565,7 +3337,7 @@ if ( newPack.getPrescription().getReasonForUpdate().contains("nici") && conn.jaT
 					// print labels
 					PackageManager.printLabels(getHSession(),
 							allPackagedDrugsList, labelQuantities);
-				}*/
+				}
 			}
 			
 			
@@ -3576,7 +3348,7 @@ if ( newPack.getPrescription().getReasonForUpdate().contains("nici") && conn.jaT
 			 * 
 			 */
 			Vector<String> vMedicamentos=new Vector<String>();
-			//ConexaoJDBC conn=new ConexaoJDBC();
+			ConexaoJDBC conn=new ConexaoJDBC();
 			ConexaoODBC conn2=new ConexaoODBC();
 			
 			
@@ -3659,7 +3431,7 @@ if ( newPack.getPrescription().getReasonForUpdate().contains("nici") && conn.jaT
 		System.out.println(" Regime: "+lp.get(0).getRegimeesquema());
 		System.out.println(" Idade: "+lp.get(0).getIdade());
 		 
-		System.out.println(" DAta inicio noutro servico: "+dataInicioNoutroServico);
+		System.out.println(" Data inicio noutro servico: "+dataInicioNoutroServico);
 		System.out.println(" Motivo da mudanca: "+ motivomudanca);
 		System.out.println(" Linha Terapeutica: "+ linha);
 		 
@@ -3670,9 +3442,8 @@ if ( newPack.getPrescription().getReasonForUpdate().contains("nici") && conn.jaT
 		 //convertendo a data para adequar com a coluna datatarv do ms access - t_tarv 
 		 SimpleDateFormat parseFormat = 
 				    new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
- 
 				Date datatarv = parseFormat.parse(dispenseDate.toString());
-				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+				SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 				String resultdatatarv = format.format(datatarv);
 				
 				
@@ -3683,7 +3454,7 @@ if ( newPack.getPrescription().getReasonForUpdate().contains("nici") && conn.jaT
 		 SimpleDateFormat parseFormat2 = 
 				    new SimpleDateFormat("yyyy-MM-dd");
 				Date dateproxima = parseFormat2.parse( dateproximavisita.toString());
-				SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd");
+				SimpleDateFormat format2 = new SimpleDateFormat("MM/dd/yyyy");
 				String resultdataproximaconsulta = format2.format(dateproxima);
 				
 		       String dataNoutroServico="";
@@ -3697,25 +3468,25 @@ if ( newPack.getPrescription().getReasonForUpdate().contains("nici") && conn.jaT
 			
 		else  if(dataInicioNoutroServico!=null)
 			
-			//Quando é transferido de 
+			//Quando � transferido de 
 			conn2.insereT_tarvTransferidoDE(vMedicamentos,patientId, resultdatatarv,dispensedQty,regime,weeksSupply,reasonforupdate,resultdataproximaconsulta,idade,dataNoutroServico,linha);
 			
 		else
 		       //metodo invocado para a insercao em t_tarv no ms access	
 		conn2.insereT_tarv(vMedicamentos,patientId, resultdatatarv,dispensedQty,regime,weeksSupply,reasonforupdate,resultdataproximaconsulta,idade,linha);
 		
-			}
+	
 		
-		} catch (HibernateException he) {//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-			getLog().error("Problem with Saving this package", he);
+		} catch (HibernateException he) {
+			getLog().error("Problemas salvando este pacote.", he);
 			if (tx != null) {
 				tx.rollback();
 			}
 
 			MessageBox m = new MessageBox(getShell(), SWT.OK
 					| SWT.ICON_INFORMATION);
-			m.setText("Problem Saving Package");
-			m.setMessage("There was a problem saving this package of drugs.");
+			m.setText("Problema Salvando Pacote");
+			m.setMessage("Houve problemas ao salvar este pacote de medicamentos.");
 
 			m.open();
 		}
@@ -3724,7 +3495,6 @@ if ( newPack.getPrescription().getReasonForUpdate().contains("nici") && conn.jaT
 
 		tblPrescriptionInfo.clearAll();
 		pillCountTable.clearTable();
-
 	}
 
 
