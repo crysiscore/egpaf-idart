@@ -40,6 +40,52 @@ class Task
     Task() {
     }
 
+    public String convertIntegerToMonth(int month) {
+
+        String srtMonth="";
+        switch (month) {
+            case 1:
+                srtMonth = "Jan";
+                break;
+            case 2:
+                srtMonth = "Feb";
+                break;
+            case 3:
+                srtMonth = "Mar";
+                break;
+            case 4:
+                srtMonth = "Apr";
+                break;
+            case 5:
+                srtMonth = "May";
+                break;
+            case 6:
+                srtMonth = "Jun";
+                break;
+            case 7:
+                srtMonth = "jul";
+                break;
+            case 8:
+                srtMonth = "Aug";
+                break;
+            case 9:
+                srtMonth = "Sep";
+                break;
+            case 10:
+                srtMonth = "Oct";
+                break;
+            case 11:
+                srtMonth = "Nov";
+                break;
+            case 12:
+                srtMonth = "Dec";
+                break;
+            default:
+                break;
+        }
+        return srtMonth;
+    }
+
     @Override
     public String doInBackground() {
         System.err.println("AGUARDE UM MOMENTO ....");
@@ -75,42 +121,47 @@ class Task
                         return "Done";
                     }
                     for (PatientProgram patientProgram : patientProgramlist) {
-                        
+
                         try {
-                                 
-                        ++current;
-                        String dataTarv = null;
-                        // if (patientImportService.findByPatientId(patientProgram.getPatientId().getPatientId().toString()) != null && (patientImportService.findByPatientId(patientProgram.getPatientId().getPatientId().toString()) == null))
-                        //     continue;
-                        this.setProgress(100 * current / lengthOfTask);
-                        PersonName personName = personNameService.findByPersonId(patientProgram.getPatientId().getPatientId().toString());
-                        PersonAddress personAddress = personAddressService.findByPersonId(patientProgram.getPatientId().getPatientId().toString());
-                        PatientIdentifier patientIdentifier = patientIdentifierService.findByPatientId(patientProgram.getPatientId().getPatientId().toString());
-                        Person person = personService.findById(patientProgram.getPatientId().getPatientId().toString());
 
-                        Patient patient = DadosPaciente.InserePaciente(patientIdentifier.getIdentifier(), person, personName, personAddress, clinic, patientImportService, patientProgram.getPatientId().getPatientId().toString());
+                            ++current;
+                            String dataTarv = null;
+                            // if (patientImportService.findByPatientId(patientProgram.getPatientId().getPatientId().toString()) != null && (patientImportService.findByPatientId(patientProgram.getPatientId().getPatientId().toString()) == null))
+                            //     continue;
+                            this.setProgress(100 * current / lengthOfTask);
+                            PersonName personName = personNameService.findByPersonId(patientProgram.getPatientId().getPatientId().toString());
+                            PersonAddress personAddress = personAddressService.findByPersonId(patientProgram.getPatientId().getPatientId().toString());
+                            PatientIdentifier patientIdentifier = patientIdentifierService.findByPatientId(patientProgram.getPatientId().getPatientId().toString());
+                            Person person = personService.findById(patientProgram.getPatientId().getPatientId().toString());
 
-                        DadosPaciente.InserePatientIdentifier(patient, identifierType, patientIdentifier.getIdentifier(), patientIdentifierImportService);
+                            Patient patient = DadosPaciente.InserePaciente(patientIdentifier.getIdentifier(), person, personName, personAddress, clinic, patientImportService, patientProgram.getPatientId().getPatientId().toString());
 
-                        DadosPaciente.InserePatientAttribute(patient, patientProgram.getDateEnrolled().toGMTString(), attributeType, patientAttributeImportService);
+                            DadosPaciente.InserePatientIdentifier(patient, identifierType, patientIdentifier.getIdentifier(), patientIdentifierImportService);
 
-                        PatientProgramService patientProgramServiceActualiza = new PatientProgramService();
-                        patientProgram.setIdart("Imported");
-                        patientProgramServiceActualiza.update(patientProgram);
-                        //   ObsService obsServiceActualizacao = new ObsService();
-                        //   obj.setComments("Imported");
-                        //   obsServiceActualizacao.update(obj);
-                        System.err.println(personName.getGivenName() + " " + personName.getFamilyName() + " Paciente com o NID " + patientIdentifier.getIdentifier() + " Inserido com Sucesso");
-                        
-                           } catch (Exception e) {
-                              PersonName personName = personNameService.findByPersonId(patientProgram.getPatientId().toString());
-                               System.err.println("Dados do paciente em falta: (NID) " + personName.getGivenName()+" "+personName.getMiddleName()+" "+personName.getFamilyName());
-                               break;
-                               
-                        }
-                        finally{
-                        
-                        continue;
+                            String dateopenmrs = patientProgram.getDateEnrolled().toString();
+                            String year = dateopenmrs.substring(0, 4);
+                            String month =  convertIntegerToMonth(Integer.parseInt(dateopenmrs.substring(5, 7)));
+                            String day = dateopenmrs.substring(8, 10);     
+                            String dateEnrolled = day + " "+ month + " " + year;
+                            
+                            DadosPaciente.InserePatientAttribute(patient, dateEnrolled, attributeType, patientAttributeImportService);
+
+                            PatientProgramService patientProgramServiceActualiza = new PatientProgramService();
+                            patientProgram.setIdart("Imported");
+                            patientProgramServiceActualiza.update(patientProgram);
+                            //   ObsService obsServiceActualizacao = new ObsService();
+                            //   obj.setComments("Imported");
+                            //   obsServiceActualizacao.update(obj);
+                            System.err.println(personName.getGivenName() + " " + personName.getFamilyName() + " Paciente com o NID " + patientIdentifier.getIdentifier() + " Inserido com Sucesso");
+
+                        } catch (Exception e) {
+                            PersonName personName = personNameService.findByPersonId(patientProgram.getPatientId().toString());
+                            System.err.println("Dados do paciente em falta: (NID) " + personName.getGivenName() + " " + personName.getMiddleName() + " " + personName.getFamilyName());
+                            break;
+
+                        } finally {
+
+                            continue;
                         }
                     }
                 } catch (InterruptedException ie) {
@@ -124,9 +175,9 @@ class Task
                 current = lengthOfTask * 2;
             }
         } catch (Exception e) {
-            
+
             System.err.println("ACONTECEU UM ERRO INESPERADO, Ligue o Servidor OpenMRS e Tente Novamente ou Contacte o Administrador \n" + e);
-              e.printStackTrace();
+            e.printStackTrace();
         }
         return "Done";
     }

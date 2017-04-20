@@ -86,7 +86,7 @@ class Task1
                     Form form = formService.findById("130");
                     Provider provider = providerService.findById("1");
                     EncounterRole encounterRole = encounterRoleService.findById("1");
-                    Location location = locationService.findById("208");
+                    Location location = locationService.findById("212");
                     List<Concept> conceptsFarmacia = conceptService.findAll();
 
                     String prescricao = "";
