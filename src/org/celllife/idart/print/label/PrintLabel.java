@@ -78,13 +78,14 @@ public class PrintLabel
     PageFormat pf = new PageFormat();
     Paper paper = new Paper();
     if (iDartProperties.labelType.equals(iDartProperties.LabelType.EKAPA)) {
-      paper.setSize(285.0D, 135.0D);
+      paper.setSize(150.0D, 300.0D);
     } else {
-      paper.setSize(216.0D, 135.0D);
+      paper.setSize(150.0D, 205.0D);
     }
     paper.setImageableArea(0.0D, 0.0D, paper.getWidth(), paper.getHeight());
     pf.setPaper(paper);
-    pf.setOrientation(1);
+    
+    pf.setOrientation(0);
     
     Book book = new Book();
     for (int i = 0; i < labelsToPrint.size(); i++)

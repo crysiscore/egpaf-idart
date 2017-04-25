@@ -430,3 +430,48 @@ URL = jdbc:postgresql://192.168.10.116:5432/pharm
 24-04-2017 21:31:53 [main] DEBUG celllife.idart.misc.LoginTimer - Terminating iDART - TIMER EXPIRED
 24-04-2017 21:31:53 [main] DEBUG dart.start.PharmacyApplication - Logged out..
 24-04-2017 21:31:54 [main] DEBUG celllife.idart.gui.login.Login - Login Form Created
+25-04-2017 13:15:08 [main] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://192.168.10.116:5432/pharm
+25-04-2017 13:15:08 [main] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+25-04-2017 13:15:10 [main] INFO  .gui.generalAdmin.GeneralAdmin - GeneralAdmin: Initializing the GUI
+25-04-2017 13:15:15 [main] WARN  dart.misc.PatientBarcodeParser - Could not match patientId using regular expression.
+25-04-2017 13:15:28 [main] INFO  .gui.generalAdmin.GeneralAdmin - GeneralAdmin: Initializing the GUI
+25-04-2017 13:16:32 [SwingWorker-pool-1-thread-1] WARN  ate.util.JDBCExceptionReporter - SQL Error: 1054, SQLState: 42S22
+25-04-2017 13:16:32 [SwingWorker-pool-1-thread-1] ERROR ate.util.JDBCExceptionReporter - Unknown column 'patientpro0_.idart' in 'field list'
+25-04-2017 13:25:42 [main] DEBUG celllife.idart.misc.LoginTimer - Terminating iDART - TIMER EXPIRED
+25-04-2017 13:25:42 [main] DEBUG dart.start.PharmacyApplication - Logged out..
+25-04-2017 13:25:42 [main] DEBUG celllife.idart.gui.login.Login - Login Form Created
+25-04-2017 13:26:02 [main] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://192.168.10.116:5432/pharm
+25-04-2017 13:26:02 [main] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+25-04-2017 13:26:05 [main] INFO  .gui.generalAdmin.GeneralAdmin - GeneralAdmin: Initializing the GUI
+25-04-2017 13:40:56 [main] DEBUG celllife.idart.misc.LoginTimer - Terminating iDART - TIMER EXPIRED
+25-04-2017 13:40:56 [main] DEBUG dart.start.PharmacyApplication - Logged out..
+25-04-2017 13:40:56 [main] DEBUG celllife.idart.gui.login.Login - Login Form Created
+25-04-2017 13:43:00 [main] INFO  celllife.idart.gui.login.Login - Login successful for user admin
+25-04-2017 13:43:00 [main] INFO  celllife.idart.misc.LoginTimer - Starting new logout timer with timeout 600 seconds.
+25-04-2017 13:43:00 [main] DEBUG art.gui.welcome.GenericWelcome - Creating newWelcome
+25-04-2017 13:43:00 [main] ERROR art.gui.welcome.GenericWelcome - Unable to load help.
+25-04-2017 13:43:00 [main] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://192.168.10.116:5432/pharm
+25-04-2017 13:43:00 [main] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+25-04-2017 13:52:02 [main] DEBUG celllife.idart.misc.LoginTimer - Terminating iDART - TIMER EXPIRED
+25-04-2017 13:52:02 [main] DEBUG dart.start.PharmacyApplication - Logged out..
+25-04-2017 13:52:02 [main] DEBUG celllife.idart.gui.login.Login - Login Form Created
+25-04-2017 13:52:07 [main] INFO  celllife.idart.gui.login.Login - Login successful for user admin
+25-04-2017 13:52:07 [main] INFO  celllife.idart.misc.LoginTimer - Starting new logout timer with timeout 600 seconds.
+25-04-2017 13:52:07 [main] DEBUG art.gui.welcome.GenericWelcome - Creating newWelcome
+25-04-2017 13:52:07 [main] ERROR art.gui.welcome.GenericWelcome - Unable to load help.
+25-04-2017 13:52:07 [main] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://192.168.10.116:5432/pharm
+25-04-2017 13:52:07 [main] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+25-04-2017 13:52:08 [main] INFO  .gui.generalAdmin.GeneralAdmin - GeneralAdmin: Initializing the GUI
+25-04-2017 13:54:22 [main] WARN  dart.misc.PatientBarcodeParser - Could not match patientId using regular expression.
+25-04-2017 13:55:27 [main] WARN  dart.misc.PatientBarcodeParser - Could not match patientId using regular expression.
+25-04-2017 13:55:42 [main] WARN  dart.misc.PatientBarcodeParser - Could not match patientId using regular expression.
+25-04-2017 13:56:28 [main] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://192.168.10.116:5432/pharm
+25-04-2017 13:56:28 [main] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+25-04-2017 13:58:29 [main] DEBUG celllife.idart.misc.LoginTimer - Terminating iDART - TIMER EXPIRED
+25-04-2017 13:58:29 [main] DEBUG dart.start.PharmacyApplication - Logged out..
+25-04-2017 13:58:29 [main] DEBUG celllife.idart.gui.login.Login - Login Form Created
