@@ -5,12 +5,13 @@
         <group>
             <file>file:/C:/Users/agnaldo/git_repo/idart/src/org/celllife/idart/messages/messages.properties</file>
             <file>file:/C:/Users/agnaldo/git_repo/idart/src/model/manager/AdministrationManager.java</file>
+            <file>file:/C:/Users/agnaldo/git_repo/idart/src/org/ccs/openmrs/migracao/swingreverse/SwingReverse.java</file>
             <file>file:/C:/Users/agnaldo/git_repo/idart/src/org/celllife/idart/gui/packaging/PackagesToPatients.java</file>
             <file>file:/C:/Users/agnaldo/git_repo/idart/src/org/ccs/openmrs/migracao/connection/hibernate.cfg.xml</file>
             <file>file:/C:/Users/agnaldo/git_repo/idart/src/org/celllife/idart/gui/patientAdmin/PatientAdmin.java</file>
             <file>file:/C:/Users/agnaldo/git_repo/idart/src/org/celllife/idart/gui/patient/AddPatient.java</file>
+            <file>file:/C:/Users/agnaldo/git_repo/idart/src/org/ccs/openmrs/migracao/swingreverse/Task2.java</file>
             <file>file:/C:/Users/agnaldo/git_repo/idart/src/org/ccs/openmrs/migracao/connection/hibernateRemote.cfg.xml</file>
-            <file>file:/C:/Users/agnaldo/git_repo/idart/src/org/celllife/idart/database/hibernate/Episode.java</file>
             <file>file:/C:/Users/agnaldo/git_repo/idart/src/org/celllife/idart/print/label/PrintLabel.java</file>
             <file>file:/C:/Users/agnaldo/git_repo/idart/src/org/celllife/idart/messages/Messages.java</file>
             <file>file:/C:/Users/agnaldo/git_repo/idart/src/org/celllife/idart/commonobjects/CommonObjects.java</file>
