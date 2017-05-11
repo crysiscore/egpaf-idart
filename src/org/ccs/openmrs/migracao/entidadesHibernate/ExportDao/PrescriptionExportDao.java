@@ -73,8 +73,8 @@ public class PrescriptionExportDao implements PrescriptionInterface<Prescription
         return prescription;
     }
 
-    public Prescription findByPrescricaoId(String id) {
-        Prescription prescription = (Prescription)this.getCurrentSession().createQuery("from Prescription p where p.patient = '" +id+"' AND current = 'T'").uniqueResult();
+    public Prescription findByPrescricaoId(String id, String nid) {
+        Prescription prescription = (Prescription)this.getCurrentSession().createQuery("from Prescription p where p.patient = '" +id+"' AND current = 'T'" + " AND prescriptionid like '%"+nid+"%'").uniqueResult();
         return prescription;
     }
 

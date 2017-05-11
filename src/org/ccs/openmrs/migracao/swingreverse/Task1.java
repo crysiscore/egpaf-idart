@@ -3,6 +3,10 @@
  */
 package org.ccs.openmrs.migracao.swingreverse;
 
+import java.io.File;
+import java.io.IOException;
+import static java.rmi.server.LogStream.log;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -36,6 +40,7 @@ import org.ccs.openmrs.migracao.entidadesHibernate.servicos.ProviderService;
 import org.ccs.openmrs.migracao.entidadesHibernate.servicos.UsersService;
 import org.ccs.openmrs.migracao.entidadesHibernate.servicos.VisitService;
 import org.ccs.openmrs.migracao.entidadesHibernate.servicos.VisitTypeService;
+import static org.ccs.openmrs.migracao.swingreverse.Task2.logFileLocations;
 import org.celllife.idart.database.hibernate.tmp.PackageDrugInfo;
 
 class Task1
@@ -43,7 +48,24 @@ class Task1
 
     private final Random rnd = new Random();
 
+    // Esta classe vai ler e escrever um logFile  com os detalhe das excecpiotns que podem ocorrer 
+    // durante o processo de uniao de nids. O ficheiro deve ser criado na pasta de instalacao do idart que pode ser
+    // C:\\idart ou C:\\Program Files\\idart ou C:\\Program Files (x86)\\idart.
+    ReadWriteTextFile rwTextFile = new ReadWriteTextFile();
+
+    //Lista dos possiveis Localizacao do logFile
+    final static List<String> logFileLocations = new ArrayList<>();
+    final static String logFileName = "EnvioDispensasLogFile.txt";
+     String logFile ;
+     
     Task1() {
+        logFileLocations.add("C:\\idart");
+        logFileLocations.add("C:\\Idart");
+        logFileLocations.add("C:\\IDART");
+        logFileLocations.add("C:\\iDART_V2017");
+        logFileLocations.add("C:\\Program Files\\idart");
+        logFileLocations.add("C:\\Program Files (x86)\\idart");        
+        
     }
 
     @Override
@@ -70,7 +92,11 @@ class Task1
             int current = 0;
             int contanonSend = 0;
             int lengthOfTask = packageDrugInfos.size();
-
+            //Esvazia o log file
+            logFile = getLogFileLocation();
+            rwTextFile.writeSmallTextFile(new ArrayList<String>(), logFile);
+  
+          
             while (current <= lengthOfTask && !this.isCancelled()) {
                 try {
                     Thread.sleep(this.rnd.nextInt(50) + 1);
@@ -93,8 +119,10 @@ class Task1
                     Date dataPrescricao = null;
                     for (PackageDrugInfo packageDrugInfo : packageDrugInfos) {
                         ++current;
-                      
-                        this.setProgress(100 * current / lengthOfTask);
+                           // Abrimos um block try-catch para manter o ciclo a executar quando ocorrer uma exception
+                           // os erros vao para o logfile
+                        try {
+                                                    this.setProgress(100 * current / lengthOfTask);
 
                         String name = "";
                         String surname = "";
@@ -124,6 +152,14 @@ class Task1
                         } else {
                             System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
                             System.err.println("Paciente " + packageDrugInfo.getPatientFirstName() + " " + packageDrugInfo.getPatientLastName() + " com o nid NID " + packageDrugInfo.getPatientId() + " nao foi encontrado no OpenMRS. Verifique o NID no OpenMRS ou Contacte o Administrador");
+                             List<String> listNidsProblematicos = rwTextFile.readSmallTextFile(logFile);
+                            listNidsProblematicos.add("---------------------------------------------------------------------- ----------------------------------------------------------------");
+                            listNidsProblematicos.add("NID: "+ packageDrugInfo.getPatientId() );
+                            listNidsProblematicos.add("NOME: "+ packageDrugInfo.getPatientFirstName());
+                            listNidsProblematicos.add("APELIDO: "+  packageDrugInfo.getPatientLastName());
+                            listNidsProblematicos.add("ERRO: "+ " nao foi encontrado no OpenMRS. Verifique o NID no OpenMRS ou Contacte o Administrador" );
+                            listNidsProblematicos.add("CAUSA: "+ "Verificar se no openmrs o nome,nid,apelido do paciente sao iguais");
+                            rwTextFile.writeSmallTextFile(listNidsProblematicos, logFile);
                             System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
                         }
 
@@ -148,6 +184,22 @@ class Task1
                         } else {
                             contanonSend++;
                         }
+                            
+                        } catch (Exception e) {
+                            // Podem ocorrer diferentes tipos de exceptions, coomo nao podemos prever todas vamos escreve-las
+                            //num logfile e continuar com a execucao ciclo   
+                            List<String> listNidsProblematicos = rwTextFile.readSmallTextFile(logFile);
+                            listNidsProblematicos.add("---------------------------------------------------------------------- ----------------------------------------------------------------");
+                            listNidsProblematicos.add("NID: "+ packageDrugInfo.getPatientId() );
+                            listNidsProblematicos.add("NOME: "+ packageDrugInfo.getPatientFirstName());
+                            listNidsProblematicos.add("APELIDO: "+  packageDrugInfo.getPatientLastName());
+                            listNidsProblematicos.add("ERRO: "+ e.getMessage() );
+                            listNidsProblematicos.add("CAUSA: "+ e.getCause().toString() );
+                            rwTextFile.writeSmallTextFile(listNidsProblematicos, logFile);
+                            
+                        }
+                      
+
                     }
                 } catch (InterruptedException ie) {
                     return "Interrupted";
@@ -163,11 +215,51 @@ class Task1
                 hibernateConection.getInstanceLocal().close();
                 hibernateConection.getInstanceRemote().close();
                 current = lengthOfTask * 2;
-            }
+            } 
 
         } catch (Exception e) {
             System.err.println("ACONTECEU UM ERRO INESPERADO, Ligue o Servidor OpenMRS e Tente Novamente ou Contacte o Administrador \n" + e.getMessage());
         }
         return "Done";
     }
+    
+    
+    public String getLogFileLocation() {
+
+        String fileLocation = "";
+
+        for (int i = 0; i < logFileLocations.size(); i++) {
+
+            File dir = new File(logFileLocations.get(i));
+
+            //Se o Ficheiro nao e encontrado em nenhuma das locations criar o ficheiro
+            // No directorio que existir
+            if (dir.exists()) {
+                File logFile = new File(logFileLocations.get(i) + "\\" + logFileName);
+                if (logFile.exists()) {
+                    fileLocation = logFile.getPath();
+                    break;
+                } //create new file
+                else {
+                    try {
+
+                        logFile.createNewFile();
+                        fileLocation = logFile.getPath();
+                        System.out.println(fileLocation + ":  Criado");
+                        break;
+
+                    } catch (IOException e) {
+                        log(e.getMessage());
+                    }
+
+                }
+
+            }
+
+        }
+
+        return fileLocation;
+
+    }
+    
 }

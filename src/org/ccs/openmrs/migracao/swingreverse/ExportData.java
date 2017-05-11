@@ -159,7 +159,7 @@ public class ExportData {
         org.celllife.idart.database.hibernate.Patient p = importService.findByPatientId(packageDrugInfo.getPatientId() + "");
 
         if (p != null) {
-            prescription = prescriptionExportService.findByPrescricaoId(p.getId() + "");
+            prescription = prescriptionExportService.findByPrescricaoId(p.getId() + "",packageDrugInfo.getPatientId());
         }
 
         if (prescription != null) {
