@@ -157,6 +157,9 @@ public class AddPatient extends GenericFormGui implements iDARTChangeListener {
 	private Group grpParticulars;
 
 	private Patient localPatient;
+        
+        // If we are updating a patient we want to get the nid, name, lastname from the old one and update packagedruginfotemp
+        private Patient oPatient;
 
 	/**
 	 * Are we adding a new patient of updating an existing patient?
@@ -1254,10 +1257,9 @@ public class AddPatient extends GenericFormGui implements iDARTChangeListener {
 	}
 
 	private void updateGUIforNewLocalPatient() {
-		loadPatientDetails();
-		txtPatientId.setEnabled(false);
-		txtFirstNames.setFocus();
-
+		loadPatientDetails();                     
+		txtPatientId.setEnabled(false);           
+		txtFirstNames.setFocus();                 
 		btnSearch.setText(Messages.getString("patient.button.editid")); //$NON-NLS-1$
 		btnSearch.setToolTipText(Messages.getString("patient.button.editid.tooltip")); //$NON-NLS-1$
 		btnEkapaSearch.setEnabled(false);
@@ -1307,6 +1309,7 @@ public class AddPatient extends GenericFormGui implements iDARTChangeListener {
 		}
 
 		Transaction tx = null;
+                
 
 		try {
 
@@ -1315,7 +1318,9 @@ public class AddPatient extends GenericFormGui implements iDARTChangeListener {
 			for (IPatientTab tab : groupTabs) {
 				tab.submit(localPatient);
 			}
-
+                         Session sess = HibernateUtil.getNewSession();
+                         oPatient = PatientManager.getPatient(sess, localPatient
+						.getId());
 			PatientManager.savePatient(getHSession(), localPatient);
 			
 			System.out.println(" local patient "+localPatient.getPatientId()+"  "+localPatient.getFirstNames());
@@ -1334,13 +1339,20 @@ System.out.println(" local patient "+localPatient.getPatientId()+"  "+localPatie
 			
 			//insere pacientes no idart
 			try {
-				try {
+				
+				
 					conn2.inserPacienteIdart(localPatient.getPatientId(), localPatient.getFirstNames(), localPatient.getLastname(), new Date());
-				} catch (SQLException e) {
+                                        if(oPatient != null){ //New Patient
+                                                           conn2.updatePatientDetailsOnDispense(localPatient.getPatientId(), localPatient.getFirstNames(), localPatient.getLastname(), oPatient.getFirstNames(), oPatient.getLastname());
+                                
+                
+				} 
+			}
+                        catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			} catch ( ClassNotFoundException e) {
+                        catch ( ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -2212,7 +2224,6 @@ System.out.println(" local patient "+localPatient.getPatientId()+"  "+localPatie
 			}
 			isAddnotUpdate = true;
 			localPatient = patient;
-
 			updateGUIforNewLocalPatient();
 		}
 		// if we've returned from the search GUI with the user having
@@ -2489,4 +2500,6 @@ System.out.println(" local patient "+localPatient.getPatientId()+"  "+localPatie
 			return map;
 		}
 	}
+
+   
 }

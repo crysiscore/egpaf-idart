@@ -27,6 +27,7 @@ import org.ccs.openmrs.migracao.entidades.VisitType;
 import org.ccs.openmrs.migracao.entidadesHibernate.ExportDispense.PackageDrugInfoExportService;
 import org.ccs.openmrs.migracao.entidadesHibernate.ExportDispense.PatientExportService;
 import org.ccs.openmrs.migracao.entidadesHibernate.dao.PatientIdentifierDao;
+import org.ccs.openmrs.migracao.entidadesHibernate.importPatient.PatientImportService;
 import org.ccs.openmrs.migracao.entidadesHibernate.servicos.ConceptService;
 import org.ccs.openmrs.migracao.entidadesHibernate.servicos.EncounterProviderService;
 import org.ccs.openmrs.migracao.entidadesHibernate.servicos.EncounterRoleService;
@@ -123,21 +124,27 @@ class Task1
                            // os erros vao para o logfile
                         try {
                                                     this.setProgress(100 * current / lengthOfTask);
-
+                                                    PatientImportService patientImportService = new PatientImportService();
+                        org.celllife.idart.database.hibernate.Patient importedPatient = patientImportService.findByPatientId(packageDrugInfo.getPatientId());
                         String name = "";
                         String surname = "";
 
-                        if (packageDrugInfo.getPatientFirstName().trim().length() > 4) {
-                            name = packageDrugInfo.getPatientFirstName().substring(0, 3).replace("'", "");
-                        } else {
-                            name = packageDrugInfo.getPatientFirstName().replace("'", "");
+                        if(importedPatient !=null){
+                            name = importedPatient.getFirstNames();
+                            surname = importedPatient.getLastname();
                         }
-
-                        if (packageDrugInfo.getPatientLastName().trim().length() > 4) {
-                            surname = packageDrugInfo.getPatientLastName().substring(0, 3).replace("'", "");
-                        } else {
-                            surname = packageDrugInfo.getPatientLastName().replace("'", "");
-                        }
+                        
+//                        if (packageDrugInfo.getPatientFirstName().trim().length() > 4) {
+//                            name = packageDrugInfo.getPatientFirstName().substring(0, 3).replace("'", "");
+//                        } else {
+//                            name = packageDrugInfo.getPatientFirstName().replace("'", "");
+//                        }
+//
+//                        if (packageDrugInfo.getPatientLastName().trim().length() > 4) {
+//                            surname = packageDrugInfo.getPatientLastName().substring(0, 3).replace("'", "");
+//                        } else {
+//                            surname = packageDrugInfo.getPatientLastName().replace("'", "");
+//                        }
 
                         PatientIdentifierService identifierDao = new PatientIdentifierService();
                         List<org.ccs.openmrs.migracao.entidades.PatientIdentifier> patientIdentifierOpenmrs = identifierDao.findByNidAndNameAndSurname(packageDrugInfo.getPatientId(), name, surname);

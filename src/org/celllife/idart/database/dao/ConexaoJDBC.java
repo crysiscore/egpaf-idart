@@ -176,6 +176,21 @@ public List<PrescriptionToPatient> listPtP(String patientid ) throws ClassNotFou
         return ptp;
 	}
 
+public void updatePatientDetailsOnDispense(String patientid, String newpatientFirstname, String newpatientLastname, String oldpatientFirstname, String oldpatientLastname) throws ClassNotFoundException, SQLException{
+
+ String updateQuery = "UPDATE public.packagedruginfotmp "
+                              + "SET  patientfirstname='"+newpatientFirstname+"'"
+                              + " ,patientlastname='" +newpatientLastname+"'"+" "
+                              + " WHERE  "
+                              + "patientid='"+patientid+"'"+" and patientfirstname='"+oldpatientFirstname+"'"
+                              + " and patientlastname='" +oldpatientLastname+"'";
+ 
+                conecta(iDartProperties.hibernateUsername, iDartProperties.hibernatePassword);
+		int rs=0;
+                rs= st.executeUpdate(updateQuery);
+                st.close();
+      conn_db.close();
+}
 /**
  * Converte uma data para o formato DD Mon YYYY
  * @param date
