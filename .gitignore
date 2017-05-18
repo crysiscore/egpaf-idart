@@ -1,4 +1,4 @@
 *.class
+/build/*
 *.log
-build/
-Reports/tmpPackagesAwaiting.csv
+
