@@ -24,6 +24,7 @@ import org.ccs.openmrs.migracao.connection.hibernateConection;
 import org.ccs.openmrs.migracao.entidadesHibernate.importPatient.PatientIdentifierImportService;
 import org.ccs.openmrs.migracao.entidadesHibernate.importPatient.PatientImportService;
 import org.ccs.openmrs.migracao.entidadesHibernate.servicos.PatientIdentifierService;
+import static org.ccs.openmrs.migracao.swingreverse.Task1.logFileLocations;
 import org.celllife.idart.database.hibernate.Patient;
 
 class Task2
@@ -43,12 +44,12 @@ class Task2
     
     Task2() {
 
+        logFileLocations.add("C:\\iDART_V2017");
+        logFileLocations.add("C:\\Program Files\\idart");
+        logFileLocations.add("C:\\Program Files (x86)\\idart");      
         logFileLocations.add("C:\\idart");
         logFileLocations.add("C:\\Idart");
         logFileLocations.add("C:\\IDART");
-        logFileLocations.add("C:\\iDART_V2017");
-        logFileLocations.add("C:\\Program Files\\idart");
-        logFileLocations.add("C:\\Program Files (x86)\\idart");
 
     }
 
@@ -60,7 +61,7 @@ class Task2
             PatientIdentifierImportService patientIdentifierImportServiceIdart = new PatientIdentifierImportService();
             //Esvazia o log file
             logFile = getLogFileLocation();
-            rwTextFile.writeSmallTextFile(new ArrayList<String>(), logFile);
+           // rwTextFile.writeSmallTextFile(new ArrayList<String>(), logFile);
             
             List<org.celllife.idart.database.hibernate.PatientIdentifier> patientIdentifiersIdart = patientIdentifierImportServiceIdart.findAll();
 
@@ -142,7 +143,7 @@ class Task2
                             
                             //Podem ocorrer diferentes tipos de exceptions, coomo nao podemos prever todas vamos escreve-las
                             //num logfile e continuar com a execucao ciclo   
-                            List<String> listNidsProblematicos = rwTextFile.readSmallTextFile(logFile);
+                            List<String> listNidsProblematicos = new ArrayList<>();
                             listNidsProblematicos.add("---------------------------------------------------------------------- ----------------------------------------------------------------");
                             listNidsProblematicos.add("NID: "+ patientIdentifier.getValue().trim() );
                             listNidsProblematicos.add("NOME: "+ patientIdentifier.getPatient().getFirstNames());
@@ -187,8 +188,14 @@ class Task2
             if (dir.exists()) {
                 File logFile = new File(logFileLocations.get(i) + "\\" + logFileName);
                 if (logFile.exists()) {
-                    fileLocation = logFile.getPath();
-                    break;
+                    try {
+                        logFile.delete();
+                        logFile.createNewFile();
+                        fileLocation = logFile.getPath();
+                        break;
+                    } catch (IOException e) {
+                           System.out.println("cannot create log file" +e.getMessage());
+                    }
                 } //create new file
                 else {
                     try {
@@ -199,7 +206,7 @@ class Task2
                         break;
 
                     } catch (IOException e) {
-                        log(e.getMessage());
+                        System.out.println("cannot create log file" +e.getMessage());
                     }
 
                 }

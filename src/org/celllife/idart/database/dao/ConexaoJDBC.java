@@ -176,13 +176,14 @@ public List<PrescriptionToPatient> listPtP(String patientid ) throws ClassNotFou
         return ptp;
 	}
 
-public void updatePatientDetailsOnDispense(String patientid, String newpatientFirstname, String newpatientLastname, String oldpatientFirstname, String oldpatientLastname) throws ClassNotFoundException, SQLException{
+public void updatePatientDetailsOnDispense(String newPatientid, String newpatientFirstname, String newpatientLastname,String oldPatiendid , String oldpatientFirstname, String oldpatientLastname) throws ClassNotFoundException, SQLException{
 
  String updateQuery = "UPDATE public.packagedruginfotmp "
-                              + "SET  patientfirstname='"+newpatientFirstname+"'"
+                              + "SET patientid='"+ newPatientid+"'"
+                              + " ,patientfirstname='"+newpatientFirstname+"'"
                               + " ,patientlastname='" +newpatientLastname+"'"+" "
                               + " WHERE  "
-                              + "patientid='"+patientid+"'"+" and patientfirstname='"+oldpatientFirstname+"'"
+                              + "patientid='"+oldPatiendid+"'"+" and patientfirstname='"+oldpatientFirstname+"'"
                               + " and patientlastname='" +oldpatientLastname+"'";
  
                 conecta(iDartProperties.hibernateUsername, iDartProperties.hibernatePassword);
