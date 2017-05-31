@@ -6,9 +6,9 @@
     <property name="hibernate.show_sql">false</property>
     <property name="hibernate.current_session_context_class">thread</property>
     <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-    <property name="hibernate.connection.url">jdbc:postgresql://192.168.0.20:5432/pharm</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://192.168.0.104:5432/pharm</property>
     <property name="hibernate.connection.username">postgres</property>
-    <property name="hibernate.connection.password">postgres</property>
+    <property name="hibernate.connection.password">root</property>
     <mapping class="org.celllife.idart.database.hibernate.Patient"/>
     <mapping class="org.celllife.idart.database.hibernate.Clinic"/>
     <mapping class="org.celllife.idart.database.hibernate.NationalClinics"/>
