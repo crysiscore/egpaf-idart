@@ -20,6 +20,7 @@ Why does it exist?
 * to support clinic information management by providing information on the status quo of patients.
 
 Creat a branch!!
+--
 After you create a branc, make sure:
  * you change the  OpenMRS location_id ( go to administracao-> localizacoes)  for the Site you want to deploy in the "Task1" class located inside the package org.ccs.openmrs.migracao.swingreverse;
  * Update the "PrintLabel" class inside the package org.celllife.idart.print.label (there  are diferent printers in the Health  facilities, but most of them are brother printers);
