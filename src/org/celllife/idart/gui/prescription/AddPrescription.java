@@ -161,7 +161,12 @@ iDARTChangeListener {
 	private Label lblDataInicioNoutroServico;
 	//lbl motivo de mudanca
 	private Label lblMotivoMudanca;
-	
+	// Estrategia dispensa trimestral
+        //lbl Dispensa Trimestral
+        private Label  lblDispensaTrimestral;
+        private CCombo cmbDispensaTristral;
+        private Label  lblInfoDispensaTrimestral;
+        
 	//Data de inicio noutro serviço
 	private DateButton btnDataInicioNoutroServico;
 	
@@ -361,7 +366,7 @@ iDARTChangeListener {
 	private void createCompInstructions() {
 
 		compInstructions = new Composite(getShell(), SWT.NONE);
-		compInstructions.setBounds(new Rectangle(327, 58, 400, 20));
+		compInstructions.setBounds(new Rectangle(327, 52, 400, 20));
 
 		Label lblInstructions = new Label(compInstructions, SWT.CENTER);
 		lblInstructions.setBounds(new Rectangle(0, 2, 400, 18));
@@ -379,7 +384,7 @@ iDARTChangeListener {
 
 		// grpPatientID
 		grpPatientID = new Group(getShell(), SWT.NONE);
-		grpPatientID.setBounds(new Rectangle(235, 84, 430, 112));
+		grpPatientID.setBounds(new Rectangle(235, 68, 430, 140));
 
 		// Patient ID
 		Label lblPatientId = new Label(grpPatientID, SWT.NONE);
@@ -529,7 +534,32 @@ iDARTChangeListener {
 	lblMotivoMudanca.setBounds(new Rectangle(10, 90, 150, 20));
 	lblMotivoMudanca.setFont(ResourceUtils.getFont(iDartFont.VERASANS_8));
 	lblMotivoMudanca.setText("Motivo de Mudança:");
-		
+        
+        lblDispensaTrimestral=new Label(grpPatientID, SWT.NONE);
+	lblDispensaTrimestral.setBounds(new Rectangle(10, 116, 150, 20));
+	lblDispensaTrimestral.setFont(ResourceUtils.getFont(iDartFont.VERASANS_8));
+	lblDispensaTrimestral.setText("Dispensa Trimestral:");
+        
+        cmbDispensaTristral= new CCombo(grpPatientID, SWT.BORDER | SWT.READ_ONLY);
+	cmbDispensaTristral.setBounds(new Rectangle(160, 116, 150, 20));
+	cmbDispensaTristral.setEditable(true);
+	cmbDispensaTristral.setFont(ResourceUtils.getFont(iDartFont.VERASANS_8));
+	cmbDispensaTristral.setBackground(ResourceUtils.getColor(iDartColor.WHITE));
+	cmbDispensaTristral.setEnabled(true);
+        //POPULA combo dispensa trimestral
+        cmbDispensaTristral.setBackground(ResourceUtils.getColor(iDartColor.WHITE));
+	CommonObjects.populateDispensaTrimestral(getHSession(), cmbDispensaTristral);
+        
+        // Not sure if we need this
+//	cmbMotivoMudanca.addFocusListener(new FocusAdapter() {
+//		@Override
+//		public void focusGained(FocusEvent e) {
+//			cmbMotivoMudanca.removeAll();
+//			CommonObjects.populateMotivoMudanca(getHSession(), cmbMotivoMudanca, false);
+//			cmbMotivoMudanca.setVisibleItemCount(Math.min(
+//					cmbMotivoMudanca.getItemCount(), 25));
+//		}
+//	});
 
 	cmbMotivoMudanca= new CCombo(grpPatientID, SWT.BORDER | SWT.READ_ONLY);
 	cmbMotivoMudanca.setBounds(new Rectangle(160, 90, 150, 20));
@@ -550,6 +580,8 @@ iDARTChangeListener {
 					cmbMotivoMudanca.getItemCount(), 25));
 		}
 	});
+        
+        
 	//cmbMotivoMudanca.setFocus();
 	
 	
@@ -636,7 +668,7 @@ iDARTChangeListener {
 
 		// grpParticulars
 		grpParticulars = new Group(getShell(), SWT.NONE);
-		grpParticulars.setBounds(new Rectangle(40, 200, 810, 155));
+		grpParticulars.setBounds(new Rectangle(40, 206, 810, 155));
 		grpParticulars.setText("Paciente e nova informação da Prescrição");
 		grpParticulars.setFont(ResourceUtils.getFont(iDartFont.VERASANS_8));
 
@@ -2498,7 +2530,8 @@ try {
 
 		try {
 			txtPatientId.setText("");
-	     	cmbMotivoMudanca.setText("");
+	     	       cmbMotivoMudanca.setText("");
+                       cmbDispensaTristral.setText("");
 			txtName.setText("");
 			txtSurname.setText("");
 			txtClinic.setText("");
@@ -2515,6 +2548,7 @@ try {
 			cmbUpdateReason.setText("");
 			cmbUpdateReason.setEnabled(false);
 			cmbMotivoMudanca.setEnabled(false);
+                        cmbDispensaTristral.setEnabled(false);
 			txtAreaNotes.setText("");
             btnDataInicioNoutroServico.setEnabled(false);
 			lblHeader.setText("Prescrição do Paciente");
@@ -2601,6 +2635,8 @@ try {
 		cmbRegime.setBackground(theColour);
 		cmbLinha.setBackground(theColour);
 		cmbMotivoMudanca.setBackground(theColour);
+                cmbDispensaTristral.setEnabled(enable);
+                cmbDispensaTristral.setBackground(theColour);
 	}
 
 	/**
