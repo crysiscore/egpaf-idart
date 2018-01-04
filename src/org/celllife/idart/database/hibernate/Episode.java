@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 public class Episode {
 
 	public static final String REASON_DECEASED = "Deceased";
-        //  Changing from Paciente em Transito to Novo Paciente
+        // Changing from Paciente em Transito to Novo Paciente
         /* Modified by : Agnaldo Samuel
          * Modifica date: 27/03/2017
          */

@@ -244,6 +244,14 @@ public class AdministrationManager {
         return conn.carregaRegime(idPatient);
 
     }
+    //Previous Dispensa Trimestral
+     public static int loadDispensaTrimestral(int idPatient) throws ClassNotFoundException, SQLException {
+        ConexaoJDBC conn = new ConexaoJDBC();
+
+        return conn.carregaDispensaTrimestral(idPatient);
+
+    }
+    
 
     //Previous Linha
     public static String loadLinha(int idPatient) throws ClassNotFoundException, SQLException {

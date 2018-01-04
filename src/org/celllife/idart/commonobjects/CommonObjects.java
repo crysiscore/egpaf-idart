@@ -707,7 +707,20 @@ public class CommonObjects {
 	}
 
 
+public static void populateDispensaTrimestral(Session hSession, CCombo cmbDispensaTrimestral){
+  
+    
+					cmbDispensaTrimestral.add("Sim");
+                                        cmbDispensaTrimestral.add("Nao");
+				
+//			if (cmbDispensaTrimestral.getItemCount() > 0) {
+//				// Set the combo box to blank -> ensures that user
+//				// is forced to enter the information
+//				cmbDispensaTrimestral.setText("");
+//			}
 
+
+}
 
 
 }

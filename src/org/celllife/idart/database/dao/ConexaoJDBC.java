@@ -1695,6 +1695,35 @@ linha=rs.getString("linhanome");
 }
 
 
+public int carregaDispensaTrimestral(int idpaciente) throws ClassNotFoundException, SQLException{
+    
+    String query=" "
+			+ " SELECT "
+			+ "  dispensatrimestral "
+			+ "  FROM "
+			+ "  prescription "
+			+ "  WHERE "
+			+ "  prescription.patient="+ idpaciente
+			+ "  AND "
+			+ "  prescription.current=\'T\'"
+			+ "";
+    conecta(iDartProperties.hibernateUsername, iDartProperties.hibernatePassword);
+    // 0 = nao
+    // 1 = sim
+    int dispensaTrimestral=0;
+    ResultSet rs=st.executeQuery(query);
+    if (rs != null)
+        {
+            while (rs.next())
+            {
+                dispensaTrimestral=rs.getInt("dispensatrimestral");
+            } 
+            rs.close(); //
+        }
+		
+		return dispensaTrimestral;
+
+}
 
 /**
  * Devolve tb  duma prescricao
