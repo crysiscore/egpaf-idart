@@ -2334,6 +2334,13 @@ public class AddPrescription extends GenericFormGui implements
         }
 
         localPrescription.setPrescribedDrugs(prescribedDrugsList);
+        // set dispensatrimestral
+        if(cmbDispensaTristral.getText().contentEquals("Sim")){
+            localPrescription.setDispensaTrimestral(1);
+        }
+        if(cmbDispensaTristral.getText().contentEquals("Nao")){
+            localPrescription.setDispensaTrimestral(0);
+        }
     }
 
     /**
@@ -2508,26 +2515,20 @@ public class AddPrescription extends GenericFormGui implements
 
         btnAddDrug.setEnabled(enable);
         lblPicAddDrug.setEnabled(enable);
-
         btnRemoveDrug.setEnabled(enable);
         btnPatientHistoryReport.setEnabled(enable);
-
         cmbDoctor.setEnabled(enable);
         btnAddDoctor.setEnabled(enable);
         btnMoveUp.setEnabled(enable);
         btnMoveDown.setEnabled(enable);
-
         btnDispenseDrugs.setEnabled(enable);
-
         // cmbClinicalStage.setEnabled(enable);
         cmbLinha.setEnabled(enable);
         cmbDuration.setEnabled(enable);
         cmbRegime.setEnabled(enable);
         txtWeight.setEnabled(enable);
         txtAreaNotes.setEnabled(enable);
-
         btnCaptureDate.setEnabled(enable);
-
         btnSave.setEnabled(enable);
         btnDispenseDrugs.setEnabled(enable);
         lblPicDispenseDrugs.setEnabled(enable);
@@ -2559,17 +2560,13 @@ public class AddPrescription extends GenericFormGui implements
      *
      */
     private void createCompDispense() {
-
         compDispense = new Composite(getShell(), SWT.NONE);
         compDispense.setBounds(new Rectangle(330, 567, 240, 50));
-
         lblPicDispenseDrugs = new Label(compDispense, SWT.NONE);
         lblPicDispenseDrugs.setBounds(new Rectangle(0, 0, 50, 43));
         lblPicDispenseDrugs.setImage(ResourceUtils
                 .getImage(iDartImage.DISPENSEPACKAGES));
-
         lblPicDispenseDrugs.setEnabled(false);
-
         btnDispenseDrugs = new Button(compDispense, SWT.NONE);
         btnDispenseDrugs.setBounds(new Rectangle(60, 12, 180, 30));
         btnDispenseDrugs.setFont(ResourceUtils.getFont(iDartFont.VERASANS_8));
@@ -2583,11 +2580,9 @@ public class AddPrescription extends GenericFormGui implements
                     }
                 });
         btnDispenseDrugs.setEnabled(false);
-
     }
 
     private void cmdUpdatePrescriptionId() {
-
         Date scriptDate = btnCaptureDate.getDate();
         if (scriptDate == null) {
             btnCaptureDate.setDate(new Date());
@@ -2611,14 +2606,13 @@ public class AddPrescription extends GenericFormGui implements
     }
 
     private boolean cheackDispensaTrimestral() {
-        
         try{
-         String result = cmbDispensaTristral.getItem(cmbDispensaTristral.getSelectionIndex());
+        String result = cmbDispensaTristral.getItem(cmbDispensaTristral.getSelectionIndex());
         switch (result) {
             case "Sim":
             {
                 String prescritionDuration = cmbDuration.getItem(cmbDuration.getSelectionIndex());
-                System.out.println(" hahahahahhahahahahha "+ prescritionDuration);
+
                 
                 if (!"3 meses".equals(prescritionDuration)) {
                     MessageBox mb = new MessageBox(getShell());
