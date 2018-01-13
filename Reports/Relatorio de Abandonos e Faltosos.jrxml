@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="missedAppointmentsReport" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="782" leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="20">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="missedAppointmentsReport" pageWidth="685" pageHeight="595" orientation="Landscape" columnWidth="625" leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="20">
 	<property name="ireport.scriptlethandling" value="0"/>
 	<property name="ireport.encoding" value="UTF-8"/>
 	<property name="ireport.zoom" value="1.0"/>
@@ -54,9 +54,9 @@ where id = $P{clinicid}]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="100" splitType="Stretch">
+		<band height="141" splitType="Stretch">
 			<staticText>
-				<reportElement key="st_heading" mode="Transparent" x="4" y="5" width="428" height="23" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="st_heading" mode="Transparent" x="153" y="56" width="284" height="23" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -68,21 +68,8 @@ where id = $P{clinicid}]]>
 				</textElement>
 				<text><![CDATA[Relatório de Faltosos e/ou Abandonos]]></text>
 			</staticText>
-			<staticText>
-				<reportElement key="st_pharmacist" mode="Opaque" x="4" y="45" width="180" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
-				<box>
-					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="0.0" lineColor="#000000"/>
-					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-					<font fontName="Arial" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-				</textElement>
-				<text><![CDATA[Farmacéutico Responsável:]]></text>
-			</staticText>
 			<textField pattern="" isBlankWhenNull="false">
-				<reportElement key="tf_facilityName" mode="Opaque" x="103" y="30" width="290" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="tf_facilityName" mode="Opaque" x="505" y="52" width="119" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -90,12 +77,12 @@ where id = $P{clinicid}]]>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-					<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<font fontName="Arial" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{clinicName}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
-				<reportElement key="tf_date" mode="Opaque" x="83" y="82" width="227" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="tf_date" mode="Opaque" x="76" y="124" width="227" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -108,7 +95,7 @@ where id = $P{clinicid}]]>
 				<textFieldExpression class="java.lang.String"><![CDATA["Este relatório mostra os pacientes que têm entre "]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement key="st_facilityName" mode="Transparent" x="4" y="30" width="70" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="st_facilityName" mode="Transparent" x="471" y="52" width="25" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -121,7 +108,7 @@ where id = $P{clinicid}]]>
 				<text><![CDATA[US:]]></text>
 			</staticText>
 			<image scaleImage="FillFrame" hAlign="Left" vAlign="Top" isUsingCache="false">
-				<reportElement key="image-1" mode="Opaque" x="653" y="6" width="120" height="45" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="image-1" mode="Opaque" x="11" y="2" width="120" height="77" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -129,10 +116,10 @@ where id = $P{clinicid}]]>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<graphicElement fill="Solid"/>
-				<imageExpression class="java.lang.String"><![CDATA[$P{path}+ java.io.File.separator + "Logo_iDART.jpg"]]></imageExpression>
+				<imageExpression class="java.lang.String"><![CDATA[$P{path}+ java.io.File.separator + "Simbolo_Moz.jpg"]]></imageExpression>
 			</image>
 			<textField pattern="" isBlankWhenNull="false">
-				<reportElement key="tf_date-1" mode="Opaque" x="312" y="82" width="25" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="tf_date-1" mode="Opaque" x="306" y="124" width="25" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -145,7 +132,7 @@ where id = $P{clinicid}]]>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{minDays}.toString()]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
-				<reportElement key="tf_date-2" mode="Opaque" x="362" y="82" width="25" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="tf_date-2" mode="Opaque" x="361" y="124" width="25" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -158,7 +145,7 @@ where id = $P{clinicid}]]>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{maxDays}.toString()]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
-				<reportElement key="tf_date-3" mode="Opaque" x="381" y="82" width="164" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="tf_date-3" mode="Opaque" x="386" y="124" width="164" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -171,7 +158,7 @@ where id = $P{clinicid}]]>
 				<textFieldExpression class="java.lang.String"><![CDATA[" dias de atraso até a data"]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
-				<reportElement key="tf_date-4" mode="Opaque" x="535" y="82" width="89" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="tf_date-4" mode="Opaque" x="533" y="124" width="89" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -184,7 +171,7 @@ where id = $P{clinicid}]]>
 				<textFieldExpression class="java.lang.String"><![CDATA[(new SimpleDateFormat("dd-MM-yyyy")).format($P{date})]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
-				<reportElement key="tf_date-5" mode="Opaque" x="337" y="82" width="25" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="tf_date-5" mode="Opaque" x="336" y="124" width="25" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -196,12 +183,51 @@ where id = $P{clinicid}]]>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[" e "]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement key="st_facilityName" mode="Transparent" x="467" y="79" width="29" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font fontName="Arial" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[Data:]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="tf_date-4" mode="Opaque" x="506" y="79" width="89" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font fontName="Arial" size="12" isBold="true" isItalic="true" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-BoldOblique" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[(new SimpleDateFormat("dd-MM-yyyy")).format($P{date})]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="tf_date" mode="Opaque" x="4" y="79" width="137" height="35" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font fontName="Arial" size="8" isBold="false" isItalic="true" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["REPÚBLICA DE MOÇAMBIQUE MINISTÉRIO DA SAÚDE SERVIÇO NACIONAL DE SAÚDE"]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="50" splitType="Stretch">
+		<band height="133" splitType="Stretch">
 			<staticText>
-				<reportElement key="st_drug" mode="Opaque" x="3" y="3" width="123" height="41" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="st_drug" mode="Opaque" x="3" y="3" width="123" height="107" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -213,21 +239,58 @@ where id = $P{clinicid}]]>
 				</textElement>
 				<text><![CDATA[NID]]></text>
 			</staticText>
+			<line>
+				<reportElement key="line-2" mode="Opaque" x="0" y="1" width="1" height="118" forecolor="#000000" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid"/>
+			</line>
+			<line>
+				<reportElement key="line-3" mode="Opaque" x="126" y="0" width="1" height="118" forecolor="#000000" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid"/>
+			</line>
+			<line>
+				<reportElement key="line-4" mode="Opaque" x="588" y="0" width="1" height="118" forecolor="#000000" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid"/>
+			</line>
+			<line>
+				<reportElement key="line-10" mode="Opaque" x="0" y="1" width="622" height="1" forecolor="#000000" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid"/>
+			</line>
+			<line>
+				<reportElement key="line-22" mode="Opaque" x="623" y="0" width="1" height="118" forecolor="#000000" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid"/>
+			</line>
 			<staticText>
-				<reportElement key="st_stockOnHand" mode="Transparent" x="698" y="5" width="48" height="40" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="st_stockOnHand-1" mode="Transparent" x="594" y="4" width="26" height="106" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<bottomPen lineWidth="0.0" lineColor="#000000"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left" lineSpacing="Single">
 					<font fontName="Arial" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 				</textElement>
-				<text><![CDATA[Data Marcada para Lev.]]></text>
+				<text><![CDATA[Reportado no Livro TARV]]></text>
+			</staticText>
+			<line>
+				<reportElement key="line-26" mode="Opaque" x="474" y="0" width="1" height="118" forecolor="#000000" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid"/>
+			</line>
+			<staticText>
+				<reportElement key="st_openingBalance-1" mode="Transparent" x="446" y="3" width="25" height="107" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left" lineSpacing="Single">
+					<font fontName="Arial" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[Reportado no Livro TARV]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="st_outstandingOrders" mode="Transparent" x="753" y="4" width="28" height="42" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="st_stockReceived-1" mode="Transparent" x="479" y="4" width="106" height="106" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -237,106 +300,18 @@ where id = $P{clinicid}]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
 					<font fontName="Arial" size="9" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 				</textElement>
-				<text><![CDATA[Dias de Atraso]]></text>
+				<text><![CDATA[Data que Regressou à Unidade Sanitária]]></text>
 			</staticText>
 			<line>
-				<reportElement key="line-2" mode="Opaque" x="0" y="1" width="1" height="48" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="line-27" mode="Opaque" x="343" y="0" width="1" height="118" forecolor="#000000" backcolor="#FFFFFF"/>
 				<graphicElement fill="Solid"/>
 			</line>
 			<line>
-				<reportElement key="line-3" mode="Opaque" x="126" y="0" width="1" height="50" forecolor="#000000" backcolor="#FFFFFF"/>
-				<graphicElement fill="Solid"/>
-			</line>
-			<line>
-				<reportElement key="line-4" mode="Opaque" x="629" y="0" width="1" height="50" forecolor="#000000" backcolor="#FFFFFF"/>
-				<graphicElement fill="Solid"/>
-			</line>
-			<line>
-				<reportElement key="line-7" mode="Opaque" x="782" y="2" width="1" height="48" forecolor="#000000" backcolor="#FFFFFF"/>
-				<graphicElement fill="Solid"/>
-			</line>
-			<line>
-				<reportElement key="line-10" mode="Opaque" x="0" y="1" width="782" height="1" forecolor="#000000" backcolor="#FFFFFF"/>
-				<graphicElement fill="Solid"/>
-			</line>
-			<line>
-				<reportElement key="line-22" mode="Opaque" x="660" y="0" width="1" height="50" forecolor="#000000" backcolor="#FFFFFF"/>
-				<graphicElement fill="Solid"/>
-			</line>
-			<line>
-				<reportElement key="line-23" mode="Opaque" x="693" y="0" width="1" height="50" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="line-28" mode="Opaque" x="248" y="0" width="1" height="118" forecolor="#000000" backcolor="#FFFFFF"/>
 				<graphicElement fill="Solid"/>
 			</line>
 			<staticText>
-				<reportElement key="st_stockOnHand-1" mode="Transparent" x="632" y="4" width="26" height="40" forecolor="#000000" backcolor="#FFFFFF"/>
-				<box>
-					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="0.0" lineColor="#000000"/>
-					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-					<font fontName="Arial" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-				</textElement>
-				<text><![CDATA[IDADE]]></text>
-			</staticText>
-			<staticText>
-				<reportElement key="st_stockOnHand-3" mode="Transparent" x="663" y="4" width="26" height="40" forecolor="#000000" backcolor="#FFFFFF"/>
-				<box>
-					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="0.0" lineColor="#000000"/>
-					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-					<font fontName="Arial" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-				</textElement>
-				<text><![CDATA[Sexo]]></text>
-			</staticText>
-			<line>
-				<reportElement key="line-25" mode="Opaque" x="749" y="0" width="1" height="50" forecolor="#000000" backcolor="#FFFFFF"/>
-				<graphicElement fill="Solid"/>
-			</line>
-			<line>
-				<reportElement key="line-26" mode="Opaque" x="563" y="0" width="1" height="50" forecolor="#000000" backcolor="#FFFFFF"/>
-				<graphicElement fill="Solid"/>
-			</line>
-			<staticText>
-				<reportElement key="st_openingBalance-1" mode="Transparent" x="446" y="3" width="115" height="42" forecolor="#000000" backcolor="#FFFFFF"/>
-				<box>
-					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="0.0" lineColor="#000000"/>
-					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-					<font fontName="Arial" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-				</textElement>
-				<text><![CDATA[CONFIDENTE]]></text>
-			</staticText>
-			<staticText>
-				<reportElement key="st_stockReceived-1" mode="Transparent" x="567" y="4" width="62" height="41" forecolor="#000000" backcolor="#FFFFFF"/>
-				<box>
-					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="0.0" lineColor="#000000"/>
-					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-					<font fontName="Arial" size="9" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-				</textElement>
-				<text><![CDATA[CONTACTO DO CONFIDENTE]]></text>
-			</staticText>
-			<line>
-				<reportElement key="line-27" mode="Opaque" x="343" y="0" width="1" height="50" forecolor="#000000" backcolor="#FFFFFF"/>
-				<graphicElement fill="Solid"/>
-			</line>
-			<line>
-				<reportElement key="line-28" mode="Opaque" x="248" y="0" width="1" height="50" forecolor="#000000" backcolor="#FFFFFF"/>
-				<graphicElement fill="Solid"/>
-			</line>
-			<staticText>
-				<reportElement key="st_openingBalance-2" mode="Transparent" x="129" y="3" width="117" height="42" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="st_openingBalance-2" mode="Transparent" x="129" y="3" width="117" height="107" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -349,7 +324,7 @@ where id = $P{clinicid}]]>
 				<text><![CDATA[NOME]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="st_stockReceived-2" mode="Transparent" x="251" y="4" width="91" height="41" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="st_stockReceived-2" mode="Transparent" x="251" y="4" width="91" height="106" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -359,10 +334,12 @@ where id = $P{clinicid}]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
 					<font fontName="Arial" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 				</textElement>
-				<text><![CDATA[CONTACTO]]></text>
+				<text><![CDATA[Data que Faltou Levantamento de ARVs
+[0-59 dias faltoso]
+(d-m-a)]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="st_outstandingOrders-1" mode="Transparent" x="347" y="4" width="90" height="42" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="st_outstandingOrders-1" mode="Transparent" x="347" y="4" width="90" height="106" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -372,18 +349,17 @@ where id = $P{clinicid}]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
 					<font fontName="Arial" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 				</textElement>
-				<text><![CDATA[ENDEREÇO]]></text>
+				<text><![CDATA[Data em que Identificou o Abandono
+ao TARV
+[>59 dias faltoso]
+(d-m-a)]]></text>
 			</staticText>
 			<line>
-				<reportElement key="line-29" mode="Opaque" x="782" y="0" width="1" height="50" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="line-30" mode="Opaque" x="0" y="118" width="622" height="1" forecolor="#000000" backcolor="#FFFFFF"/>
 				<graphicElement fill="Solid"/>
 			</line>
 			<line>
-				<reportElement key="line-30" mode="Opaque" x="0" y="49" width="782" height="1" forecolor="#000000" backcolor="#FFFFFF"/>
-				<graphicElement fill="Solid"/>
-			</line>
-			<line>
-				<reportElement key="line-31" mode="Opaque" x="441" y="0" width="1" height="50" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="line-31" mode="Opaque" x="441" y="0" width="1" height="118" forecolor="#000000" backcolor="#FFFFFF"/>
 				<graphicElement fill="Solid"/>
 			</line>
 		</band>
@@ -392,9 +368,9 @@ where id = $P{clinicid}]]>
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="21" splitType="Stretch">
+		<band height="20" splitType="Stretch">
 			<subreport isUsingCache="true">
-				<reportElement key="subreport-1" isPrintRepeatedValues="false" mode="Opaque" x="0" y="0" width="782" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="subreport-1" isPrintRepeatedValues="false" mode="Opaque" x="0" y="0" width="623" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
 				<subreportParameter name="maxDays">
 					<subreportParameterExpression><![CDATA[$P{maxDays}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -421,7 +397,7 @@ where id = $P{clinicid}]]>
 	<pageFooter>
 		<band height="20" splitType="Stretch">
 			<textField isBlankWhenNull="false">
-				<reportElement key="textField-2" x="626" y="3" width="80" height="15"/>
+				<reportElement key="textField-2" x="466" y="3" width="80" height="15"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -430,17 +406,6 @@ where id = $P{clinicid}]]>
 				</box>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression class="java.lang.String"><![CDATA["Página " + String.valueOf($V{PAGE_NUMBER}) + " de"]]></textFieldExpression>
-			</textField>
-			<textField evaluationTime="Report" isBlankWhenNull="false">
-				<reportElement key="textField-3" x="706" y="3" width="75" height="15"/>
-				<box>
-					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="0.0" lineColor="#000000"/>
-					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Left"/>
-				<textFieldExpression class="java.lang.String"><![CDATA[" " + String.valueOf($V{PAGE_NUMBER})]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement key="tf_date-4" mode="Opaque" x="31" y="3" width="89" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -454,6 +419,17 @@ where id = $P{clinicid}]]>
 					<font fontName="Arial" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-BoldOblique" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[(new SimpleDateFormat("dd-MM-yyyy")).format($P{date})]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" isBlankWhenNull="false">
+				<reportElement key="textField-3" x="546" y="3" width="75" height="15"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + String.valueOf($V{PAGE_NUMBER})]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>
@@ -476,7 +452,7 @@ where id = $P{clinicid}]]>
 ]]></text>
 			</staticText>
 			<textField evaluationTime="Report" isBlankWhenNull="false">
-				<reportElement key="textField-7" x="705" y="55" width="75" height="15"/>
+				<reportElement key="textField-7" x="543" y="55" width="75" height="15"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -487,7 +463,7 @@ where id = $P{clinicid}]]>
 				<textFieldExpression class="java.lang.String"><![CDATA[" " + String.valueOf($V{PAGE_NUMBER})]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
-				<reportElement key="textField-8" x="625" y="55" width="80" height="15"/>
+				<reportElement key="textField-8" x="463" y="55" width="80" height="15"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
