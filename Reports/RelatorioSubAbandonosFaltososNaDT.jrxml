@@ -58,6 +58,7 @@ and (app.appointmentDate::date) between ($P{date}::date - INTERVAL '90 days') an
 and exists (select prescription.id
 from prescription
 where prescription.patient = pat.id
+and prescription.dispensatrimestral = 0
 and (($P{date} between prescription.date and prescription.endDate)or(($P{date} > prescription.date)) and (prescription.endDate is null)))
 and exists (select id from episode where episode.patient = pat.id
 and (($P{date} between episode.startdate and episode.stopdate)or(($P{date} > episode.startdate)) and (episode.stopdate is null)))
@@ -105,7 +106,7 @@ order by dayssinceexpected]]>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-					<font fontName="Arial" size="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<font fontName="Arial" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{name}]]></textFieldExpression>
 			</textField>
