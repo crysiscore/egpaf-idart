@@ -58,7 +58,7 @@ and (app.appointmentDate::date) between ($P{date}::date - INTERVAL '90 days') an
 and exists (select prescription.id
 from prescription
 where prescription.patient = pat.id
-and prescription.dispensatrimestral = 0
+and prescription.dispensatrimestral <> 0 and prescription.dispensatrimestral <> null
 and (($P{date} between prescription.date and prescription.endDate)or(($P{date} > prescription.date)) and (prescription.endDate is null)))
 and exists (select id from episode where episode.patient = pat.id
 and (($P{date} between episode.startdate and episode.stopdate)or(($P{date} > episode.startdate)) and (episode.stopdate is null)))

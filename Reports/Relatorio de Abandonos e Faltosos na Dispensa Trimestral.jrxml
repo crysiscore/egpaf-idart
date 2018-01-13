@@ -361,7 +361,7 @@ ao TARV
 					<subreportParameterExpression><![CDATA[$P{minDays}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression class="java.lang.String"><![CDATA[($P{path} + java.io.File.separator+ "RelatorioSubAbandonosFaltosos.jasper")]]></subreportExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[($P{path} + java.io.File.separator+ "RelatorioSubAbandonosFaltososNaDT.jasper")]]></subreportExpression>
 			</subreport>
 		</band>
 	</detail>
