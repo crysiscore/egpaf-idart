@@ -35,7 +35,7 @@ date_part('year',age(pat.dateofbirth)) as age,
 app.appointmentDate::date as dateexpected,
 ($P{date}::date-app.appointmentDate::date)::integer as dayssinceexpected,
 CASE
-    WHEN ($P{date}::date-app.appointmentDate::date) > 59 THEN (app.appointmentDate::date + INTERVAL '60 days')
+    WHEN ($P{date}::date-app.appointmentDate::date) > 59 THEN (app.appointmentDate::date + INTERVAL '61 days')
     ELSE null
   END
   AS datelostfollowup,
@@ -46,8 +46,11 @@ CASE
   END
   AS datereturn
 
-from patient as pat, appointment as app
+from patient as pat, appointment as app, patientidentifier as pi,identifiertype as idt
 where app.patient = pat.id
+and idt.name = 'NID'
+and pi.value = pat.patientid
+and idt.id = pi.type_id
 and $P{clinicid} = pat.clinic
 and app.appointmentDate is not null
 and (app.visitDate is null OR (app.visitdate::date - app.appointmentdate::date)::integer > 60 )

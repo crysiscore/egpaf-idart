@@ -10,7 +10,7 @@
 	<import value="net.sf.jasperreports.engine.data.*"/>
 	<parameter name="path" class="java.lang.String">
 		<parameterDescription><![CDATA[Path for the report files]]></parameterDescription>
-		<defaultValueExpression><![CDATA["D://development//workspace//Pharmacy//Reports"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["C://Users//colaco//Documents//Projectos CCS//Conteudos Idart//idart//Reports"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="clinic" class="java.lang.String">
 		<defaultValueExpression><![CDATA["Masiphumelele"]]></defaultValueExpression>
@@ -25,16 +25,16 @@ of the Report]]></parameterDescription>
 	</parameter>
 	<parameter name="clinicid" class="java.lang.Integer">
 		<parameterDescription><![CDATA[An Integer of the Clnic's Identifier]]></parameterDescription>
-		<defaultValueExpression><![CDATA[new Integer(18)]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA[new Integer(2)]]></defaultValueExpression>
 	</parameter>
 	<parameter name="date" class="java.util.Date">
-		<defaultValueExpression><![CDATA[new Date("07/19/2006")]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA[new Date("01/01/2018")]]></defaultValueExpression>
 	</parameter>
 	<parameter name="minDays" class="java.lang.Integer" isForPrompting="false">
-		<defaultValueExpression><![CDATA[new Integer(3)]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA[new Integer(0)]]></defaultValueExpression>
 	</parameter>
 	<parameter name="maxDays" class="java.lang.Integer" isForPrompting="false">
-		<defaultValueExpression><![CDATA[new Integer(7)]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA[new Integer(60)]]></defaultValueExpression>
 	</parameter>
 	<parameter name="pharmacist1" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="pharmacist2" class="java.lang.String" isForPrompting="false"/>
@@ -220,12 +220,14 @@ where id = $P{clinicid}]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
 					<font fontName="Arial" size="8" isBold="false" isItalic="true" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["REPÚBLICA DE MOÇAMBIQUE MINISTÉRIO DA SAÚDE SERVIÇO NACIONAL DE SAÚDE"]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA["REPÚBLICA DE MOÇAMBIQUE \n"+
+"MINISTÉRIO DA SAÚDE \n"+
+"SERVIÇO NACIONAL DE SAÚDE"]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="133" splitType="Stretch">
+		<band height="119" splitType="Stretch">
 			<staticText>
 				<reportElement key="st_drug" mode="Opaque" x="3" y="3" width="123" height="107" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
@@ -387,7 +389,7 @@ ao TARV
 					<subreportParameterExpression><![CDATA[$P{minDays}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression class="java.lang.String"><![CDATA[($P{path} + java.io.File.separator+ "missedAppointmentsReport_sub.jasper")]]></subreportExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[($P{path} + java.io.File.separator+ "RelatorioSubAbandonosFaltosos.jasper")]]></subreportExpression>
 			</subreport>
 		</band>
 	</detail>
