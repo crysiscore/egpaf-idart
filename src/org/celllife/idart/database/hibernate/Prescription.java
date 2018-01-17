@@ -93,6 +93,16 @@ public class Prescription {
 	private Date endDate;
 	
 	private String drugTypes;
+        
+        private int dispensaTrimestral;
+
+    public int getDispensaTrimestral() {
+        return dispensaTrimestral;
+    }
+
+    public void setDispensaTrimestral(int dispensaTrimestral) {
+        this.dispensaTrimestral = dispensaTrimestral;
+    }
 
 	@Transient
 	private HashSet<Drug> arvDrugSet;
@@ -130,12 +140,15 @@ public class Prescription {
 	 *@param tb
 	 *@param tpi
 	 *@param tpc
+         *@param dispensaTrimestral
 	 */
 	public Prescription(int clinicalStage, char current, Date date,
 			Doctor doctor, int duration, int id, char modified,
 			Set<Packages> packages, Patient patient,
 			List<PrescribedDrugs> prescribedDrugs, String prescriptionId,
-			String reasonForUpdate, String notes, RegimeTerapeutico regimeTerapeutico,  Clinic clinic, Date datainicionoutroservico, String motivoMudanca, char ppe, char ptv, char tb, char tpc, char tpi) {
+			String reasonForUpdate, String notes, RegimeTerapeutico regimeTerapeutico, 
+                        Clinic clinic, Date datainicionoutroservico, String motivoMudanca, 
+                        char ppe, char ptv, char tb, char tpc, char tpi,int dispensaTrimestral) {
 		super();
 		this.clinicalStage = clinicalStage;
 		this.current = current;
@@ -158,6 +171,7 @@ public class Prescription {
 		this.tb=tb;
 		this.tpc=tpc;
 		this.tpi=tpi;
+                this.dispensaTrimestral=dispensaTrimestral;
 
 	}
 

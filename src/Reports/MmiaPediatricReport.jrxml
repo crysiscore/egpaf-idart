@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MmiaPediatricReport" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<style name="table" isDefault="false">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" isDefault="false" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" isDefault="false" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" isDefault="false" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="path" class="java.lang.String">
+		<parameterDescription><![CDATA[Path for the report files]]></parameterDescription>
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="date" class="java.util.Date">
+		<parameterDescription><![CDATA[Date for Report]]></parameterDescription>
+		<defaultValueExpression><![CDATA[new Date("15/01/2006")]]></defaultValueExpression>
+	</parameter>
+	<parameter name="stockCenterName" class="java.lang.String">
+		<defaultValueExpression><![CDATA["CIPRA"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="facilityName" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Desmond Tutu Centre Pharmacy"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="stockCenterId" class="java.lang.Integer">
+		<parameterDescription><![CDATA[An Integer of the Clnic's Identifier]]></parameterDescription>
+		<defaultValueExpression><![CDATA[new Integer(131)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dateFormat" class="java.lang.String">
+		<parameterDescription><![CDATA[Exact same value as date, but formatted]]></parameterDescription>
+		<defaultValueExpression><![CDATA["2005-09-01"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="pharmacist1" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="pharmacist2" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="monthStart" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="monthEnd" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\eclipse.OLD\\wp\\idart\\Reports\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dateEnd" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[select distinct d.id as id2, d.name as name2, f.formlanguage1 as formlanguage12 ,d.packsize as packsize2,  a.code as atccode2, d.stockcode as stockcode2, d.pediatric as pediatric2
+from drug as d
+left outer join stock as s on s.drug = d.id
+left outer join atccode as a on d.atccode_id = a.id
+left outer join form as f on d.form=f.id
+where s.stockCenter = $P{stockCenterId}
+and d.sidetreatment = 'F'
+and d.pediatric='T'
+order by d.pediatric asc]]>
+	</queryString>
+	<field name="id2" class="java.lang.Integer"/>
+	<field name="name2" class="java.lang.String"/>
+	<field name="formlanguage12" class="java.lang.String"/>
+	<field name="packsize2" class="java.lang.Integer"/>
+	<field name="atccode2" class="java.lang.String"/>
+	<field name="stockcode2" class="java.lang.String"/>
+	<field name="pediatric2" class="java.lang.String"/>
+	<variable name="test" class="java.lang.String" resetType="None">
+		<variableExpression><![CDATA["test"]]></variableExpression>
+		<initialValueExpression><![CDATA["test"]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="24">
+			<line>
+				<reportElement key="line-22" mode="Opaque" x="0" y="23" width="550" height="1" forecolor="#000000" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid"/>
+			</line>
+			<subreport isUsingCache="true">
+				<reportElement key="subreport-1" positionType="Float" mode="Opaque" x="1" y="2" width="548" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+				<subreportParameter name="id">
+					<subreportParameterExpression><![CDATA[$F{id2}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="StockCode">
+					<subreportParameterExpression><![CDATA[$F{stockcode2}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="monthEnd">
+					<subreportParameterExpression><![CDATA[$P{monthEnd}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ATC">
+					<subreportParameterExpression><![CDATA[$F{packsize2}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="stockCenterId">
+					<subreportParameterExpression><![CDATA[$P{stockCenterId}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="packsize">
+					<subreportParameterExpression><![CDATA[$F{packsize2}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="formlanguage1">
+					<subreportParameterExpression><![CDATA[$F{formlanguage12}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="atccode">
+					<subreportParameterExpression><![CDATA[$F{atccode2}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="name">
+					<subreportParameterExpression><![CDATA[$F{name2}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="path">
+					<subreportParameterExpression><![CDATA[$P{path}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="dateFormat">
+					<subreportParameterExpression><![CDATA[$P{dateFormat}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="monthStart">
+					<subreportParameterExpression><![CDATA[$P{monthStart}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[($P{SUBREPORT_DIR}+"MmiaReport_batch.jasper")]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

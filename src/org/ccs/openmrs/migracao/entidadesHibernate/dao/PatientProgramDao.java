@@ -77,7 +77,8 @@ public class PatientProgramDao implements PatientProgramDaoInterface<PatientProg
     public void delete(PatientProgram entity) {
         this.getCurrentSession().delete((Object)entity);
     }
-
+  //TODO
+  //Review - colaco
     @Override
     public List<PatientProgram> findAll() {
         List patientPrograms = this.getCurrentSession().createQuery("from PatientProgram p "
