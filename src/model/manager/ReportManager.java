@@ -295,7 +295,7 @@ public class ReportManager {
 						mNoPages.setText("Report Has No Pages");
 						mNoPages
 						.setMessage("The report you are trying to generate does not contain any data. \n\nPlease check the input values you have entered (such as dates) for this report, and try again.");
-						mNoPages.open();
+						mNoPages.open();                                                        
 					}
 				}
 			}

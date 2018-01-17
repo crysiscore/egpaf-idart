@@ -3563,9 +3563,104 @@ boolean jatemFilaInicio=false;
 }
 
 
+/**
+ * Total de pacientes novos que iniciam dispensa trimestral
+ * @param startDate
+ * @param endDate
+ * @return
+ * @throws ClassNotFoundException
+ * @throws SQLException
+ */
+public int totalPacientesNovosDispensaTrimestral(String startDate, String endDate) throws ClassNotFoundException, SQLException{
+
+      String query=" select sum(dispensatrimestral) "
+              + "from prescription where reasonforupdate="+ "\'"+"Inicia"+"\'"+" "
+              + "and "
+              	+ "  date::timestamp::date >=  "
+			+ "\'"+startDate+"\'"
+			+ "AND date::timestamp::date <= "
+			+ " \'"+endDate+"\'";
+     
+	int total=0;
+	conecta(iDartProperties.hibernateUsername, iDartProperties.hibernatePassword);
+        ResultSet rs=st.executeQuery(query);
+		if (rs != null)
+	        {      
+                   rs.next();
+	           total=rs.getInt("sum");
+ 	           rs.close(); //
+	        }
+    
+	return total;
+        
+}
+
+
+/**
+ * Total de pacientes Manter  em dispensa trimestral
+ * @param startDate
+ * @param endDate
+ * @return
+ * @throws ClassNotFoundException
+ * @throws SQLException
+ */
+public int totalPacientesManterDispensaTrimestral(String startDate, String endDate) throws ClassNotFoundException, SQLException{
+
+      String query=" select sum(dispensatrimestral) "
+              + "from prescription where reasonforupdate="+ "\'"+"Manter"+"\'"+" "
+              + "and "
+              	+ "  date::timestamp::date >=  "
+			+ "\'"+startDate+"\'"
+			+ "AND date::timestamp::date <= "
+			+ " \'"+endDate+"\'";
+     
+	int total=0;
+	conecta(iDartProperties.hibernateUsername, iDartProperties.hibernatePassword);
+        ResultSet rs=st.executeQuery(query);
+		if (rs != null)
+	        {          
+	           rs.next();
+	           total=rs.getInt("sum");
+ 	           rs.close(); //
+	        }
+    
+	return total;
+        
+}
 
 
 
+/**
+ * Total de pacientes Alteracao  em dispensa trimestral
+ * @param startDate
+ * @param endDate
+ * @return
+ * @throws ClassNotFoundException
+ * @throws SQLException
+ */
+public int totalPacientesAlteracaoDispensaTrimestral(String startDate, String endDate) throws ClassNotFoundException, SQLException{
+
+      String query=" select sum(dispensatrimestral) "
+              + "from prescription where reasonforupdate="+ "\'"+"Reiniciar"+"\'"+" "
+              + "and "
+              	+ "  date::timestamp::date >=  "
+			+ "\'"+startDate+"\'"
+			+ "AND date::timestamp::date <= "
+			+ " \'"+endDate+"\'";
+     
+	int total=0;
+	conecta(iDartProperties.hibernateUsername, iDartProperties.hibernatePassword);
+        ResultSet rs=st.executeQuery(query);
+		if (rs != null)
+	        {          
+	           rs.next();
+	           total=rs.getInt("sum");
+ 	           rs.close(); //
+	        }
+    
+	return total;
+        
+}
 
 }
 

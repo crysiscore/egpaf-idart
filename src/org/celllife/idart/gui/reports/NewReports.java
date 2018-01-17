@@ -25,6 +25,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import model.manager.exports.iedea.IedeaExporter;
+import model.manager.reports.LinhaTerapeutica;
 
 import org.apache.log4j.Logger;
 import org.celllife.idart.gui.dataExports.DataExport;
@@ -39,6 +40,7 @@ import org.celllife.idart.gui.reportParameters.CotrimoxazolReport;
 import org.celllife.idart.gui.reportParameters.HistoricoLevantamentos;
 import org.celllife.idart.gui.reportParameters.IsoniazidaReport;
 import org.celllife.idart.gui.reportParameters.DailyDispensingTotals;
+import org.celllife.idart.gui.reportParameters.DispensaTrimestralReport;
 import org.celllife.idart.gui.reportParameters.DrugCombinations;
 import org.celllife.idart.gui.reportParameters.DrugsDispensed;
 import org.celllife.idart.gui.reportParameters.EpisodeStats;
@@ -55,6 +57,7 @@ import org.celllife.idart.gui.reportParameters.PatientsExpected;
 import org.celllife.idart.gui.reportParameters.PepfarReportGUI;
 import org.celllife.idart.gui.reportParameters.PrescribingDoctors;
 import org.celllife.idart.gui.reportParameters.MmiaReport;
+import org.celllife.idart.gui.reportParameters.RegimeTerapeuticoReport;
 import org.celllife.idart.gui.reportParameters.RegisteredIdart;
 import org.celllife.idart.gui.reportParameters.StockTakeReportGUI;
 import org.celllife.idart.gui.reportParameters.TransactionLog;
@@ -422,8 +425,13 @@ private void createGrpClinicManagementReports() {
 		
 		reportGUIs.put(GenericReportGuiInterface.REPORT_LEVANTAMENTOS_ARV,
 				new HistoricoLevantamentos(getShell(), false));
-		
-		
+                //Dipensa Trimestral
+                reportGUIs.put(GenericReportGuiInterface.REPORT_DISPENSA_TRIMESTRAL,
+				new DispensaTrimestralReport(getShell(), false));
+                //Novas Linhas Terapeuticas
+                reportGUIs.put(GenericReportGuiInterface.REPORT_LINHAS_TERAPEUTICAS,
+				new RegimeTerapeuticoReport(getShell(), false));
+                
 
 		// Patient Reports
 		reportGUIs.put(GenericReportGuiInterface.REPORT_PATIENT_HISTORY,
