@@ -45,7 +45,9 @@ import org.celllife.idart.gui.reportParameters.DrugCombinations;
 import org.celllife.idart.gui.reportParameters.DrugsDispensed;
 import org.celllife.idart.gui.reportParameters.EpisodeStats;
 import org.celllife.idart.gui.reportParameters.EpisodesStartedOrEndedReportGUI;
+import org.celllife.idart.gui.reportParameters.FilaGeralReport;
 import org.celllife.idart.gui.reportParameters.MissedAppointments;
+import org.celllife.idart.gui.reportParameters.MissedAppointmentsDT;
 import org.celllife.idart.gui.reportParameters.MmiaReportMISAU;
 import org.celllife.idart.gui.reportParameters.MonthlyReceiptsAndIssues;
 import org.celllife.idart.gui.reportParameters.MonthlyStockReceipt;
@@ -441,6 +443,8 @@ private void createGrpClinicManagementReports() {
 				new EpisodesStartedOrEndedReportGUI(getShell(), false));
 		reportGUIs.put(GenericReportGuiInterface.REPORT_PACKAGE_TRACKING,
 				new PackageTracking(getShell(), false));
+                reportGUIs.put(GenericReportGuiInterface.REPORT_FILA_GERAL,
+				new FilaGeralReport(getShell(), false));
 
 		// Stock Reports
 		reportGUIs.put(GenericReportGuiInterface.REPORT_MONTHLY_STOCK_RECEIPTS,
@@ -495,6 +499,9 @@ private void createGrpClinicManagementReports() {
 
 		reportGUIs.put(GenericReportGuiInterface.REPORT_MISSED_APPOINTMENTS,
 				new MissedAppointments(getShell(), false));
+                
+                reportGUIs.put(GenericReportGuiInterface.REPORT_MISSED_APPOINTMENTS_DT,
+				new MissedAppointmentsDT(getShell(), false));
 
 		// M & E Reports
 		reportGUIs.put(GenericReportGuiInterface.REPORT_DRUG_COMBINATIONS,

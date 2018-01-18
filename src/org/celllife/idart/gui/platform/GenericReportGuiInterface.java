@@ -47,5 +47,7 @@ public interface GenericReportGuiInterface {
 	static String REPORT_LEVANTAMENTOS_ARV= Messages.getString("reports.idart.levantamentos");  //$NON-NLS-1$
         static String REPORT_DISPENSA_TRIMESTRAL = Messages.getString("reports.DispensaTrimestral");  //$NON-NLS-1$reports.LinhasTerapeuticas
         static String REPORT_LINHAS_TERAPEUTICAS = Messages.getString("reports.LinhasTerapeuticas");
+        static String REPORT_MISSED_APPOINTMENTS_DT  = Messages.getString("reports.missedAppointmentsDT");
+        static String REPORT_FILA_GERAL = Messages.getString("reports.fila");;
 	
 }
