@@ -3574,7 +3574,7 @@ boolean jatemFilaInicio=false;
 public int totalPacientesNovosDispensaTrimestral(String startDate, String endDate) throws ClassNotFoundException, SQLException{
 
       String query=" select sum(dispensatrimestral) "
-              + "from prescription where reasonforupdate="+ "\'"+"Inicia"+"\'"+" "
+              + "from prescription where reasonforupdate="+ "\'"+"Inicia"+"\'"+" OR reasonforupdate="+ "\'"+"Novo"+"\'"+" "
               + "and "
               	+ "  date::timestamp::date >=  "
 			+ "\'"+startDate+"\'"
@@ -3607,7 +3607,7 @@ public int totalPacientesNovosDispensaTrimestral(String startDate, String endDat
 public int totalPacientesManterDispensaTrimestral(String startDate, String endDate) throws ClassNotFoundException, SQLException{
 
       String query=" select sum(dispensatrimestral) "
-              + "from prescription where reasonforupdate="+ "\'"+"Manter"+"\'"+" "
+              + "from prescription where reasonforupdate like "+ "\'"+"Man%"+"\'"+" "
               + "and "
               	+ "  date::timestamp::date >=  "
 			+ "\'"+startDate+"\'"
@@ -3641,7 +3641,7 @@ public int totalPacientesManterDispensaTrimestral(String startDate, String endDa
 public int totalPacientesAlteracaoDispensaTrimestral(String startDate, String endDate) throws ClassNotFoundException, SQLException{
 
       String query=" select sum(dispensatrimestral) "
-              + "from prescription where reasonforupdate="+ "\'"+"Reiniciar"+"\'"+" "
+              + "from prescription where reasonforupdate like"+ "\'"+"Rein%"+"\'"+" "
               + "and "
               	+ "  date::timestamp::date >=  "
 			+ "\'"+startDate+"\'"
