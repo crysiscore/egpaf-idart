@@ -11,14 +11,14 @@ import org.celllife.idart.commonobjects.LocalObjects;
 import org.celllife.idart.database.hibernate.Clinic;
 import org.eclipse.swt.widgets.Shell;
 
-public class MissedAppointmentsReport extends AbstractJasperReport {
+public class MissedAppointmentsReportDT extends AbstractJasperReport {
 
 	private final String clinicName;
 	private final int minDays;
 	private final Date theDate;
 	private final int maxDays;
 
-	public MissedAppointmentsReport(Shell parent, String clinicName,
+	public MissedAppointmentsReportDT(Shell parent, String clinicName,
 			int minDays, int maxDays, Date theDate) {
 		super(parent);
 		this.clinicName = clinicName;
@@ -52,7 +52,7 @@ public class MissedAppointmentsReport extends AbstractJasperReport {
 
 	@Override
 	protected String getReportFileName() {
-		return "RelatorioAbandonosFaltosos";
+		return "RelatorioAbandonosFaltososDispensaTrimestral";
 	}
 
 }
