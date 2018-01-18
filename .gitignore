@@ -1,4 +1,6 @@
 *.class
+*.csv
 /build/*
 *.log
-
+/build/
+build/

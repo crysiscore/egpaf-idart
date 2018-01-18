@@ -16,3 +16,43 @@ URL = jdbc:postgresql://192.168.10.116:5432/pharm
 16-05-2017 10:33:38 [main] DEBUG celllife.idart.misc.LoginTimer - Terminating iDART - TIMER EXPIRED
 16-05-2017 10:33:38 [main] DEBUG dart.start.PharmacyApplication - Logged out..
 16-05-2017 10:33:38 [main] DEBUG celllife.idart.gui.login.Login - Login Form Created
+18-01-2018 16:09:02 [main] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://192.168.10.116:5432/pharm
+18-01-2018 16:09:02 [main] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+18-01-2018 16:09:10 [Report task] INFO  tabase.hibernate.util.JDBCUtil - Opening JDBC connection to jdbc:postgresql://192.168.10.116:5432/pharm
+18-01-2018 16:09:10 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://192.168.10.116:5432/pharm
+18-01-2018 16:09:10 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+18-01-2018 16:09:10 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://192.168.10.116:5432/pharm
+18-01-2018 16:09:10 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+18-01-2018 16:09:10 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://192.168.10.116:5432/pharm
+18-01-2018 16:09:10 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+18-01-2018 16:09:37 [main] DEBUG celllife.idart.misc.LoginTimer - Terminating iDART - TIMER EXPIRED
+18-01-2018 16:09:37 [main] DEBUG dart.start.PharmacyApplication - Logged out..
+18-01-2018 16:09:37 [main] DEBUG celllife.idart.gui.login.Login - Login Form Created
+18-01-2018 16:10:08 [main] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://192.168.10.116:5432/pharm
+18-01-2018 16:10:08 [main] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+18-01-2018 16:10:24 [main] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://192.168.10.116:5432/pharm
+18-01-2018 16:10:24 [main] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+18-01-2018 16:10:24 [main] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://192.168.10.116:5432/pharm
+18-01-2018 16:10:24 [main] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+18-01-2018 16:10:24 [main] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://192.168.10.116:5432/pharm
+18-01-2018 16:10:24 [main] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+18-01-2018 16:10:24 [main] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://192.168.10.116:5432/pharm
+18-01-2018 16:10:24 [main] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+18-01-2018 16:10:24 [main] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://192.168.10.116:5432/pharm
+18-01-2018 16:10:24 [main] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+18-01-2018 16:10:24 [main] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://192.168.10.116:5432/pharm
+18-01-2018 16:10:24 [main] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+18-01-2018 16:10:44 [main] DEBUG celllife.idart.misc.LoginTimer - Terminating iDART - TIMER EXPIRED
+18-01-2018 16:10:44 [main] DEBUG dart.start.PharmacyApplication - Logged out..
+18-01-2018 16:10:44 [main] DEBUG celllife.idart.gui.login.Login - Login Form Created
