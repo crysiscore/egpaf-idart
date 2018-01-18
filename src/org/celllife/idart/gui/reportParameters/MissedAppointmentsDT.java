@@ -23,11 +23,13 @@ import java.util.Calendar;
 import java.util.Date;
 
 import model.manager.reports.MissedAppointmentsReport;
+import model.manager.reports.MissedAppointmentsReportDT;
 
 import org.apache.log4j.Logger;
 import org.celllife.idart.commonobjects.CommonObjects;
 import org.celllife.idart.gui.platform.GenericReportGui;
 import org.celllife.idart.gui.platform.GenericReportGuiInterface;
+import static org.celllife.idart.gui.platform.GenericReportGuiInterface.REPORT_MISSED_APPOINTMENTS_DT;
 import org.celllife.idart.gui.utils.ResourceUtils;
 import org.celllife.idart.gui.utils.iDartColor;
 import org.celllife.idart.gui.utils.iDartFont;
@@ -45,7 +47,7 @@ import org.vafada.swtcalendar.SWTCalendarListener;
 
 /**
  */
-public class MissedAppointments extends GenericReportGui {
+public class MissedAppointmentsDT extends GenericReportGui {
 
 	private Group grpClinicSelection;
 
@@ -73,7 +75,7 @@ public class MissedAppointments extends GenericReportGui {
 	 * @param activate
 	 *            boolean
 	 */
-	public MissedAppointments(Shell parent, boolean activate) {
+	public MissedAppointmentsDT(Shell parent, boolean activate) {
 		super(parent, GenericReportGuiInterface.REPORTTYPE_CLINICMANAGEMENT,
 				activate);
 	}
@@ -83,7 +85,7 @@ public class MissedAppointments extends GenericReportGui {
 	 */
 	@Override
 	protected void createShell() {
-		buildShell(REPORT_MISSED_APPOINTMENTS, new Rectangle(100, 50, 600,
+		buildShell(REPORT_MISSED_APPOINTMENTS_DT, new Rectangle(100, 50, 600,
 				510));
 		// create the composites
 		createMyGroups();
@@ -101,7 +103,7 @@ public class MissedAppointments extends GenericReportGui {
 	@Override
 	protected void createCompHeader() {
 		iDartImage icoImage = iDartImage.REPORT_PATIENTDEFAULTERS;
-		buildCompdHeader(REPORT_MISSED_APPOINTMENTS, icoImage);
+		buildCompdHeader(REPORT_MISSED_APPOINTMENTS_DT, icoImage);
 	}
 
 	/**
@@ -111,7 +113,7 @@ public class MissedAppointments extends GenericReportGui {
 	private void createGrpClinicSelection() {
 
 		grpClinicSelection = new Group(getShell(), SWT.NONE);
-		grpClinicSelection.setText("Configuração do Relatório de Faltosos e/ou Abandonos");
+		grpClinicSelection.setText("Configuração do Relatório de Faltosos e/ou Abandonos na Dispensa Trimenstral");
 		grpClinicSelection.setFont(ResourceUtils.getFont(iDartFont.VERASANS_8));
 		grpClinicSelection.setBounds(new Rectangle(60, 79, 465, 114));
 
@@ -253,7 +255,6 @@ public class MissedAppointments extends GenericReportGui {
 					incorrectData.open();
 					txtMinimumDaysLate.setText("");
 					txtMinimumDaysLate.setFocus();
-
 					viewReport = false;
 				}
 
@@ -265,7 +266,6 @@ public class MissedAppointments extends GenericReportGui {
 					.setMessage("The minimum days late must be smaller than the maximum days late.");
 					incorrectData.open();
 					txtMinimumDaysLate.setFocus();
-
 					viewReport = false;
 				}
 
@@ -278,17 +278,15 @@ public class MissedAppointments extends GenericReportGui {
 				incorrectData.open();
 				txtMinimumDaysLate.setText("");
 				txtMinimumDaysLate.setFocus();
-
 				viewReport = false;
-
 			}
 		}
 
 		if (viewReport) {
-			MissedAppointmentsReport report = new MissedAppointmentsReport(getShell(),cmbClinic.getText(),
-					Integer.parseInt(txtMinimumDaysLate.getText()),
-					Integer.parseInt(txtMaximumDaysLate.getText()),
-					swtCal.getCalendar().getTime());
+                        MissedAppointmentsReportDT report = new MissedAppointmentsReportDT(getShell(),cmbClinic.getText(),
+                        Integer.parseInt(txtMinimumDaysLate.getText()),
+                        Integer.parseInt(txtMaximumDaysLate.getText()),
+                        swtCal.getCalendar().getTime());
 			viewReport(report);
 		}
 
