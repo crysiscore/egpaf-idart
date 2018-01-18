@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="packageDetails" pageWidth="477" pageHeight="842" whenNoDataType="BlankPage" columnWidth="477" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<property name="ireport.zoom" value="1.1000000000000005"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="path" class="java.lang.String"/>
+	<parameter name="patientId" class="java.lang.String">
+		<defaultValueExpression><![CDATA["11010601/10/0996"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select value from patientidentifier
+where value = $P{patientId}]]>
+	</queryString>
+	<field name="value" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="298" splitType="Stretch">
+			<printWhenExpression><![CDATA[]]></printWhenExpression>
+			<subreport isUsingCache="true">
+				<reportElement key="subreport-1" stretchType="RelativeToBandHeight" mode="Transparent" x="4" y="216" width="476" height="67" forecolor="#000000" backcolor="#FFFFFF"/>
+				<subreportParameter name="patientId">
+					<subreportParameterExpression><![CDATA[$P{patientId}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="parentpackid">
+					<subreportParameterExpression><![CDATA[]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="path">
+					<subreportParameterExpression><![CDATA[$P{path}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="pickdate">
+					<subreportParameterExpression><![CDATA[]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{path} + java .io.File.separator + "PackageDrugsFILA.jasper"]]></subreportExpression>
+			</subreport>
+			<line direction="BottomUp">
+				<reportElement key="line-2" x="0" y="2" width="477" height="1"/>
+			</line>
+			<line>
+				<reportElement key="line-4" x="0" y="76" width="477" height="1"/>
+			</line>
+			<line>
+				<reportElement key="line-7" x="0" y="3" width="1" height="73"/>
+			</line>
+			<line>
+				<reportElement key="line-8" stretchType="RelativeToBandHeight" x="118" y="3" width="1" height="73"/>
+			</line>
+			<line>
+				<reportElement key="line-9" stretchType="RelativeToBandHeight" x="271" y="3" width="1" height="73"/>
+			</line>
+			<line>
+				<reportElement key="line-10" stretchType="RelativeToBandHeight" x="476" y="3" width="1" height="73"/>
+			</line>
+			<line>
+				<reportElement key="line-13" x="356" y="3" width="1" height="73"/>
+			</line>
+			<staticText>
+				<reportElement key="textField-3" mode="Opaque" x="123" y="7" width="145" height="66"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" isBold="true" isItalic="false" pdfFontName="Helvetica-BoldOblique"/>
+				</textElement>
+				<text><![CDATA[Medicamentos ARVs]]></text>
+			</staticText>
+			<line>
+				<reportElement key="line-4" x="273" y="40" width="83" height="1"/>
+			</line>
+			<staticText>
+				<reportElement key="textField-3" mode="Opaque" x="4" y="7" width="113" height="66"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" isBold="true" isItalic="false" pdfFontName="Helvetica-BoldOblique"/>
+				</textElement>
+				<text><![CDATA[Data de Levantamento
+de ARVs]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="textField-3" mode="Opaque" x="279" y="43" width="72" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" isBold="true" isItalic="false" pdfFontName="Helvetica-BoldOblique"/>
+				</textElement>
+				<text><![CDATA[Dosagem]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="textField-3" mode="Opaque" x="279" y="7" width="71" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" isBold="true" isItalic="false" pdfFontName="Helvetica-BoldOblique"/>
+				</textElement>
+				<text><![CDATA[Quantidade
+Aviada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="textField-3" mode="Opaque" x="360" y="7" width="113" height="66"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" isBold="true" isItalic="false" pdfFontName="Helvetica-BoldOblique"/>
+				</textElement>
+				<text><![CDATA[Data do Próximo
+Levantamento]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="173" y="182" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{value}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

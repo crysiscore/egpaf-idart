@@ -25,7 +25,7 @@
 		<defaultValueExpression><![CDATA[new Boolean(true)]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[select distinct
+		<![CDATA[select
 pat.patientid as patID,
 (pat.lastname||', '|| pat.firstnames) as name,
  pat.nextofkinname as supportername,
@@ -35,17 +35,21 @@ date_part('year',age(pat.dateofbirth)) as age,
 app.appointmentDate::date as dateexpected,
 ($P{date}::date-app.appointmentDate::date)::integer as dayssinceexpected,
 CASE
-    WHEN ($P{date}::date-app.appointmentDate::date) > 59 THEN (app.appointmentDate::date + INTERVAL '61 days')
-    ELSE null
-  END
+    WHEN (($P{date}::date-app.appointmentDate::date) > 59 AND app.visitdate::date IS NULL) THEN (app.appointmentDate::date + INTERVAL '61 days')
+    ELSE
+	CASE
+	    WHEN ((app.appointmentDate::date - app.visitdate::date) > 61) THEN (app.appointmentDate::date + INTERVAL '61 days')
+              ELSE null
+    	END
+END
   AS datelostfollowup,
 
   CASE
     WHEN (app.visitdate::date - app.appointmentdate::date) > 0 THEN app.visitdate::date
     ELSE null
   END
-  AS datereturn
-
+  AS datereturn,
+max(app.appointmentDate) as ultimaData
 from patient as pat, appointment as app, patientidentifier as pi,identifiertype as idt
 where app.patient = pat.id
 and idt.name = 'NID'
@@ -62,6 +66,7 @@ and prescription.dispensatrimestral = 0
 and (($P{date} between prescription.date and prescription.endDate)or(($P{date} > prescription.date)) and (prescription.endDate is null)))
 and exists (select id from episode where episode.patient = pat.id
 and (($P{date} between episode.startdate and episode.stopdate)or(($P{date} > episode.startdate)) and (episode.stopdate is null)))
+group by 1,2,3,4,5,6,7,8,9,10
 order by dayssinceexpected]]>
 	</queryString>
 	<field name="patid" class="java.lang.String"/>
@@ -74,6 +79,7 @@ order by dayssinceexpected]]>
 	<field name="dayssinceexpected" class="java.lang.Integer"/>
 	<field name="datelostfollowup" class="java.sql.Timestamp"/>
 	<field name="datereturn" class="java.sql.Date"/>
+	<field name="ultimadata" class="java.sql.Timestamp"/>
 	<sortField name="dayssinceexpected"/>
 	<background>
 		<band splitType="Stretch"/>
