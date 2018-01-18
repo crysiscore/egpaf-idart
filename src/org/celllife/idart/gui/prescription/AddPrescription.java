@@ -2605,58 +2605,65 @@ public class AddPrescription extends GenericFormGui implements
         }
     }
 
-    private boolean cheackDispensaTrimestral() {
-        try{
-        String result = cmbDispensaTristral.getItem(cmbDispensaTristral.getSelectionIndex());
-        switch (result) {
-            case "Sim":
-            {
-                String prescritionDuration = cmbDuration.getItem(cmbDuration.getSelectionIndex());
-
-                
-                if (!"3 meses".equals(prescritionDuration)) {
-                    MessageBox mb = new MessageBox(getShell());
-                    mb.setText("Dispensa Trimestral");
-                    mb.setMessage("Selecionou dispensa trimestral, mas a duracao da prescricao nao e de 3 meses. por favor corrigir");
-                    mb.open();
-                    return false;
-                } else  {
-                    return true;
-                }
-                
-            }
-            case "Nao":
-                {
+  private boolean cheackDispensaTrimestral() {
+        try {
+            String result = cmbDispensaTristral.getItem(cmbDispensaTristral.getSelectionIndex());
+            switch (result) {
+                case "Sim": {
                     String prescritionDuration = cmbDuration.getItem(cmbDuration.getSelectionIndex());
-                    if (prescritionDuration.contentEquals("3 meses")) {
+
+                    if (!"3 meses".equals(prescritionDuration)) {
                         MessageBox mb = new MessageBox(getShell());
                         mb.setText("Dispensa Trimestral");
-                        mb.setMessage("A duracao da prescricao  e de 3 meses. Mas nao selecionou dispensa trimestral por favor corrigir");
+                        mb.setMessage("Selecionou dispensa trimestral, mas a duracao da prescricao nao e de 3 meses. por favor corrigir");
                         mb.open();
                         return false;
-                        
-                    } 
-                    else { return true; }
+                    } else {
+                        return true;
+                    }
+
                 }
-            default:
-                MessageBox mb = new MessageBox(getShell());
-                mb.setText("Dispensa Trimestral");
-                mb.setMessage("Seleciona especifique se e dispensa trimestral ou nao");
-                mb.open();
-                return false;
+                case "Nao": {
+                    String prescritionDuration = cmbDuration.getItem(cmbDuration.getSelectionIndex());
+                    if (prescritionDuration.contentEquals("3 meses")) {
+                        ///perguntar aqui
+                        MessageBox mb = new MessageBox(getShell(), SWT.ICON_QUESTION
+                                | SWT.YES | SWT.NO);
+
+                        mb.setText("Dispensa Trimestral");
+                        mb.setMessage("A duracao da prescricao  e de 3 meses. Mas nao selecionou dispensa trimestral. Deseja continuar?");
+                        switch (mb.open()) {
+                            case SWT.YES:
+                                // Return true, continuar a dispensa
+                                return true;
+                  
+                            case SWT.NO:
+                                return false;
+                        }
+
+                    } else {
+                        return true;
+                    }
+                }
+                default:
+                    MessageBox mb = new MessageBox(getShell());
+                    mb.setText("Dispensa Trimestral");
+                    mb.setMessage("Especifique se e dispensa trimestral ou nao");
+                    mb.open();
+                    return false;
+            }
+        } catch (java.lang.IllegalArgumentException ex) {
+
+            MessageBox mb = new MessageBox(getShell());
+            mb.setText("Dispensa Trimestral");
+            mb.setMessage("Dispensa trimestral nao foi Selecionada");
+            mb.open();
+            return false;
+
         }
-        } catch(java.lang.IllegalArgumentException ex){
-            
-               MessageBox mb = new MessageBox(getShell());
-                mb.setText("Dispensa Trimestral");
-                mb.setMessage("Dispensa trimestral nao foi Selecionada");
-                mb.open();
-                return false;
-                        
-        }
-       
-   
+
     }
+
 
     /**
      * View the patient history report, or show a patient selection report
