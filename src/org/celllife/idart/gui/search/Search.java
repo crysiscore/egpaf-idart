@@ -207,6 +207,9 @@ public abstract class Search extends GenericOthersGui {
 		case CommonObjects.REGIMEN:
 			searchList = SearchManager.loadRegimens(getHSession(), this);
 			break;
+                case CommonObjects.REGIME:
+			searchList = SearchManager.loadRegimes(getHSession(), this);
+			break;
 		case CommonObjects.STOCK_TAKE:
 			searchList = SearchManager.loadStockTakes(getHSession(), this);
 			break;

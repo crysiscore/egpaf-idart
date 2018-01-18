@@ -25,9 +25,13 @@ public class PatientImportService {
     }
 
     public void update(Patient entity) {
-        patientImportDao.openCurrentSession();
+        patientImportDao.openCurrentSessionwithTransaction();
+        /*
+        Raising Null exception- 04/04/2017 Agnaldo - colaco       */
+        //patientImportDao.openCurrentSession();
         patientImportDao.update(entity);
-        patientImportDao.closeCurrentSession();
+       //patientImportDao.closeCurrentSession();
+       patientImportDao.closeCurrentSessionwithTransaction();
     }
 
     public Patient findById(Integer id) {

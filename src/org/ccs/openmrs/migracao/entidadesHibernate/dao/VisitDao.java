@@ -77,7 +77,11 @@ implements VisitDaoInterface<Visit, String> {
     }
 
     public Visit findByPatientAndPickupDate(Integer id,Date pickupDate) {
-        Visit visit = (Visit)this.getCurrentSession().createQuery("from Visit v where v.patientId = " + id+" AND v.dateStarted = '"+pickupDate+"' AND visitTypeId = 8 ").uniqueResult();
+        Visit visit =null;
+        List <Visit> visitlist = this.getCurrentSession().createQuery("from Visit v where v.patientId = " + id+" AND v.dateStarted = '"+pickupDate+"' AND visitTypeId = 8 ").list();
+       if(!visitlist.isEmpty()){
+           visit = visitlist.get(0);
+        }
         return visit;
     }
 

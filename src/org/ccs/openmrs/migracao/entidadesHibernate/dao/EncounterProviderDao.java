@@ -78,7 +78,13 @@ implements EncounterDaoInterface<EncounterProvider, String> {
     }
 
     public EncounterProvider findByEncounterAndPickupDate(Integer id,Date pickupDate) {
-        EncounterProvider encounterProvider = (EncounterProvider)this.getCurrentSession().createQuery("from EncounterProvider ep where ep.encounterId = " + id+" AND ep.dateCreated = '"+pickupDate+"'").uniqueResult();
+        
+        EncounterProvider encounterProvider = null;
+        List<EncounterProvider> listencounterProvider= this.getCurrentSession().createQuery("from EncounterProvider ep where ep.encounterId = " + id+" AND ep.dateCreated = '"+pickupDate+"'").list();
+        
+        if(!listencounterProvider.isEmpty()){
+           encounterProvider = listencounterProvider.get(0);
+        }
         return encounterProvider;
     }
 

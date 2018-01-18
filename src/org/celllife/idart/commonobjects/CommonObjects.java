@@ -35,6 +35,7 @@ import org.celllife.idart.database.hibernate.RegimeTerapeutico;
 import org.celllife.idart.database.hibernate.Regimen;
 import org.celllife.idart.database.hibernate.SimpleDomain;
 import org.celllife.idart.database.hibernate.StockCenter;
+import org.celllife.idart.messages.Messages;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.widgets.Combo;
 import org.hibernate.Session;
@@ -64,6 +65,7 @@ public class CommonObjects {
 	public static final int NATION = 10;
 
 	public static final int ATC = 11;
+        public static final int REGIME =12;
 
 	public static String timesPerDayLanguage1 = "times per day";
 
@@ -422,6 +424,44 @@ public class CommonObjects {
 
 	}
 	
+        
+        
+ /*
+ * 
+ * Este metodo popula o ccombo linha terapeutica  - Idart antigo 
+ * Modified by : Agnaldo Samuel
+ * Modifica date: 27/03/2017
+ */      
+      
+	public static void populateLines(Session session, Combo cmbLine) {
+		List<LinhaT> lines = AdministrationManager
+				.getAllLinhas(session);
+		String[] items = new String[lines.size()];
+		for (int i = 0; i < lines.size(); i++) {
+			items[i] = lines.get(i).getLinhanome();
+		}
+		cmbLine.setItems(items);
+		
+	}
+
+        /*
+        * 
+        * Este metodo popula o ccombo do estado (active : true | false) do regime
+        * Created by : Agnaldo Samuel
+        * Creation date: 28/03/2017
+        */      
+
+	public static void populateComboRegimenStatus(Session session, Combo cmbLine) {
+		String[] items = new String[2];
+		items[0] =Messages.getString("addRegimen.field.active");
+                items[1] = Messages.getString("addRegimen.field.inactive");
+		cmbLine.setItems(items);
+		
+	}
+              
+        
+        
+        
 	/**
 	 * 
 	 * @param sess
@@ -667,7 +707,20 @@ public class CommonObjects {
 	}
 
 
+public static void populateDispensaTrimestral(Session hSession, CCombo cmbDispensaTrimestral){
+  
+    
+					cmbDispensaTrimestral.add("Sim");
+                                        cmbDispensaTrimestral.add("Nao");
+				
+//			if (cmbDispensaTrimestral.getItemCount() > 0) {
+//				// Set the combo box to blank -> ensures that user
+//				// is forced to enter the information
+//				cmbDispensaTrimestral.setText("");
+//			}
 
+
+}
 
 
 }

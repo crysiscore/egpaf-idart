@@ -37,7 +37,7 @@ public class PatientHistoryReport extends AbstractJasperReport {
 
 	@Override
 	protected String getReportFileName() {
-		return "patientHistory";
+		return "patientHistoryFILA";
 	}
 
 }

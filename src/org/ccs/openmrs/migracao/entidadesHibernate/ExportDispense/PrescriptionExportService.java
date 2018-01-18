@@ -39,9 +39,9 @@ public class PrescriptionExportService {
         return prescription;
     }
 
-    public Prescription findByPrescricaoId(String id) {
+    public Prescription findByPrescricaoId(String id, String nid) {
         prescriptionExportDao.openCurrentSession();
-        Prescription prescription = prescriptionExportDao.findByPrescricaoId(id);
+        Prescription prescription = prescriptionExportDao.findByPrescricaoId(id,nid);
         prescriptionExportDao.closeCurrentSession();
         return prescription;
     }

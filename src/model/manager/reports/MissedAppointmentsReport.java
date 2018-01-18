@@ -52,7 +52,7 @@ public class MissedAppointmentsReport extends AbstractJasperReport {
 
 	@Override
 	protected String getReportFileName() {
-		return "missedAppointmentsReport";
+		return "RelatorioAbandonosFaltosos";
 	}
 
 }
