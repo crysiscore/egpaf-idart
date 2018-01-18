@@ -3599,7 +3599,6 @@ boolean jatemFilaInicio=false;
             rs.close(); //
         }
 
-        return total;
 
     }
 
@@ -3639,7 +3638,6 @@ boolean jatemFilaInicio=false;
             rs.close(); //
         }
 
-        return total;
 
     }
 
@@ -3681,7 +3679,6 @@ boolean jatemFilaInicio=false;
 
         return total;
 
-    }
 
 }
 
