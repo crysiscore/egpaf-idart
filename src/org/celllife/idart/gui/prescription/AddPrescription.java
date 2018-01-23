@@ -2270,7 +2270,7 @@ public class AddPrescription extends GenericFormGui implements
         // .parseInt(cmbClinicalStage.getText()));
         // }
         // duration
-        if (cmbDuration.getText().endsWith("semanas")) {
+        if (cmbDuration.getText().endsWith("semanas") || cmbDuration.getText().endsWith("weeks")) {
             String[] s = cmbDuration.getText().split(" ");
 
             localPrescription.setDuration(Integer.parseInt(s[0]));
@@ -2608,13 +2608,16 @@ public class AddPrescription extends GenericFormGui implements
     private boolean cheackDispensaTrimestral() {
         try{
         String result = cmbDispensaTristral.getItem(cmbDispensaTristral.getSelectionIndex());
+        String prescritionDuration = null;
         switch (result) {
             case "Sim":
             {
-                String prescritionDuration = cmbDuration.getItem(cmbDuration.getSelectionIndex());
-
-                
-                if (!"3 meses".equals(prescritionDuration)) {
+              if(cmbDuration.getSelectionIndex() < 0)
+                    prescritionDuration = cmbDuration.getItem(2);
+              else
+                    prescritionDuration = cmbDuration.getItem(cmbDuration.getSelectionIndex());
+              
+                if (!("3 meses".equals(prescritionDuration) && !("3 months".equals(prescritionDuration)))) {
                     MessageBox mb = new MessageBox(getShell());
                     mb.setText("Dispensa Trimestral");
                     mb.setMessage("Selecionou dispensa trimestral, mas a duracao da prescricao nao e de 3 meses. por favor corrigir");
@@ -2627,13 +2630,20 @@ public class AddPrescription extends GenericFormGui implements
             }
             case "Nao":
                 {
-                    String prescritionDuration = cmbDuration.getItem(cmbDuration.getSelectionIndex());
-                    if (prescritionDuration.contentEquals("3 meses")) {
-                        MessageBox mb = new MessageBox(getShell());
+                    if(cmbDuration.getSelectionIndex() < 0)
+                        prescritionDuration = cmbDuration.getItem(2);
+                    else
+                        prescritionDuration = cmbDuration.getItem(cmbDuration.getSelectionIndex());
+                    
+                    if (prescritionDuration.contentEquals("3 meses") || prescritionDuration.contentEquals("3 months")) {
+                        MessageBox mb = new MessageBox(getShell(),SWT.ICON_QUESTION | SWT.YES | SWT.NO);                
                         mb.setText("Dispensa Trimestral");
-                        mb.setMessage("A duracao da prescricao  e de 3 meses. Mas nao selecionou dispensa trimestral por favor corrigir");
-                        mb.open();
+                        mb.setMessage("A duração da prescrição é de 3 meses e não está na Dispensa Trimestral. PRETENDE MESMO DISPENSAR ESTA PRESCRIÇÃO?");
+                        int resposta = mb.open();
+                        if(resposta == SWT.NO)
                         return false;
+                    else
+                        return true;
                         
                     } 
                     else { return true; }
@@ -2641,7 +2651,7 @@ public class AddPrescription extends GenericFormGui implements
             default:
                 MessageBox mb = new MessageBox(getShell());
                 mb.setText("Dispensa Trimestral");
-                mb.setMessage("Seleciona especifique se e dispensa trimestral ou nao");
+                mb.setMessage("Especifique se é dispensa trimestral ou nao");
                 mb.open();
                 return false;
         }

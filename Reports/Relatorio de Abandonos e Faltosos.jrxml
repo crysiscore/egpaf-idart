@@ -345,14 +345,17 @@ ao TARV
 		<band height="20" splitType="Stretch">
 			<subreport isUsingCache="true">
 				<reportElement key="subreport-1" isPrintRepeatedValues="false" mode="Opaque" x="0" y="0" width="623" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
-				<subreportParameter name="maxDays">
-					<subreportParameterExpression><![CDATA[$P{maxDays}]]></subreportParameterExpression>
-				</subreportParameter>
 				<subreportParameter name="showPatientNames">
 					<subreportParameterExpression><![CDATA[$P{showPatientNames}]]></subreportParameterExpression>
 				</subreportParameter>
+				<subreportParameter name="maxDays">
+					<subreportParameterExpression><![CDATA[$P{maxDays}]]></subreportParameterExpression>
+				</subreportParameter>
 				<subreportParameter name="clinicid">
 					<subreportParameterExpression><![CDATA[$P{clinicid}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="path">
+					<subreportParameterExpression><![CDATA[$P{path}]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="date">
 					<subreportParameterExpression><![CDATA[$P{date}]]></subreportParameterExpression>

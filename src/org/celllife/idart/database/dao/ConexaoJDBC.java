@@ -32,8 +32,8 @@ import org.celllife.idart.gui.sync.patients.SyncLinhaPatients;
 public class ConexaoJDBC {
 	
 	private static Logger log = Logger.getLogger(ConexaoJDBC.class);
-Connection conn_db;  // Conexão com o servidor de banco de dados
-Statement st;   // Declaração para executar os comandos
+        Connection conn_db;  // Conexão com o servidor de banco de dados
+        public static Statement st;   // Declaração para executar os comandos
 
 /**
  * Conexao a base de dado

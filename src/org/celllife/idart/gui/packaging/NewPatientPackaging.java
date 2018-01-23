@@ -22,6 +22,7 @@ package org.celllife.idart.gui.packaging;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.MessageFormat;
@@ -36,6 +37,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
+import java.util.logging.Level;
 import model.manager.AdministrationManager;
 import model.manager.DrugManager;
 import model.manager.PackageManager;
@@ -638,7 +640,7 @@ ConexaoJDBC conn=new ConexaoJDBC();
 
 		try {
 			numPeriods = Integer.parseInt(theWeeks.split(" ")[0]);
-			if (theWeeks.endsWith("meses") || theWeeks.endsWith("mes")) {
+			if (theWeeks.endsWith("meses") || theWeeks.endsWith("mes") || theWeeks.endsWith("months") || theWeeks.endsWith("month")) {
 				numPeriods = numPeriods * 4;
 			}
 
@@ -664,12 +666,19 @@ ConexaoJDBC conn=new ConexaoJDBC();
 
 				theCal.setTime(newPack.getPackDate());
                                 // if(newPack.getWeekssupply() <= 4)
-                                theCal.add(Calendar.DATE, newPack.getWeekssupply() * 7);
+                               // theCal.add(Calendar.DATE, newPack.getWeekssupply() * 7);
+                               if(newPack.getPrescription().getReasonForUpdate().startsWith("Inici") || newPack.getPrescription().getReasonForUpdate().startsWith("Novo"))
+                                   theCal.add(Calendar.DATE, newPack.getWeekssupply() * 7);
+                               else
+                               // Volta depois de 30 dias se nao for a primeira dispensa 
+                               theCal.add(Calendar.DATE, ((newPack.getWeekssupply() * 7) + 3));
                                 //  else{
                                 //      int numMeses = (newPack.getWeekssupply()/4) - 1;
                                 //      theCal.add(Calendar.DATE, (newPack.getWeekssupply() * 7)+(numMeses*2));
                                 //  }
-				adjustForNewAppointmentDate(theCal.getTime());
+                              //  adjustForNewAppointmentDate(validaDatasLevantamentoARV_ExcluindoSabadosDomingosFeriadosNacionais(theCal.getTime()));
+                                adjustForNewAppointmentDate(theCal.getTime());
+                           
 			}
 		}
 
@@ -799,7 +808,7 @@ ConexaoJDBC conn=new ConexaoJDBC();
 	private int getSelectedWeekSupply() {
 		String theWeeks = cmbSupply.getText();
 		int numPeriods = Integer.parseInt("" + theWeeks.charAt(0));
-		if (theWeeks.endsWith("meses") || theWeeks.endsWith("mes")) {
+		if (theWeeks.endsWith("meses") || theWeeks.endsWith("mes") || theWeeks.endsWith("month") || theWeeks.endsWith("months")) {
 			numPeriods *= 4;
 		}
 		return numPeriods;
@@ -3105,13 +3114,18 @@ if ( newPack.getPrescription().getReasonForUpdate().contains("nici") && conn.jaT
 	}
 
 	private void adjustForNewAppointmentDate(Date theNextAppDate) {
+              Date dataFinalAjustada = null;
 		Calendar theNextAppCal = Calendar.getInstance();
 		theNextAppCal.setTime(theNextAppDate);
-
+            try {
+                dataFinalAjustada = validaDatasLevantamentoARV_ExcluindoSabadosDomingosFeriadosNacionais(theNextAppDate);
+            } catch (Exception ex) {
+                java.util.logging.Logger.getLogger(NewPatientPackaging.class.getName()).log(Level.SEVERE, null, ex);
+            }
 		if (rdBtnDispenseNow.getSelection()) {
-			btnNextAppDate.setDate(theNextAppDate);
+			btnNextAppDate.setDate(dataFinalAjustada);
 		} else {
-			txtNextAppDate.setText(sdf.format(theNextAppDate));
+			txtNextAppDate.setText(sdf.format(dataFinalAjustada));
 		}
 	}
 
@@ -3542,7 +3556,79 @@ if ( newPack.getPrescription().getReasonForUpdate().contains("nici") && conn.jaT
 		}
 	}
 	
+Date validaDatasLevantamentoARV_ExcluindoSabadosDomingosFeriadosNacionais(Date date) throws Exception {
+        //-------------------------------------------------------------------------------------------------------------------------------//
+        // Updated by: CCS system team on January 2018                                                                                     //
+        // Este pequeno metodos tem por finalidade validar as data do proximo levantamento de ARV     //
+        // Esta alteracao visa permitir que o iDART exclua levamentamento e/ou marcacoes                      //
+        // para levantamentos ao SABADO, DOMINGOS E FERIADOS                                                                   //
+        //--------------------------------------------------------------------------------------------------------------------------------//
 
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
-	
+        String string = format.format(date);
+        Date data = format.parse(string);
+
+        string = format.format(data);
+        String substring = string.substring(0, 5);
+
+        cal.setTime(date);
+        
+        Date yesterday = null;
+
+        try {
+            // Se a data do proximo levantamento calhar um Feriado, o sistema devera recuar 1 dia,
+            // i.e o paciente vem a unidade sanitaria no dia anterior para o levantamente do ARV
+
+            String query = "Select data,obs from feriado where data LIKE '" + substring.trim() + "'";
+            conn.conecta(iDartProperties.hibernateUsername, iDartProperties.hibernatePassword);
+            ResultSet rs = ConexaoJDBC.st.executeQuery(query);
+          
+             if (rs != null) {
+                if (rs.next()) {
+                    // verificando se a data corrente e um sabado, domingo ou feriados
+                    cal.add(Calendar.DATE, -1); // Recua 2 dias por ser domingo
+                    yesterday = cal.getTime();
+                    // set nova data para o levantamento
+                    String novaDataLevantamento = format.format(yesterday);
+
+                //    showMessage(MessageDialog.ERROR, "Validando data do proximo levantamento","A Data marcada para o próximo levantamento e um Feriado \n este caso o paciente deverá retornar a Unidade Sanitaria no dia " + novaDataLevantamento.toString());
+
+                    btnNextAppDate.setText(novaDataLevantamento.toString());
+                }else
+                    yesterday = date;
+            }
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(AddPrescription.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(AddPrescription.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        if (cal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY) {
+            // Se a data do proximo levantamento calhar um Sabado, o sistema devera recuar 1 dia,
+            // i.e o paciente vem a unidade sanitaria na sexta-feira para o levantamente do ARV
+            cal.add(Calendar.DATE, -1); // Recua 2 dias por ser domingo
+            yesterday = cal.getTime();
+            // set nova data para o levantamento
+            String novaDataLevantamento = format.format(yesterday);
+
+          //  showMessage(MessageDialog.ERROR, "Validando data do proximo levantamento","A Data marcada para o proximo levantamento é num final de semana \n neste caso, o paciente deverá retornar a Unidade Sanitaria no dia " + novaDataLevantamento.toString());
+
+            btnNextAppDate.setText(novaDataLevantamento.toString());
+
+        } else if (cal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+            // Se a data do proximo levantamento calhar um Domingo, o sistema devera recuar 2 dia,
+            // i.e o paciente vem a unidade sanitaria na sexta-feira para o levantamente do ARV
+            cal.add(Calendar.DATE, -2); // O pior caso o sistema recua 2 dias por ser domingo
+            yesterday = cal.getTime();
+            // set nova data para o levantamento
+            String novaDataLevantamento = format.format(yesterday);
+
+         //   showMessage(MessageDialog.ERROR, "Validando data do proximo levantamento", "A Data marcada para o próximo levantamento é num final de semana \n este caso o paciente devera retornar a Unidade Sanitaria no dia " + novaDataLevantamento.toString());
+
+            btnNextAppDate.setText(novaDataLevantamento.toString());
+        }
+        return yesterday;
+    }
 }
