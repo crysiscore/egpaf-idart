@@ -61,6 +61,7 @@ import org.celllife.idart.gui.reportParameters.PrescribingDoctors;
 import org.celllife.idart.gui.reportParameters.MmiaReport;
 import org.celllife.idart.gui.reportParameters.RegimeTerapeuticoReport;
 import org.celllife.idart.gui.reportParameters.RegisteredIdart;
+import org.celllife.idart.gui.reportParameters.SecondLineReport;
 import org.celllife.idart.gui.reportParameters.StockTakeReportGUI;
 import org.celllife.idart.gui.reportParameters.TransactionLog;
 import org.celllife.idart.gui.utils.ResourceUtils;
@@ -433,7 +434,8 @@ private void createGrpClinicManagementReports() {
                 //Novas Linhas Terapeuticas
                 reportGUIs.put(GenericReportGuiInterface.REPORT_LINHAS_TERAPEUTICAS,
 				new RegimeTerapeuticoReport(getShell(), false));
-                
+                 reportGUIs.put(GenericReportGuiInterface.REPORT_SECOND_LINE,
+				new SecondLineReport(getShell(), false));
 
 		// Patient Reports
 		reportGUIs.put(GenericReportGuiInterface.REPORT_PATIENT_HISTORY,
