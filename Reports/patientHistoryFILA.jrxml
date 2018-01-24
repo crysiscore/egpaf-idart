@@ -11,8 +11,8 @@
 	<parameter name="patientId" class="java.lang.String">
 		<defaultValueExpression><![CDATA["11010601/10/0996"]]></defaultValueExpression>
 	</parameter>
-	<parameter name="path" class="java.lang.String">
-		<defaultValueExpression><![CDATA["C://Users//colaco//Documents//Projectos CCS//Conteudos Idart//idart//Reports"]]></defaultValueExpression>
+	<parameter name="path" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="pharmacist1" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="pharmacist2" class="java.lang.String" isForPrompting="false"/>

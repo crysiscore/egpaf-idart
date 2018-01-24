@@ -11,8 +11,8 @@
 	<parameter name="patientId" class="java.lang.String">
 		<defaultValueExpression><![CDATA["11010601/10/0996"]]></defaultValueExpression>
 	</parameter>
-	<parameter name="path" class="java.lang.String">
-		<defaultValueExpression><![CDATA["C://Users//colaco//Documents//Projectos CCS//Conteudos Idart//idart//Reports"]]></defaultValueExpression>
+	<parameter name="path" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="pharmacist1" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="pharmacist2" class="java.lang.String" isForPrompting="false"/>
@@ -44,7 +44,8 @@ inner join clinic as c on c.id = p.clinic
 inner join patientidentifier pi on pi.patient_id =p.id
 inner join episode as e on e.patient = p.id
 where e.startdate between $P{dataInicio} and $P{dataFim}
-group by 1,2,3,4,5]]>
+group by 1,2,3,4,5,e.startdate
+order by e.startdate,pi.value]]>
 	</queryString>
 	<field name="id" class="java.lang.Integer"/>
 	<field name="patientid" class="java.lang.String"/>

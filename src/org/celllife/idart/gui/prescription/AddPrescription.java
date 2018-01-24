@@ -2617,16 +2617,18 @@ public class AddPrescription extends GenericFormGui implements
               else
                     prescritionDuration = cmbDuration.getItem(cmbDuration.getSelectionIndex());
               
-                if (!("3 meses".equals(prescritionDuration) && !("3 months".equals(prescritionDuration)))) {
-                    MessageBox mb = new MessageBox(getShell());
-                    mb.setText("Dispensa Trimestral");
-                    mb.setMessage("Selecionou dispensa trimestral, mas a duracao da prescricao nao e de 3 meses. por favor corrigir");
-                    mb.open();
-                    return false;
-                } else  {
+                if (("3 meses".equals(prescritionDuration) || ("3 months".equals(prescritionDuration))))
                     return true;
-                }
-                
+                else{
+                  MessageBox mb = new MessageBox(getShell(),SWT.ICON_QUESTION | SWT.YES | SWT.NO);                
+                    mb.setText("Dispensa Trimestral");
+                    mb.setMessage("Selecionou dispensa trimestral, mas a duracao da prescricao nao e de 3 meses. PRETENDE MESMO DISPENSAR ESTA PRESCRIÇÃO?");
+                    int resposta = mb.open();
+                        if(resposta == SWT.NO)
+                        return false;
+                    else
+                        return true;
+                } 
             }
             case "Nao":
                 {
