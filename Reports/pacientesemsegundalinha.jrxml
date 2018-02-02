@@ -8,9 +8,9 @@
 	<import value="net.sf.jasperreports.engine.*"/>
 	<import value="java.util.*"/>
 	<import value="net.sf.jasperreports.engine.data.*"/>
-	<parameter name="path" class="java.lang.String">
+	<parameter name="path" class="java.lang.String" isForPrompting="false">
 		<parameterDescription><![CDATA[Path for the report files]]></parameterDescription>
-		<defaultValueExpression><![CDATA["C://Users//colaco//Documents//Projectos CCS//Sub//idart//idart//Reports"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["C://Users//agnaldo//git_repo//idart//Reports"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="clinic" class="java.lang.String">
 		<defaultValueExpression><![CDATA["Masiphumelele"]]></defaultValueExpression>
@@ -56,7 +56,7 @@ inner join clinic c on c.id = p.clinic
 inner join prescription pr on pr.patient = p.id
 inner join regimeterapeutico rt on rt.regimeid = pr.regimeid
 inner join linhat l on l.linhaid = pr.linhaid
-where l.linhaid > 1 and pr.date between $P{date} AND $P{dataFinal}
+where (l.linhanome like '%2%' or l.linhanome like '%3%') and pr.date between $P{date} AND $P{dataFinal}
 order by pr.date]]>
 	</queryString>
 	<field name="id" class="java.lang.Integer"/>
