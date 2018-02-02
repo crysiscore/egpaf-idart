@@ -53,6 +53,7 @@ public class SecondLine extends AbstractJasperReport {
 
         SimpleDateFormat dateFormat = new SimpleDateFormat(
                 "yyyy-MM-dd"); // TODO Auto-generated catch block
+        map.put("path", getReportPath());
         map.put("facilityName", LocalObjects.currentClinic.getClinicName());
         map.put("date",  theStartDate);
         map.put("dataFinal", theEndDate);
