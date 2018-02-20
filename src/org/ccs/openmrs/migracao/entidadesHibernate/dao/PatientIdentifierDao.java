@@ -112,6 +112,19 @@ public class PatientIdentifierDao
         return patientIdentifiers;
     }
 
+     /*
+    Modified by  Colaco 20/2018 
+    Vamos usar um identificador unico Uuid dos pacientes
+    para evitar a busca do paciente pelo Nid e apelido
+     */
+    public List<PatientIdentifier> findByPatientUuid(String uuid) {
+        List<PatientIdentifier> patientIdentifiers = this.getCurrentSession().createQuery("from PatientIdentifier pa where pa.patientIdentifierId in (select p.patientIdentifierId "
+                + "from PatientIdentifier pi,Person pe "
+                + "where pe.uuid = '" + uuid + "' "
+                + "AND p.patientId = pe.personId)").list();
+        return patientIdentifiers;
+    }
+    
     @Override
     public List<PatientIdentifier> findByAllIdentifierLike(String id) {
         List<PatientIdentifier> patientIdentifiers = this.getCurrentSession().createQuery("from PatientIdentifier p where p.identifier like '%" + id + "%'").list();

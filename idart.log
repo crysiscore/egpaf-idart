@@ -1,58 +1,601 @@
-16-05-2017 10:31:27 [main] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
-URL = jdbc:postgresql://192.168.10.116:5432/pharm
-16-05-2017 10:31:27 [main] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
-16-05-2017 10:32:01 [main] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
-URL = jdbc:postgresql://192.168.10.116:5432/pharm
-16-05-2017 10:32:01 [main] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
-16-05-2017 10:32:02 [main] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
-URL = jdbc:postgresql://192.168.10.116:5432/pharm
-16-05-2017 10:32:02 [main] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
-16-05-2017 10:32:33 [main] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
-URL = jdbc:postgresql://192.168.10.116:5432/pharm
-16-05-2017 10:32:33 [main] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
-16-05-2017 10:32:33 [main] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
-URL = jdbc:postgresql://192.168.10.116:5432/pharm
-16-05-2017 10:32:33 [main] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
-16-05-2017 10:33:38 [main] DEBUG celllife.idart.misc.LoginTimer - Terminating iDART - TIMER EXPIRED
-16-05-2017 10:33:38 [main] DEBUG dart.start.PharmacyApplication - Logged out..
-16-05-2017 10:33:38 [main] DEBUG celllife.idart.gui.login.Login - Login Form Created
-18-01-2018 16:09:02 [main] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
-URL = jdbc:postgresql://192.168.10.116:5432/pharm
-18-01-2018 16:09:02 [main] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
-18-01-2018 16:09:10 [Report task] INFO  tabase.hibernate.util.JDBCUtil - Opening JDBC connection to jdbc:postgresql://192.168.10.116:5432/pharm
-18-01-2018 16:09:10 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
-URL = jdbc:postgresql://192.168.10.116:5432/pharm
-18-01-2018 16:09:10 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
-18-01-2018 16:09:10 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
-URL = jdbc:postgresql://192.168.10.116:5432/pharm
-18-01-2018 16:09:10 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
-18-01-2018 16:09:10 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
-URL = jdbc:postgresql://192.168.10.116:5432/pharm
-18-01-2018 16:09:10 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
-18-01-2018 16:09:37 [main] DEBUG celllife.idart.misc.LoginTimer - Terminating iDART - TIMER EXPIRED
-18-01-2018 16:09:37 [main] DEBUG dart.start.PharmacyApplication - Logged out..
-18-01-2018 16:09:37 [main] DEBUG celllife.idart.gui.login.Login - Login Form Created
-18-01-2018 16:10:08 [main] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
-URL = jdbc:postgresql://192.168.10.116:5432/pharm
-18-01-2018 16:10:08 [main] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
-18-01-2018 16:10:24 [main] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
-URL = jdbc:postgresql://192.168.10.116:5432/pharm
-18-01-2018 16:10:24 [main] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
-18-01-2018 16:10:24 [main] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
-URL = jdbc:postgresql://192.168.10.116:5432/pharm
-18-01-2018 16:10:24 [main] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
-18-01-2018 16:10:24 [main] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
-URL = jdbc:postgresql://192.168.10.116:5432/pharm
-18-01-2018 16:10:24 [main] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
-18-01-2018 16:10:24 [main] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
-URL = jdbc:postgresql://192.168.10.116:5432/pharm
-18-01-2018 16:10:24 [main] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
-18-01-2018 16:10:24 [main] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
-URL = jdbc:postgresql://192.168.10.116:5432/pharm
-18-01-2018 16:10:24 [main] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
-18-01-2018 16:10:24 [main] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
-URL = jdbc:postgresql://192.168.10.116:5432/pharm
-18-01-2018 16:10:24 [main] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
-18-01-2018 16:10:44 [main] DEBUG celllife.idart.misc.LoginTimer - Terminating iDART - TIMER EXPIRED
-18-01-2018 16:10:44 [main] DEBUG dart.start.PharmacyApplication - Logged out..
-18-01-2018 16:10:44 [main] DEBUG celllife.idart.gui.login.Login - Login Form Created
+29-01-2018 00:55:05 [Report task] ERROR gui.reportParameters.ReportJob - Error running Report task
+net.sf.jasperreports.engine.JRRuntimeException: net.sf.jasperreports.engine.JRException: Could not load object from location : C:\eclipse.OLD\wp\idart\Reports\MmiaReport_batch.jasper
+	at net.sf.jasperreports.engine.fill.JRFillSubreport.prepare(JRFillSubreport.java:710)
+	at net.sf.jasperreports.engine.fill.JRFillElementContainer.prepareElements(JRFillElementContainer.java:329)
+	at net.sf.jasperreports.engine.fill.JRFillBand.fill(JRFillBand.java:419)
+	at net.sf.jasperreports.engine.fill.JRFillBand.fill(JRFillBand.java:378)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillColumnBand(JRVerticalFiller.java:2018)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillGroupFooter(JRVerticalFiller.java:922)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillGroupFooters(JRVerticalFiller.java:788)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillReportEnd(JRVerticalFiller.java:298)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillReport(JRVerticalFiller.java:134)
+	at net.sf.jasperreports.engine.fill.JRBaseFiller.fill(JRBaseFiller.java:938)
+	at net.sf.jasperreports.engine.fill.JRBaseFiller.fill(JRBaseFiller.java:841)
+	at net.sf.jasperreports.engine.fill.JRFiller.fillReport(JRFiller.java:58)
+	at net.sf.jasperreports.engine.JasperFillManager.fillReport(JasperFillManager.java:417)
+	at net.sf.jasperreports.engine.JasperFillManager.fillReport(JasperFillManager.java:378)
+	at model.manager.reports.AbstractJasperReport.fillReport(AbstractJasperReport.java:160)
+	at org.celllife.idart.gui.reportParameters.ReportJob.performJob(ReportJob.java:28)
+	at org.celllife.idart.misc.AbstractCancellableJob$1.run(AbstractCancellableJob.java:39)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: net.sf.jasperreports.engine.JRException: Could not load object from location : C:\eclipse.OLD\wp\idart\Reports\MmiaReport_batch.jasper
+	at net.sf.jasperreports.engine.util.JRLoader.loadObjectFromLocation(JRLoader.java:255)
+	at net.sf.jasperreports.engine.fill.JRFillSubreport.evaluateReport(JRFillSubreport.java:301)
+	at net.sf.jasperreports.engine.fill.JRFillSubreport.evaluateSubreport(JRFillSubreport.java:327)
+	at net.sf.jasperreports.engine.fill.JRFillSubreport.evaluate(JRFillSubreport.java:263)
+	at net.sf.jasperreports.engine.fill.JRFillElementContainer.evaluate(JRFillElementContainer.java:258)
+	at net.sf.jasperreports.engine.fill.JRFillBand.evaluate(JRFillBand.java:499)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillColumnBand(JRVerticalFiller.java:2016)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillDetail(JRVerticalFiller.java:757)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillReportStart(JRVerticalFiller.java:269)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillReport(JRVerticalFiller.java:127)
+	at net.sf.jasperreports.engine.fill.JRBaseFiller.fill(JRBaseFiller.java:938)
+	at net.sf.jasperreports.engine.fill.JRBaseFiller.fill(JRBaseFiller.java:841)
+	at net.sf.jasperreports.engine.fill.JRFillSubreport.fillSubreport(JRFillSubreport.java:608)
+	at net.sf.jasperreports.engine.fill.JRSubreportRunnable.run(JRSubreportRunnable.java:59)
+	at net.sf.jasperreports.engine.fill.JRThreadSubreportRunner.run(JRThreadSubreportRunner.java:205)
+	... 1 more
+29-01-2018 00:55:06 [main] ERROR portParameters.MmiaReportMISAU - java.lang.reflect.InvocationTargetException: Error running Report task
+29-01-2018 00:58:20 [Report task] INFO  tabase.hibernate.util.JDBCUtil - Opening JDBC connection to jdbc:postgresql://localhost:5432/pharm
+29-01-2018 00:58:21 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 00:58:21 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 00:58:21 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 00:58:21 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 00:58:21 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 00:58:21 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 00:58:22 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 00:58:22 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 00:58:22 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 00:58:23 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 00:58:23 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 00:58:23 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 00:58:24 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 00:58:24 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 00:58:24 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 00:58:24 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 00:58:24 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 00:58:24 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 00:58:24 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 00:58:24 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 00:58:24 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 00:58:24 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 00:58:24 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 00:58:24 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 00:58:24 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 00:58:24 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 00:58:24 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 00:58:24 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 00:58:27 [Report task] ERROR ts.engine.fill.JRFillSubreport - Fill 1919264764: exception
+net.sf.jasperreports.engine.JRException: Could not load object from location : C:\eclipse.OLD\wp\idart\Reports\MmiaReport_batch.jasper
+	at net.sf.jasperreports.engine.util.JRLoader.loadObjectFromLocation(JRLoader.java:255)
+	at net.sf.jasperreports.engine.fill.JRFillSubreport.evaluateReport(JRFillSubreport.java:301)
+	at net.sf.jasperreports.engine.fill.JRFillSubreport.evaluateSubreport(JRFillSubreport.java:327)
+	at net.sf.jasperreports.engine.fill.JRFillSubreport.evaluate(JRFillSubreport.java:263)
+	at net.sf.jasperreports.engine.fill.JRFillElementContainer.evaluate(JRFillElementContainer.java:258)
+	at net.sf.jasperreports.engine.fill.JRFillBand.evaluate(JRFillBand.java:499)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillColumnBand(JRVerticalFiller.java:2016)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillDetail(JRVerticalFiller.java:757)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillReportStart(JRVerticalFiller.java:269)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillReport(JRVerticalFiller.java:127)
+	at net.sf.jasperreports.engine.fill.JRBaseFiller.fill(JRBaseFiller.java:938)
+	at net.sf.jasperreports.engine.fill.JRBaseFiller.fill(JRBaseFiller.java:841)
+	at net.sf.jasperreports.engine.fill.JRFillSubreport.fillSubreport(JRFillSubreport.java:608)
+	at net.sf.jasperreports.engine.fill.JRSubreportRunnable.run(JRSubreportRunnable.java:59)
+	at net.sf.jasperreports.engine.fill.JRThreadSubreportRunner.run(JRThreadSubreportRunner.java:205)
+	at java.lang.Thread.run(Thread.java:744)
+29-01-2018 00:58:27 [Report task] ERROR gui.reportParameters.ReportJob - Error running Report task
+net.sf.jasperreports.engine.JRRuntimeException: net.sf.jasperreports.engine.JRException: Could not load object from location : C:\eclipse.OLD\wp\idart\Reports\MmiaReport_batch.jasper
+	at net.sf.jasperreports.engine.fill.JRFillSubreport.prepare(JRFillSubreport.java:710)
+	at net.sf.jasperreports.engine.fill.JRFillElementContainer.prepareElements(JRFillElementContainer.java:329)
+	at net.sf.jasperreports.engine.fill.JRFillBand.fill(JRFillBand.java:419)
+	at net.sf.jasperreports.engine.fill.JRFillBand.fill(JRFillBand.java:378)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillColumnBand(JRVerticalFiller.java:2018)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillGroupFooter(JRVerticalFiller.java:922)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillGroupFooters(JRVerticalFiller.java:788)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillReportEnd(JRVerticalFiller.java:298)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillReport(JRVerticalFiller.java:134)
+	at net.sf.jasperreports.engine.fill.JRBaseFiller.fill(JRBaseFiller.java:938)
+	at net.sf.jasperreports.engine.fill.JRBaseFiller.fill(JRBaseFiller.java:841)
+	at net.sf.jasperreports.engine.fill.JRFiller.fillReport(JRFiller.java:58)
+	at net.sf.jasperreports.engine.JasperFillManager.fillReport(JasperFillManager.java:417)
+	at net.sf.jasperreports.engine.JasperFillManager.fillReport(JasperFillManager.java:378)
+	at model.manager.reports.AbstractJasperReport.fillReport(AbstractJasperReport.java:160)
+	at org.celllife.idart.gui.reportParameters.ReportJob.performJob(ReportJob.java:28)
+	at org.celllife.idart.misc.AbstractCancellableJob$1.run(AbstractCancellableJob.java:39)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: net.sf.jasperreports.engine.JRException: Could not load object from location : C:\eclipse.OLD\wp\idart\Reports\MmiaReport_batch.jasper
+	at net.sf.jasperreports.engine.util.JRLoader.loadObjectFromLocation(JRLoader.java:255)
+	at net.sf.jasperreports.engine.fill.JRFillSubreport.evaluateReport(JRFillSubreport.java:301)
+	at net.sf.jasperreports.engine.fill.JRFillSubreport.evaluateSubreport(JRFillSubreport.java:327)
+	at net.sf.jasperreports.engine.fill.JRFillSubreport.evaluate(JRFillSubreport.java:263)
+	at net.sf.jasperreports.engine.fill.JRFillElementContainer.evaluate(JRFillElementContainer.java:258)
+	at net.sf.jasperreports.engine.fill.JRFillBand.evaluate(JRFillBand.java:499)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillColumnBand(JRVerticalFiller.java:2016)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillDetail(JRVerticalFiller.java:757)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillReportStart(JRVerticalFiller.java:269)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillReport(JRVerticalFiller.java:127)
+	at net.sf.jasperreports.engine.fill.JRBaseFiller.fill(JRBaseFiller.java:938)
+	at net.sf.jasperreports.engine.fill.JRBaseFiller.fill(JRBaseFiller.java:841)
+	at net.sf.jasperreports.engine.fill.JRFillSubreport.fillSubreport(JRFillSubreport.java:608)
+	at net.sf.jasperreports.engine.fill.JRSubreportRunnable.run(JRSubreportRunnable.java:59)
+	at net.sf.jasperreports.engine.fill.JRThreadSubreportRunner.run(JRThreadSubreportRunner.java:205)
+	... 1 more
+29-01-2018 00:58:27 [main] ERROR portParameters.MmiaReportMISAU - java.lang.reflect.InvocationTargetException: Error running Report task
+29-01-2018 01:02:25 [main] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:02:25 [main] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:02:40 [Report task] INFO  tabase.hibernate.util.JDBCUtil - Opening JDBC connection to jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:02:40 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:02:40 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:02:40 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:02:40 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:02:41 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:02:41 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:02:42 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:02:42 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:02:42 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:02:42 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:02:43 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:02:43 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:02:44 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:02:44 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:02:44 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:02:44 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:02:44 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:02:44 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:02:44 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:02:44 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:02:44 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:02:44 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:02:44 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:02:44 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:02:44 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:02:44 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:02:44 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:02:44 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:02:54 [Report task] ERROR ts.engine.fill.JRFillSubreport - Fill 1474240332: exception
+net.sf.jasperreports.engine.JRException: Error executing SQL statement for : MmiaRegimesReport
+	at net.sf.jasperreports.engine.query.JRJdbcQueryExecuter.createDatasource(JRJdbcQueryExecuter.java:143)
+	at net.sf.jasperreports.engine.fill.JRFillDataset.createQueryDatasource(JRFillDataset.java:686)
+	at net.sf.jasperreports.engine.fill.JRFillDataset.initDatasource(JRFillDataset.java:606)
+	at net.sf.jasperreports.engine.fill.JRBaseFiller.setParameters(JRBaseFiller.java:1273)
+	at net.sf.jasperreports.engine.fill.JRBaseFiller.fill(JRBaseFiller.java:892)
+	at net.sf.jasperreports.engine.fill.JRBaseFiller.fill(JRBaseFiller.java:841)
+	at net.sf.jasperreports.engine.fill.JRFillSubreport.fillSubreport(JRFillSubreport.java:608)
+	at net.sf.jasperreports.engine.fill.JRSubreportRunnable.run(JRSubreportRunnable.java:59)
+	at net.sf.jasperreports.engine.fill.JRThreadSubreportRunner.run(JRThreadSubreportRunner.java:205)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.postgresql.util.PSQLException: ERROR: column "pediatrico" does not exist
+  Position: 471
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2198)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:1927)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:255)
+	at org.postgresql.jdbc2.AbstractJdbc2Statement.execute(AbstractJdbc2Statement.java:561)
+	at org.postgresql.jdbc2.AbstractJdbc2Statement.executeWithFlags(AbstractJdbc2Statement.java:419)
+	at org.postgresql.jdbc2.AbstractJdbc2Statement.executeQuery(AbstractJdbc2Statement.java:304)
+	at net.sf.jasperreports.engine.query.JRJdbcQueryExecuter.createDatasource(JRJdbcQueryExecuter.java:137)
+	... 9 more
+29-01-2018 01:02:54 [Report task] ERROR gui.reportParameters.ReportJob - Error running Report task
+net.sf.jasperreports.engine.JRRuntimeException: net.sf.jasperreports.engine.JRException: Error executing SQL statement for : MmiaRegimesReport
+	at net.sf.jasperreports.engine.fill.JRFillSubreport.prepare(JRFillSubreport.java:710)
+	at net.sf.jasperreports.engine.fill.JRFillElementContainer.prepareElements(JRFillElementContainer.java:329)
+	at net.sf.jasperreports.engine.fill.JRFillBand.fill(JRFillBand.java:419)
+	at net.sf.jasperreports.engine.fill.JRFillBand.fill(JRFillBand.java:378)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillColumnBand(JRVerticalFiller.java:2018)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillGroupFooter(JRVerticalFiller.java:922)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillGroupFooters(JRVerticalFiller.java:788)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillReportEnd(JRVerticalFiller.java:298)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillReport(JRVerticalFiller.java:134)
+	at net.sf.jasperreports.engine.fill.JRBaseFiller.fill(JRBaseFiller.java:938)
+	at net.sf.jasperreports.engine.fill.JRBaseFiller.fill(JRBaseFiller.java:841)
+	at net.sf.jasperreports.engine.fill.JRFiller.fillReport(JRFiller.java:58)
+	at net.sf.jasperreports.engine.JasperFillManager.fillReport(JasperFillManager.java:417)
+	at net.sf.jasperreports.engine.JasperFillManager.fillReport(JasperFillManager.java:378)
+	at model.manager.reports.AbstractJasperReport.fillReport(AbstractJasperReport.java:160)
+	at org.celllife.idart.gui.reportParameters.ReportJob.performJob(ReportJob.java:28)
+	at org.celllife.idart.misc.AbstractCancellableJob$1.run(AbstractCancellableJob.java:39)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: net.sf.jasperreports.engine.JRException: Error executing SQL statement for : MmiaRegimesReport
+	at net.sf.jasperreports.engine.query.JRJdbcQueryExecuter.createDatasource(JRJdbcQueryExecuter.java:143)
+	at net.sf.jasperreports.engine.fill.JRFillDataset.createQueryDatasource(JRFillDataset.java:686)
+	at net.sf.jasperreports.engine.fill.JRFillDataset.initDatasource(JRFillDataset.java:606)
+	at net.sf.jasperreports.engine.fill.JRBaseFiller.setParameters(JRBaseFiller.java:1273)
+	at net.sf.jasperreports.engine.fill.JRBaseFiller.fill(JRBaseFiller.java:892)
+	at net.sf.jasperreports.engine.fill.JRBaseFiller.fill(JRBaseFiller.java:841)
+	at net.sf.jasperreports.engine.fill.JRFillSubreport.fillSubreport(JRFillSubreport.java:608)
+	at net.sf.jasperreports.engine.fill.JRSubreportRunnable.run(JRSubreportRunnable.java:59)
+	at net.sf.jasperreports.engine.fill.JRThreadSubreportRunner.run(JRThreadSubreportRunner.java:205)
+	... 1 more
+Caused by: org.postgresql.util.PSQLException: ERROR: column "pediatrico" does not exist
+  Position: 471
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2198)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:1927)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:255)
+	at org.postgresql.jdbc2.AbstractJdbc2Statement.execute(AbstractJdbc2Statement.java:561)
+	at org.postgresql.jdbc2.AbstractJdbc2Statement.executeWithFlags(AbstractJdbc2Statement.java:419)
+	at org.postgresql.jdbc2.AbstractJdbc2Statement.executeQuery(AbstractJdbc2Statement.java:304)
+	at net.sf.jasperreports.engine.query.JRJdbcQueryExecuter.createDatasource(JRJdbcQueryExecuter.java:137)
+	... 9 more
+29-01-2018 01:02:55 [main] ERROR portParameters.MmiaReportMISAU - java.lang.reflect.InvocationTargetException: Error running Report task
+29-01-2018 01:06:48 [Report task] INFO  tabase.hibernate.util.JDBCUtil - Opening JDBC connection to jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:06:48 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:06:48 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:06:48 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:06:48 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:06:49 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:06:49 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:06:49 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:06:49 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:06:50 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:06:50 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:06:51 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:06:51 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:06:51 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:06:51 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:06:51 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:06:51 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:06:51 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:06:51 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:06:51 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:06:51 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:06:51 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:06:52 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:06:52 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:06:52 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:06:52 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:06:52 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:06:52 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:06:52 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:06:52 [Report task] ERROR gui.reportParameters.ReportJob - Error running Report task
+model.manager.excel.conversion.exceptions.ReportException: Error filling report
+	at model.manager.reports.AbstractJasperReport.fillReport(AbstractJasperReport.java:167)
+	at org.celllife.idart.gui.reportParameters.ReportJob.performJob(ReportJob.java:28)
+	at org.celllife.idart.misc.AbstractCancellableJob$1.run(AbstractCancellableJob.java:39)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: net.sf.jasperreports.engine.JRException: Error executing SQL statement for : MmiaReportMISAU
+	at net.sf.jasperreports.engine.query.JRJdbcQueryExecuter.createDatasource(JRJdbcQueryExecuter.java:143)
+	at net.sf.jasperreports.engine.fill.JRFillDataset.createQueryDatasource(JRFillDataset.java:686)
+	at net.sf.jasperreports.engine.fill.JRFillDataset.initDatasource(JRFillDataset.java:606)
+	at net.sf.jasperreports.engine.fill.JRBaseFiller.setParameters(JRBaseFiller.java:1273)
+	at net.sf.jasperreports.engine.fill.JRBaseFiller.fill(JRBaseFiller.java:892)
+	at net.sf.jasperreports.engine.fill.JRBaseFiller.fill(JRBaseFiller.java:841)
+	at net.sf.jasperreports.engine.fill.JRFiller.fillReport(JRFiller.java:58)
+	at net.sf.jasperreports.engine.JasperFillManager.fillReport(JasperFillManager.java:417)
+	at net.sf.jasperreports.engine.JasperFillManager.fillReport(JasperFillManager.java:378)
+	at model.manager.reports.AbstractJasperReport.fillReport(AbstractJasperReport.java:160)
+	... 3 more
+Caused by: org.postgresql.util.PSQLException: ERROR: column d.pediatric does not exist
+  Hint: Perhaps you meant to reference the column "d.pediatrico".
+  Position: 92
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2198)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:1927)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:255)
+	at org.postgresql.jdbc2.AbstractJdbc2Statement.execute(AbstractJdbc2Statement.java:561)
+	at org.postgresql.jdbc2.AbstractJdbc2Statement.executeWithFlags(AbstractJdbc2Statement.java:419)
+	at org.postgresql.jdbc2.AbstractJdbc2Statement.executeQuery(AbstractJdbc2Statement.java:304)
+	at net.sf.jasperreports.engine.query.JRJdbcQueryExecuter.createDatasource(JRJdbcQueryExecuter.java:137)
+	... 12 more
+29-01-2018 01:06:53 [main] ERROR portParameters.MmiaReportMISAU - java.lang.reflect.InvocationTargetException: Error running Report task
+29-01-2018 01:07:10 [main] DEBUG celllife.idart.misc.LoginTimer - Terminating iDART - TIMER EXPIRED
+29-01-2018 01:07:10 [main] DEBUG dart.start.PharmacyApplication - Logged out..
+29-01-2018 01:07:10 [main] DEBUG celllife.idart.gui.login.Login - Login Form Created
+29-01-2018 01:14:16 [main] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:14:16 [main] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:14:27 [Report task] INFO  tabase.hibernate.util.JDBCUtil - Opening JDBC connection to jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:14:27 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:14:27 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:14:27 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:14:28 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:14:28 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:14:28 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:14:29 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:14:29 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:14:29 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:14:29 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:14:30 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:14:30 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:14:31 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:14:31 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:14:31 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:14:31 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:14:31 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:14:31 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:14:31 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:14:31 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:14:31 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:14:31 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:14:31 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:14:31 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:14:31 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:14:31 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:14:31 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:14:31 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:14:49 [main] DEBUG celllife.idart.misc.LoginTimer - Terminating iDART - TIMER EXPIRED
+29-01-2018 01:14:49 [main] DEBUG dart.start.PharmacyApplication - Logged out..
+29-01-2018 01:14:49 [main] DEBUG celllife.idart.gui.login.Login - Login Form Created
+29-01-2018 01:37:31 [main] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:37:31 [main] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:37:45 [Report task] INFO  tabase.hibernate.util.JDBCUtil - Opening JDBC connection to jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:37:45 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:37:45 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:37:45 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:37:45 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:37:45 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:37:46 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:37:46 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:37:46 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:37:47 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:37:47 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:37:47 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:37:47 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:37:48 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:37:48 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:37:48 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:37:48 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:37:48 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:37:48 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:37:48 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:37:48 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:37:48 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:37:48 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:37:48 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:37:48 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:37:48 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:37:48 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:37:48 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:37:48 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:41:45 [Report task] INFO  tabase.hibernate.util.JDBCUtil - Opening JDBC connection to jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:41:45 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:41:45 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:41:46 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:41:46 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:41:46 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:41:46 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:41:47 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:41:47 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:41:47 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:41:47 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:41:48 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:41:48 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:41:49 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:41:49 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:41:49 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:41:49 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:41:49 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:41:49 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:41:49 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:41:49 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:41:49 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:41:49 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:41:49 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:41:49 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:41:49 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:41:49 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:41:49 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:41:49 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:43:38 [Report task] INFO  tabase.hibernate.util.JDBCUtil - Opening JDBC connection to jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:43:38 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:43:38 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:43:38 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:43:38 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:43:39 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:43:39 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:43:39 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:43:39 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:43:40 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:43:40 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:43:40 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:43:40 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 01:43:41 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:43:41 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:43:41 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:43:41 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:43:41 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:43:41 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:43:41 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:43:41 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:43:41 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:43:41 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:43:41 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:43:41 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:43:41 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 01:43:41 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 01:43:41 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 01:43:41 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 02:12:23 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1347243
+29-01-2018 02:12:23 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 2033494
+29-01-2018 02:12:23 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1659771
+29-01-2018 02:12:23 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1709730
+29-01-2018 02:12:23 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1766962
+29-01-2018 02:12:23 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1824846
+29-01-2018 02:12:23 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1862037
+29-01-2018 02:14:30 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1862037
+29-01-2018 02:14:30 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1862037
+29-01-2018 02:14:43 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1347243
+29-01-2018 02:14:43 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 2033494
+29-01-2018 02:14:43 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1659771
+29-01-2018 02:14:43 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1709730
+29-01-2018 02:14:43 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1766962
+29-01-2018 02:14:43 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1824846
+29-01-2018 02:14:44 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1862037
+29-01-2018 02:15:34 [main] INFO  model.manager.DeletionsManager - deleting Stock level for stock 1824846
+29-01-2018 02:15:34 [main] INFO  model.manager.DeletionsManager - deleting Stock record 1824846
+29-01-2018 02:15:46 [main] INFO  model.manager.DeletionsManager - deleting Stock level for stock 1766962
+29-01-2018 02:15:46 [main] INFO  model.manager.DeletionsManager - deleting Stock record 1766962
+29-01-2018 02:16:43 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1347243
+29-01-2018 02:16:44 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 2033494
+29-01-2018 02:16:44 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1659771
+29-01-2018 02:16:44 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1709730
+29-01-2018 02:16:44 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1862037
+29-01-2018 02:17:08 [Report task] INFO  tabase.hibernate.util.JDBCUtil - Opening JDBC connection to jdbc:postgresql://localhost:5432/pharm
+29-01-2018 02:17:08 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 02:17:08 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 02:17:08 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 02:17:08 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 02:17:09 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 02:17:09 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 02:17:09 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 02:17:09 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 02:17:10 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 02:17:10 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 02:17:10 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 02:17:10 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 02:17:11 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 02:17:11 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 02:17:11 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 02:17:11 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 02:17:11 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 02:17:11 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 02:17:11 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 02:17:11 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 02:17:11 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 02:17:11 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 02:17:11 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 02:17:11 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 02:17:11 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 02:17:11 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 02:17:11 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 02:17:11 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 02:18:07 [main] DEBUG celllife.idart.misc.LoginTimer - Terminating iDART - TIMER EXPIRED
+29-01-2018 02:18:07 [main] DEBUG dart.start.PharmacyApplication - Logged out..
+29-01-2018 02:18:07 [main] DEBUG celllife.idart.gui.login.Login - Login Form Created
+29-01-2018 02:18:09 [main] INFO  celllife.idart.gui.login.Login - Login successful for user admin
+29-01-2018 02:18:09 [main] INFO  celllife.idart.misc.LoginTimer - Starting new logout timer with timeout 600 seconds.
+29-01-2018 02:18:09 [main] DEBUG art.gui.welcome.GenericWelcome - Creating newWelcome
+29-01-2018 02:18:09 [main] ERROR art.gui.welcome.GenericWelcome - Unable to load help.
+29-01-2018 02:18:10 [main] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 02:18:10 [main] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 02:18:30 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1347243
+29-01-2018 02:18:30 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 2033494
+29-01-2018 02:18:31 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1659771
+29-01-2018 02:18:31 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1709730
+29-01-2018 02:18:31 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1862037
+29-01-2018 02:19:00 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1862037
+29-01-2018 02:19:00 [main] INFO      model.manager.StockManager - Deleting empty batch number 3065575 of drug [DRV] Darunavir 600mg
+29-01-2018 02:19:00 [main] INFO      model.manager.StockManager - Marking stock as empty: 3065575 of drug [DRV] Darunavir 600mg
+29-01-2018 02:19:00 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1862037
+29-01-2018 02:19:08 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1347243
+29-01-2018 02:19:09 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 2033494
+29-01-2018 02:19:09 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1659771
+29-01-2018 02:19:09 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1709730
+29-01-2018 02:19:38 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1709730
+29-01-2018 02:19:38 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1709730
+29-01-2018 02:19:51 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1347243
+29-01-2018 02:19:51 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 2033494
+29-01-2018 02:19:51 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1659771
+29-01-2018 02:19:51 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1709730
+29-01-2018 02:20:24 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1709730
+29-01-2018 02:20:24 [main] INFO      model.manager.StockManager - Deleting empty batch number HBZ0502 of drug [DRV] Darunavir 600mg
+29-01-2018 02:20:24 [main] INFO      model.manager.StockManager - Marking stock as empty: HBZ0502 of drug [DRV] Darunavir 600mg
+29-01-2018 02:20:24 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1709730
+29-01-2018 02:20:31 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1347243
+29-01-2018 02:20:32 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 2033494
+29-01-2018 02:20:32 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1659771
+29-01-2018 02:20:42 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1659771
+29-01-2018 02:20:42 [main] INFO      model.manager.StockManager - Deleting empty batch number HBZ0502 of drug [DRV] Darunavir 600mg
+29-01-2018 02:20:42 [main] INFO      model.manager.StockManager - Marking stock as empty: HBZ0502 of drug [DRV] Darunavir 600mg
+29-01-2018 02:20:42 [main] INFO      model.manager.StockManager - Calculating StockLevel for stock 1659771
+29-01-2018 02:20:58 [Report task] INFO  tabase.hibernate.util.JDBCUtil - Opening JDBC connection to jdbc:postgresql://localhost:5432/pharm
+29-01-2018 02:20:58 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 02:20:58 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 02:20:58 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 02:20:58 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 02:20:59 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 02:20:59 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 02:20:59 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 02:20:59 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 02:21:00 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 02:21:00 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 02:21:01 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 02:21:01 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 02:21:01 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 02:21:01 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 02:21:01 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 02:21:01 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 02:21:01 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 02:21:01 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 02:21:01 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 02:21:01 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 02:21:01 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 02:21:01 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 02:21:01 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 02:21:01 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 02:21:01 [Report task] INFO  idart.database.dao.ConexaoODBC - A Estabelecer a conexao com MS ACESS.....
+29-01-2018 02:21:01 [Report task] ERROR idart.database.dao.ConexaoODBC - Não foi possivel conectar a base de dados MS ACESS.....
+29-01-2018 02:21:01 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+29-01-2018 02:21:01 [Report task] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+29-01-2018 03:49:32 [main] DEBUG celllife.idart.misc.LoginTimer - Terminating iDART - TIMER EXPIRED
+29-01-2018 03:49:32 [main] DEBUG dart.start.PharmacyApplication - Logged out..
+29-01-2018 03:49:32 [main] DEBUG celllife.idart.gui.login.Login - Login Form Created
+19-02-2018 19:09:41 [main] INFO  idart.database.dao.ConexaoJDBC - Conectando ao banco de dados
+URL = jdbc:postgresql://localhost:5432/pharm
+19-02-2018 19:09:41 [main] INFO  idart.database.dao.ConexaoJDBC - Conectado...Criando a declaração
+19-02-2018 19:28:50 [main] DEBUG celllife.idart.misc.LoginTimer - Terminating iDART - TIMER EXPIRED
+19-02-2018 19:28:50 [main] DEBUG dart.start.PharmacyApplication - Logged out..
+19-02-2018 19:28:50 [main] DEBUG celllife.idart.gui.login.Login - Login Form Created

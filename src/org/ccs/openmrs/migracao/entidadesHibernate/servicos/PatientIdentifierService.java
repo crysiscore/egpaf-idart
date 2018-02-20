@@ -71,6 +71,13 @@ public class PatientIdentifierService {
         return patientIdentifier;
     }
     
+       public List<PatientIdentifier> findByPatientUuid(String uuid) {
+        patientIdentifierDao.openCurrentSession();
+          List<PatientIdentifier> patientIdentifier = patientIdentifierDao.findByPatientUuid(uuid);
+        patientIdentifierDao.closeCurrentSession();
+        return patientIdentifier;
+    }
+      
     public List<PatientIdentifier> findAllByNidLikeAndNameLikeAndSurnameLike(String identifier,String name,String surname) {
         patientIdentifierDao.openCurrentSession();
         List<PatientIdentifier> patientIdentifier = patientIdentifierDao.findAllByNidLikeAndNameLikeAndSurnameLike(identifier, name, surname);

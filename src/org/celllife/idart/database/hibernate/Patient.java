@@ -102,6 +102,8 @@ public class Patient {
 	private String workPhone;
 
 	private String race;
+        
+        private String uuid;
 
 	@OneToMany
 	@JoinColumn(name = "patient")
@@ -369,6 +371,17 @@ public class Patient {
 		return race;
 	}
 
+        	/**
+	 * Method getUuid.
+	 * 
+	 * @return String
+	 */
+	public String getUuid() {
+		if (uuid == null)
+			return "";
+		return uuid;
+	}
+        
 	/**
 	 * Method getSex.
 	 * 
@@ -623,6 +636,16 @@ public class Patient {
 		this.race = race;
 	}
 
+        /**
+	 * Method setUuid.
+	 * 
+	 * @param uuid
+	 *            String
+	 */
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
+        
 	/**
 	 * Method setSex.
 	 * 

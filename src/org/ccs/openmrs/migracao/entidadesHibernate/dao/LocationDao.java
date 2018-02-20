@@ -71,7 +71,8 @@ implements LocationDaoInterface<Location, String> {
 
     @Override
     public Location findById(String id) {
-        Location concept = (Location)this.getCurrentSession().get((Class)Location.class, (Serializable)Integer.valueOf(Integer.parseInt(id)));
+       // Location concept = (Location)this.getCurrentSession().get((Class)Location.class, (Serializable)Integer.valueOf(Integer.parseInt(id)));
+       Location concept = (Location) this.getCurrentSession().createQuery("from Location l where l.name = (select gp.property_value FROM global_property gp where gp.property = 'default_location')");
         return concept;
     }
 

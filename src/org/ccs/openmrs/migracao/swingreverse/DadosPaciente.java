@@ -63,6 +63,7 @@ public class DadosPaciente {
         patient.setSex(person.getGender().toUpperCase().charAt(0));
         patient.setWorkPhone(null);
         patient.setRace(null);
+        patient.setUuid(person.getUuid());
         if (importedPatientIdentifier == null) {
             patientImportService.persist(patient);
         } else {

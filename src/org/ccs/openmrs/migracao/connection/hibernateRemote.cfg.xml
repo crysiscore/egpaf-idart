@@ -3,7 +3,7 @@
 <hibernate-configuration>
   <session-factory>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://192.168.1.106:3306/openmrs</property>
+    <property name="hibernate.connection.url">jdbc:mysql://192.168.117.1:3306/openmrs</property>
     <property name="hibernate.connection.username">idart</property>
     <property name="hibernate.connection.password">idart</property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
@@ -37,6 +37,7 @@
     <mapping class="org.ccs.openmrs.migracao.entidades.Program"/>
     <mapping class="org.ccs.openmrs.migracao.entidades.PatientProgram"/>
     <mapping class="org.ccs.openmrs.migracao.entidades.ConceptName"/>
+    <mapping class="org.ccs.openmrs.migracao.entidades.Visit"/>
     <mapping class="org.ccs.openmrs.migracao.entidades.Visit"/>
   </session-factory>
 </hibernate-configuration>
