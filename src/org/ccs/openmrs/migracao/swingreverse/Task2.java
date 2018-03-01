@@ -21,9 +21,11 @@ import java.util.List;
 import java.util.Random;
 import javax.swing.SwingWorker;
 import org.ccs.openmrs.migracao.connection.hibernateConection;
+import org.ccs.openmrs.migracao.entidades.Person;
 import org.ccs.openmrs.migracao.entidadesHibernate.importPatient.PatientIdentifierImportService;
 import org.ccs.openmrs.migracao.entidadesHibernate.importPatient.PatientImportService;
 import org.ccs.openmrs.migracao.entidadesHibernate.servicos.PatientIdentifierService;
+import org.ccs.openmrs.migracao.entidadesHibernate.servicos.PersonService;
 import static org.ccs.openmrs.migracao.swingreverse.Task1.logFileLocations;
 import org.celllife.idart.database.hibernate.Patient;
 
@@ -91,6 +93,8 @@ class Task2
                             DadosPaciente dadosPaciente = new DadosPaciente();
                             String nidIdart = patientIdentifier.getValue().trim();
                             Patient patientIdart = importService.findById(patientIdentifier.getPatient().getId());
+                            PersonService personService = new PersonService();
+                            Person person = null;
 
                             String name = "";
                             String surname = "";
@@ -111,34 +115,53 @@ class Task2
 
                             if (!patientIdentifierOpenmrsFase1.isEmpty()) {
                                 // Verifica se o nid existe no OpenmRS
-                                dadosPaciente.actualizaNidIdart(nidIdart, patientIdentifierOpenmrsFase1.get(0).getIdentifier(), patientIdentifier);
+                                person = personService.findById(patientIdentifierOpenmrsFase1.get(0).getPatientId().getPerson().getPersonId().toString());
+                                dadosPaciente.actualizaNidIdart(nidIdart, patientIdentifierOpenmrsFase1.get(0).getIdentifier(),person.getUuid(), patientIdentifier);
                             } else {
                                 List<org.ccs.openmrs.migracao.entidades.PatientIdentifier> patientIdentifierOpenmrsFase2 = identifierServiceOpenmrs.findAllByNidLikeAndNameLikeAndSurnameLike(nidIdart, name, surname);
 
                                 if (!patientIdentifierOpenmrsFase2.isEmpty()) {
-                                    dadosPaciente.actualizaNidIdart(nidIdart, patientIdentifierOpenmrsFase2.get(0).getIdentifier(), patientIdentifier);
-                                } else {
+                                    person = personService.findById(patientIdentifierOpenmrsFase2.get(0).getPatientId().getPerson().getPersonId().toString());
+                                    dadosPaciente.actualizaNidIdart(nidIdart, patientIdentifierOpenmrsFase2.get(0).getIdentifier(),person.getUuid(), patientIdentifier);
+                                } else {                                  
+                                    nidIdart = nidIdart.replaceFirst("/", ":");                                    
                                     if (nidIdart.contains("/")) {
-                                        nseq = nidIdart.substring(0, nidIdart.indexOf('/'));
-                                        ano = nidIdart.substring(nidIdart.indexOf('/') + 1, nidIdart.length());
-
-                                        if (ano.length() >= 3) {
-                                            ano = ano.substring(0, 2);
+                                        ano = nidIdart.substring(nidIdart.indexOf(':') + 1, nidIdart.indexOf('/'));
+                                        nseq = nidIdart.substring(nidIdart.indexOf('/') + 1, nidIdart.length());
+                                       
+                                    }else{
+                                         if(nidIdart.contains(":")){
+                                             nseq = nidIdart.substring(0, nidIdart.indexOf(':'));
+                                        ano = nidIdart.substring(nidIdart.indexOf(':') + 1, nidIdart.length());
                                         }
+                                    }                                   
+                                    if( ano != null && nseq != null){
+                                     
+                                        if (ano.length() >= 3) 
+                                            ano = ano.substring(0, 2);
+                                        
                                         nidIdartNovo = ano + "/%" + nseq;
-                                    } else {
+                                    }else
                                         nidIdartNovo = nidIdart;
                                     }
+                                }                                  
                                     List<org.ccs.openmrs.migracao.entidades.PatientIdentifier> patientIdentifierOpenmrs = identifierServiceOpenmrs.findAllByNidLikeAndNameLikeAndSurnameLike(nidIdartNovo, name, surname);
+                                   
+                                      nidIdart = nidIdart.replaceFirst(":", "/");  
+                                      
                                     if (!patientIdentifierOpenmrs.isEmpty()) {
-                                        dadosPaciente.actualizaNidIdart(nidIdart, patientIdentifierOpenmrs.get(0).getIdentifier(), patientIdentifier);
+                                        person = personService.findById(patientIdentifierOpenmrs.get(0).getPatientId().getPerson().getPersonId().toString());
+                                        dadosPaciente.actualizaNidIdart(nidIdart, patientIdentifierOpenmrs.get(0).getIdentifier(), person.getUuid(),patientIdentifier);
+                                    } else {
+                                         patientIdentifierOpenmrs = identifierServiceOpenmrs.findAllByNid(nidIdart);
+                                        if (!patientIdentifierOpenmrs.isEmpty()) {
+                                        person = personService.findById(patientIdentifierOpenmrs.get(0).getPatientId().getPerson().getPersonId().toString());
+                                        dadosPaciente.actualizaNidIdart(nidIdart, patientIdentifierOpenmrs.get(0).getIdentifier(), person.getUuid(),patientIdentifier);
                                     } else {
                                         System.err.println(nidIdart + ", " + patientIdart.getFirstNames().trim() + " " + patientIdart.getLastname().trim() + "- Not Match on List");
                                         descont++;
-                                    }
-                                }
-                            }
-
+                                        }
+                                    }               
                         } catch (Exception e) {
                             
                             //Podem ocorrer diferentes tipos de exceptions, coomo nao podemos prever todas vamos escreve-las
@@ -154,14 +177,14 @@ class Task2
                      
                         }
 
-                    }
+            } 
                 } catch (InterruptedException ie) {
                     return "Interrupted";
                 }
-                System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-                System.out.println("" + lengthOfTask + " Total de Pacientes no IDART !!!!!!");
-                System.out.println("" + (lengthOfTask - descont) + " Total de Pacientes Unidos do OpenMRS para o IDART com sucesso!!!!!!");
-                System.out.println("" + descont + " Total de Pacientes Noao encontrados no OpenMRS!!!!!!");
+                System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                System.err.println("" + lengthOfTask + " Total de Pacientes no IDART !!!!!!");
+                System.err.println("" + (lengthOfTask - descont) + " Total de Pacientes Unidos do OpenMRS para o IDART com sucesso!!!!!!");
+                System.err.println("" + descont + " Total de Pacientes Noao encontrados no OpenMRS!!!!!!");
                 hibernateConection.getInstanceLocal().close();
                 hibernateConection.getInstanceRemote().close();
                 current = lengthOfTask * 2;

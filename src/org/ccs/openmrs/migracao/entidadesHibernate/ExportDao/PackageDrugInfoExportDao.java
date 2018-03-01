@@ -85,7 +85,7 @@ implements PackageDrugInfoInterface<PackageDrugInfo, String> {
 
     @Override
     public List<PackageDrugInfo> findAll() {
-        List packageDrugInfos = this.getCurrentSession().createQuery("from PackageDrugInfo p where p.notes <> 'Exported' OR p.notes IS NULL ORDER BY p.dispenseDate").list();
+        List packageDrugInfos = this.getCurrentSession().createQuery("from PackageDrugInfo p where p.notes <> 'Exported' OR p.notes IS NULL ORDER BY p.dispenseDate desc ").list();
         return packageDrugInfos;
     }
 

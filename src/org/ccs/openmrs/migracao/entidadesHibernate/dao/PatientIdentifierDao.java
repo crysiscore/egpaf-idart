@@ -87,10 +87,19 @@ public class PatientIdentifierDao
     public List<PatientIdentifier> findAllByNidLikeAndNameLikeAndSurnameLike(String nid, String name, String surname) {
         List<PatientIdentifier> patientIdentifiers = this.getCurrentSession().createQuery("from PatientIdentifier pa where pa.patientIdentifierId in (select p.patientIdentifierId "
                 + "from PatientIdentifier p,PersonName pn "
-                + "where p.identifier like '%" + nid + "%' "
+                + "where p.identifier like '%" + nid+"' "
                 + // "AND pn.givenName like '%"+name+"%' "+
                 "AND pn.familyName like '%" + surname + "%' "
                 + "AND p.patientId = pn.personId)").list();
+
+        return patientIdentifiers;
+    }
+    
+    
+        public List<PatientIdentifier> findAllByNid(String nid) {
+        List<PatientIdentifier> patientIdentifiers = this.getCurrentSession().createQuery("from PatientIdentifier pa where pa.patientIdentifierId in (select p.patientIdentifierId "
+                + "from PatientIdentifier p,PersonName pn "
+                + "where p.identifier like '%" + nid+"')").list();
 
         return patientIdentifiers;
     }
@@ -118,10 +127,10 @@ public class PatientIdentifierDao
     para evitar a busca do paciente pelo Nid e apelido
      */
     public List<PatientIdentifier> findByPatientUuid(String uuid) {
-        List<PatientIdentifier> patientIdentifiers = this.getCurrentSession().createQuery("from PatientIdentifier pa where pa.patientIdentifierId in (select p.patientIdentifierId "
+        List<PatientIdentifier> patientIdentifiers = this.getCurrentSession().createQuery("from PatientIdentifier pa where pa.patientIdentifierId in (select pi.patientIdentifierId "
                 + "from PatientIdentifier pi,Person pe "
                 + "where pe.uuid = '" + uuid + "' "
-                + "AND p.patientId = pe.personId)").list();
+                + "AND pi.patientId = pe.personId)").list();
         return patientIdentifiers;
     }
     

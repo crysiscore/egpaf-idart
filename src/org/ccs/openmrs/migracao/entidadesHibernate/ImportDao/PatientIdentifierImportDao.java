@@ -99,7 +99,7 @@ implements PatientIdentifierDaoInterface<PatientIdentifier, String> {
 
     @Override
     public List<PatientIdentifier> findAll() {
-        List patientIdentifiers = this.getCurrentSession().createQuery("from PatientIdentifier").list();
+        List patientIdentifiers = this.getCurrentSession().createQuery("from PatientIdentifier pi where pi.patient IN (select p.id from Patient p where p.uuid is null)").list();
         return patientIdentifiers;
     }
 

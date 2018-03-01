@@ -85,6 +85,13 @@ public class PatientIdentifierService {
         return patientIdentifier;
     }
       
+    public List<PatientIdentifier> findAllByNid(String identifier) {
+        patientIdentifierDao.openCurrentSession();
+        List<PatientIdentifier> patientIdentifier = patientIdentifierDao.findAllByNid(identifier);
+        patientIdentifierDao.closeCurrentSession();
+        return patientIdentifier;
+    }
+    
     public void deleteAll() {
         patientIdentifierDao.openCurrentSessionwithTransaction();
         patientIdentifierDao.deleteAll();

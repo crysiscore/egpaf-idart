@@ -102,7 +102,7 @@ public class DadosPaciente {
     }
     
     
-     public void actualizaNidIdart(String nidIdart,String nidOpenmrs,PatientIdentifier identifierIdart){
+     public void actualizaNidIdart(String nidIdart,String nidOpenmrs,String uuidOpenMRS,PatientIdentifier identifierIdart){
          
         PatientIdentifierImportService patientIdentifierImportServiceIdart = new PatientIdentifierImportService();
         PatientImportService importService = new PatientImportService();
@@ -114,7 +114,7 @@ public class DadosPaciente {
         // Verifica a duplicacao de NIDS....
         PatientIdentifier nidDuplicado = patientIdentifierImportServiceIdart.findByIdentifier(nidOpenmrs);
         if(nidDuplicado != null){
-                   if(nidDuplicado.getPatient().getId() != p.getId()){
+            if(nidDuplicado.getPatient().getId() != p.getId()){
             System.err.println(" O Nid "+nidOpenmrs+" por atribuir ao paciente com NID "+nidIdart+" ja existe para um outro paciente"); 
         }else{
             if(identifierIdart != null){
@@ -125,11 +125,12 @@ public class DadosPaciente {
             if(p != null){
                 p.setPatientId(nidOpenmrs);
                 p.setRace("Matched");
+                p.setUuid(uuidOpenMRS);
                 importService.update(p);
             }
             for(PackageDrugInfo drugInfo : drugInfos){
                 drugInfo.setPatientId(nidOpenmrs);
-               drugInfoExportService.update(drugInfo);
+                drugInfoExportService.update(drugInfo);
             }
         }
         }else{
@@ -141,6 +142,7 @@ public class DadosPaciente {
             if(p != null){
                 p.setPatientId(nidOpenmrs);
                 p.setRace("Matched");
+                p.setUuid(uuidOpenMRS);
                 importService.update(p);
             }
             for(PackageDrugInfo drugInfo : drugInfos){

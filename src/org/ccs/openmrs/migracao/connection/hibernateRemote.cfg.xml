@@ -38,6 +38,6 @@
     <mapping class="org.ccs.openmrs.migracao.entidades.PatientProgram"/>
     <mapping class="org.ccs.openmrs.migracao.entidades.ConceptName"/>
     <mapping class="org.ccs.openmrs.migracao.entidades.Visit"/>
-    <mapping class="org.ccs.openmrs.migracao.entidades.Visit"/>
+    <mapping class="org.ccs.openmrs.migracao.entidades.GlobalProperty"/>
   </session-factory>
 </hibernate-configuration>

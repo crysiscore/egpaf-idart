@@ -17,6 +17,7 @@ import org.ccs.openmrs.migracao.entidades.EncounterProvider;
 import org.ccs.openmrs.migracao.entidades.EncounterRole;
 import org.ccs.openmrs.migracao.entidades.EncounterType;
 import org.ccs.openmrs.migracao.entidades.Form;
+import org.ccs.openmrs.migracao.entidades.GlobalProperty;
 import org.ccs.openmrs.migracao.entidades.Location;
 import org.ccs.openmrs.migracao.entidades.Patient;
 import org.ccs.openmrs.migracao.entidades.Person;
@@ -34,6 +35,7 @@ import org.ccs.openmrs.migracao.entidadesHibernate.servicos.EncounterRoleService
 import org.ccs.openmrs.migracao.entidadesHibernate.servicos.EncounterService;
 import org.ccs.openmrs.migracao.entidadesHibernate.servicos.EncounterTypeService;
 import org.ccs.openmrs.migracao.entidadesHibernate.servicos.FormService;
+import org.ccs.openmrs.migracao.entidadesHibernate.servicos.GlobalPropertyService;
 import org.ccs.openmrs.migracao.entidadesHibernate.servicos.LocationService;
 import org.ccs.openmrs.migracao.entidadesHibernate.servicos.ObsService;
 import org.ccs.openmrs.migracao.entidadesHibernate.servicos.PatientIdentifierService;
@@ -87,6 +89,7 @@ class Task1
             VisitService visitService = new VisitService();
             ProviderService providerService = new ProviderService();
             EncounterRoleService encounterRoleService = new EncounterRoleService();
+            GlobalPropertyService globalPropertyService = new GlobalPropertyService();
             LocationService locationService = new LocationService();
             PackageDrugInfoExportService packageDrugInfoExportService = new PackageDrugInfoExportService();
             System.err.println("PROCESSANDO ....");
@@ -112,7 +115,8 @@ class Task1
                     Form form = formService.findById("130");
                     Provider provider = providerService.findById("1");
                     EncounterRole encounterRole = encounterRoleService.findById("1");
-                    Location location = locationService.findById("208");
+                    GlobalProperty globalProperty = globalPropertyService.findByDefaultName();
+                    Location location = locationService.findById(globalProperty.getPropertyValue());
                     List<Concept> conceptsFarmacia = conceptService.findAll();
 
                     String prescricao = "";
@@ -131,7 +135,7 @@ class Task1
                             if (importedPatient != null) {
                                 name = importedPatient.getFirstNames();
                                 surname = importedPatient.getLastname();
-                            }
+                            
 
 //                        if (packageDrugInfo.getPatientFirstName().trim().length() > 4) {
 //                            name = packageDrugInfo.getPatientFirstName().substring(0, 3).replace("'", "");
@@ -195,11 +199,26 @@ class Task1
                             } else {
                                 contanonSend++;
                             }
-                                
                                 System.err.println("**********************************************************************************************************************************************************************************");
                                 System.err.println(" Dispensa do Paciente " + packageDrugInfo.getPatientFirstName() + " " + packageDrugInfo.getPatientLastName() + " com o nid NID " + packageDrugInfo.getPatientId() + " Enviado para o OpenMRS.");
                                 System.err.println("**********************************************************************************************************************************************************************************");
-                            } else {
+                            }else{
+                            contanonSend++;
+                           
+                            System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                                System.err.println("Paciente " + packageDrugInfo.getPatientFirstName() + " " + packageDrugInfo.getPatientLastName() + " com o nid NID " + packageDrugInfo.getPatientId() + " nao foi encontrado no OpenMRS. Verifique o NID no OpenMRS ou Contacte o Administrador");
+                                List<String> listNidsProblematicos = new ArrayList<>();
+                                listNidsProblematicos.add("---------------------------------------------------------------------- ----------------------------------------------------------------");
+                                listNidsProblematicos.add("NID: " + packageDrugInfo.getPatientId());
+                                listNidsProblematicos.add("NOME: " + packageDrugInfo.getPatientFirstName());
+                                listNidsProblematicos.add("APELIDO: " + packageDrugInfo.getPatientLastName());
+                                listNidsProblematicos.add("ERRO: " + " nao foi encontrado no OpenMRS. Verifique o NID no OpenMRS ou Contacte o Administrador");
+                                listNidsProblematicos.add("CAUSA: " + "Verificar se no openmrs o nome,nid,apelido do paciente sao iguais");
+                                rwTextFile.writeSmallTextFile(listNidsProblematicos, logFile);
+                                System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                            }
+                            }else {
+                                contanonSend++;
                                 System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
                                 System.err.println("Paciente " + packageDrugInfo.getPatientFirstName() + " " + packageDrugInfo.getPatientLastName() + " com o nid NID " + packageDrugInfo.getPatientId() + " nao foi encontrado no OpenMRS. Verifique o NID no OpenMRS ou Contacte o Administrador");
                                 List<String> listNidsProblematicos = new ArrayList<>();

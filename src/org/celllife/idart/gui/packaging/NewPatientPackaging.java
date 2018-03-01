@@ -2901,6 +2901,7 @@ if ( newPack.getPrescription().getReasonForUpdate().contains("nici") && conn.jaT
                                 pditemp.setPrescriptionDuration(allPackagedDrugsList.get(a).getPrescriptionDuration()); 
                                 pditemp.setDateExpectedString(allPackagedDrugsList.get(a).getDateExpectedString());
                                 pditemp.setPickupDate(theCal.getTime());
+                                pditemp.setNotes("Exported");
                                 allPackagedDrugsListTemp.add(pditemp);
                         }
                         savePackageAndPackagedDrugsWhithQty0(true, allPackagedDrugsListTemp,prescription,i);

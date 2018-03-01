@@ -1,25 +1,23 @@
 /*
- * Decompiled with CFR 0_114.
- * 
- * Could not load the following classes:
- *  org.hibernate.Query
- *  org.hibernate.Session
- *  org.hibernate.Transaction
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package org.ccs.openmrs.migracao.entidadesHibernate.dao;
 
 import java.io.Serializable;
-import java.sql.Connection;
 import java.util.List;
 import org.ccs.openmrs.migracao.connection.hibernateConection;
-import org.ccs.openmrs.migracao.entidades.Person;
-import org.ccs.openmrs.migracao.entidadesHibernate.Interfaces.PersonDaoInterface;
-import org.hibernate.Query;
+import org.ccs.openmrs.migracao.entidades.GlobalProperty;
+import org.ccs.openmrs.migracao.entidadesHibernate.Interfaces.GlobalPropertyDaoInterface;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class PersonDao
-implements PersonDaoInterface<Person, String> {
+/**
+ *
+ * @author colaco
+ */
+public class GlobalPropertyDao implements GlobalPropertyDaoInterface<GlobalProperty, String> {
     public Session currentSession;
     public Transaction currentTransaction;
 
@@ -60,39 +58,42 @@ implements PersonDaoInterface<Person, String> {
     }
 
     @Override
-    public void persist(Person entity) {
+    public void persist(GlobalProperty entity) {
         this.getCurrentSession().save((Object)entity);
     }
 
     @Override
-    public void update(Person entity) {
+    public void update(GlobalProperty entity) {
         this.getCurrentSession().update((Object)entity);
     }
 
     @Override
-    public Person findById(String id) {
-        Person person = (Person)this.getCurrentSession().get((Class)Person.class, (Serializable)Integer.parseInt(id));
-      //  Person person = (Person)this.getCurrentSession().createQuery("from Person p where p.personId = " + Integer.parseInt(id) ).uniqueResult();
-        return person;
+    public GlobalProperty findById(String id) {
+        GlobalProperty globalProperty = (GlobalProperty)this.getCurrentSession().get((Class)GlobalProperty.class, (Serializable)Integer.valueOf(Integer.parseInt(id)));
+        return globalProperty;
+    }
+
+    public GlobalProperty findByDefaultName() {
+        GlobalProperty globalProperty = (GlobalProperty)this.getCurrentSession().createQuery("from GlobalProperty gp where gp.property = 'default_location'").uniqueResult();
+        return globalProperty;
     }
 
     @Override
-    public void delete(Person entity) {
+    public void delete(GlobalProperty entity) {
         this.getCurrentSession().delete((Object)entity);
     }
 
     @Override
-    public List<Person> findAll() {
-        List persons = this.getCurrentSession().createQuery("from Person").list();
-        return persons;
+    public List<GlobalProperty> findAll() {
+        List globalPropertys = this.getCurrentSession().createQuery("from GlobalProperty").list();
+        return globalPropertys;
     }
 
     @Override
     public void deleteAll() {
-        List<Person> entityList = this.findAll();
-        for (Person entity : entityList) {
+        List<GlobalProperty> entityList = this.findAll();
+        for (GlobalProperty entity : entityList) {
             this.delete(entity);
         }
     }
 }
-
