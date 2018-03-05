@@ -1648,11 +1648,11 @@ ConexaoJDBC conn=new ConexaoJDBC();
 	 * @return boolean
 	 */
 	private boolean drugQuantitiesOkay() {
-		boolean quantitiesEntered = false;
+		boolean quantitiesEntered = true;
 		for (int i = 0; i < tblPrescriptionInfo.getItemCount(); i++) {
 			TableItem ti = tblPrescriptionInfo.getItem(i);
-			if (!ti.getText(3).equals("0")) {
-				quantitiesEntered = true;
+			if (ti.getText(2).equals("0")) {
+				quantitiesEntered = false;
 			}
 		}
 		return quantitiesEntered;
@@ -1699,6 +1699,7 @@ ConexaoJDBC conn=new ConexaoJDBC();
 	private boolean fieldsOkay(java.util.List<PackageDrugInfo> allPackagedDrugsList) {
 		Patient patient = PatientManager.getPatient(getHSession(), localPatient.getId());
 		
+                
 		if (patient == null || txtPatientId.getText().equals("")) {
 			showMessage(MessageDialog.ERROR, "Nenhum Paciente Seleccionado",
 					"Nenhum Paciente foi Seleccionado. Precisa de seleccionar um.");
@@ -1706,8 +1707,8 @@ ConexaoJDBC conn=new ConexaoJDBC();
 		} 
 		
 		if (!drugQuantitiesOkay()) {
-			showMessage(MessageDialog.ERROR, "Nenhuma quantidade de medicamento foi Dispensado",
-					"Você não inseriu quantidades para qualquer um dos medicamentos.");
+			//showMessage(MessageDialog.ERROR, "Nenhuma quantidade de medicamento foi Dispensado","Você não inseriu quantidades para qualquer um dos medicamentos.");
+                        showMessage(MessageDialog.ERROR, "Nenhuma quantidade de medicamento foi Dispensada","NÃO PODE DISPENSAR MEDICAMNETO COM STOCK VAZIO, POR FAVOR ACTUALIZE O STOCK PARA EFECTUAR A DISPENSA.");
 			return false;
 		} 
 		
