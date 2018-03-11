@@ -35,6 +35,7 @@ import model.manager.AdministrationManager;
 import model.manager.PackageManager;
 import model.manager.PatientManager;
 import model.manager.StudyManager;
+import model.manager.TemporaryRecordsManager;
 import model.manager.reports.PatientHistoryReport;
 
 import org.apache.log4j.Logger;
@@ -53,6 +54,7 @@ import org.celllife.idart.database.hibernate.Patient;
 import org.celllife.idart.database.hibernate.PatientAttribute;
 import org.celllife.idart.database.hibernate.PatientIdentifier;
 import org.celllife.idart.database.hibernate.Prescription;
+import org.celllife.idart.database.hibernate.tmp.PackageDrugInfo;
 import org.celllife.idart.database.hibernate.util.HibernateUtil;
 import org.celllife.idart.gui.misc.iDARTChangeListener;
 import org.celllife.idart.gui.patient.tabs.AddressTab;
@@ -1308,36 +1310,16 @@ public class AddPatient extends GenericFormGui implements iDARTChangeListener {
             oPatient = PatientManager.getPatient(sess, localPatient
                     .getId());
             PatientManager.savePatient(getHSession(), localPatient);
-
-            System.out.println(" local patient " + localPatient.getPatientId() + "  " + localPatient.getFirstNames());
-            System.out.println(" local patient " + localPatient.getPatientId() + "  " + localPatient.getFirstNames());
-
-            //ConexaoODBC conn=new ConexaoODBC();
-            ConexaoJDBC conn2 = new ConexaoJDBC();
-
-//			if(!conn.existNid(localPatient.getPatientId()))
-//			{
-//				//insere paciente no sesp
-//				conn.inserePaciente(localPatient.getPatientId(), localPatient.getFirstNames(), localPatient.getLastname(), new Date(), localPatient.getDateOfBirth(), localPatient.getSex(), new Date(), localPatient.getCellphone());
-//				
-//				
-//			}
-//insere pacientes no idart
-            try {
-
-                //conn2.inserPacienteIdart(localPatient.getPatientId(), localPatient.getFirstNames(), localPatient.getLastname(), new Date());
-                if (oPatient != null) { //New Patient
-                    conn2.updatePatientDetailsOnDispense(localPatient.getPatientId(), localPatient.getFirstNames(), localPatient.getLastname(), oPatient.getPatientId(), oPatient.getFirstNames(), oPatient.getLastname());
-
-                }
-            } catch (SQLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-
+            
+              // update Packagedruginfos : Unsubmitted  records(Packagedruginfotmp) to openmrs  due to patientid mismatch
+                        List<PackageDrugInfo> pdiList = TemporaryRecordsManager.getOpenmrsUnsubmittedPackageDrugInfos(getHSession(), oPatient);
+                        if(!pdiList.isEmpty()){
+                            TemporaryRecordsManager.updateOpenmrsUnsubmittedPackageDrugInfos(getHSession(), pdiList, localPatient);
+                        }                 
+                        else{
+                         // No records to update in PackagedruginfoTmp
+                         // Do nothing
+                        }
             getHSession().flush();
             tx.commit();
 

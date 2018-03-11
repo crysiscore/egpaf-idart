@@ -6,6 +6,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.celllife.idart.database.hibernate.PackagedDrugs;
 import org.celllife.idart.database.hibernate.Packages;
+import org.celllife.idart.database.hibernate.Patient;
 import org.celllife.idart.database.hibernate.PillCount;
 import org.celllife.idart.database.hibernate.tmp.AdherenceRecord;
 import org.celllife.idart.database.hibernate.tmp.DeletedItem;
@@ -294,5 +295,48 @@ public class TemporaryRecordsManager {
 		session.createQuery("delete PackageDrugInfo where packageId = :id")
 			.setString("id", pack.getPackageId())
 			.executeUpdate();
+	}
+        
+        /**
+	 * Method getOpenmrsUnsubmittedPackageDrugInfos.
+	 * 
+	 * @param sess
+	 *            Session
+         * @param pat
+         *            Patient
+ 	 * @return List<PackageDrugInfo>
+	 * @throws HibernateException
+	 */
+	@SuppressWarnings("unchecked")
+	public static List<PackageDrugInfo> getOpenmrsUnsubmittedPackageDrugInfos(
+			Session sess, Patient pat) throws HibernateException {
+           String query ="from PackageDrugInfo as pd where pd.notes = ''  " +
+		"and pd.patientId = '" + pat.getPatientId()+"'";
+        
+		 List<PackageDrugInfo> pdiList = sess
+		.createQuery(query).list();
+		return pdiList;
+	}
+         /**
+	 * Method updateOpenmrsUnsubmittedPackageDrugInfos.
+	 * 
+     * @param s
+     * @param pdList
+         * @param pat
+         *            Patient
+ 	 * @return List<PackageDrugInfo>
+	 * @throws HibernateException
+	 */
+        
+        public static void updateOpenmrsUnsubmittedPackageDrugInfos(Session s,
+			List<PackageDrugInfo> pdList, Patient pat) throws HibernateException {
+            
+            		for (PackageDrugInfo pdi : pdList) {
+			     log.info("Updating  PackageDrugInfo for patient: "+ pdi.getPatientId());
+			     pdi.setPatientId(pat.getPatientId());
+                             pdi.setPatientLastName(pat.getLastname());
+                             pdi.setPatientFirstName(pat.getFirstNames());                          
+                              
+		}
 	}
 }
