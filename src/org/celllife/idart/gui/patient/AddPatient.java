@@ -1312,14 +1312,20 @@ public class AddPatient extends GenericFormGui implements iDARTChangeListener {
             PatientManager.savePatient(getHSession(), localPatient);
             
               // update Packagedruginfos : Unsubmitted  records(Packagedruginfotmp) to openmrs  due to patientid mismatch
-                        List<PackageDrugInfo> pdiList = TemporaryRecordsManager.getOpenmrsUnsubmittedPackageDrugInfos(getHSession(), oPatient);
+              // se for paciente em transito  ignora
+              if( !(oPatient == null)){
+                  
+                     List<PackageDrugInfo> pdiList = TemporaryRecordsManager.getOpenmrsUnsubmittedPackageDrugInfos(getHSession(), oPatient);
                         if(!pdiList.isEmpty()){
                             TemporaryRecordsManager.updateOpenmrsUnsubmittedPackageDrugInfos(getHSession(), pdiList, localPatient);
                         }                 
                         else{
                          // No records to update in PackagedruginfoTmp
                          // Do nothing
-                        }
+                        }          
+              
+              }
+                     
             getHSession().flush();
             tx.commit();
 
