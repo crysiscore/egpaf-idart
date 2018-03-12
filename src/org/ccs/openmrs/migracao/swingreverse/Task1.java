@@ -157,7 +157,7 @@ class Task1
                             patientIdentifierOpenmrs = identifierDao.findByPatientUuid(importedPatient.getUuid());
 
                             Patient patient = null;
-                            if (!patientIdentifierOpenmrs.isEmpty()) {
+                            if(!patientIdentifierOpenmrs.isEmpty()) {
                                 patient = patientExportService.findById(patientIdentifierOpenmrs.get(0).getPatientId().getPatientId() + "");
                                 // patient = (Patient)this.getCurrentSession().createQuery("from Patient p where p.patientId = " + patientIdentifier.getPatientId().getPatientId()).uniqueResult();
                                 
