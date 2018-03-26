@@ -51,7 +51,7 @@ where id = $P{clinicid}]]>
 		<initialValueExpression><![CDATA["test"]]></initialValueExpression>
 	</variable>
 	<variable name="datainicial_1" class="java.lang.Integer" calculation="DistinctCount">
-		<variableExpression><![CDATA[$F{datainicial}]]></variableExpression>
+		<variableExpression><![CDATA[]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -132,7 +132,7 @@ where id = $P{clinicid}]]>
 				<textElement verticalAlignment="Middle" rotation="None" lineSpacing="Single">
 					<font fontName="Arial" size="10" isBold="true" isItalic="true" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-BoldOblique" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{maxDays}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$P{maxDays}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement key="tf_date-5" mode="Opaque" x="416" y="124" width="25" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -193,7 +193,7 @@ where id = $P{clinicid}]]>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{minDays}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$P{minDays}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement key="tf_date-5" mode="Opaque" x="530" y="124" width="88" height="15" forecolor="#000000" backcolor="#FFFFFF"/>

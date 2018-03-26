@@ -48,6 +48,7 @@ import org.celllife.idart.gui.reportParameters.EpisodesStartedOrEndedReportGUI;
 import org.celllife.idart.gui.reportParameters.FilaGeralReport;
 import org.celllife.idart.gui.reportParameters.MissedAppointments;
 import org.celllife.idart.gui.reportParameters.MissedAppointmentsDT;
+import org.celllife.idart.gui.reportParameters.MissedAppointmentsNew;
 import org.celllife.idart.gui.reportParameters.MmiaReportMISAU;
 import org.celllife.idart.gui.reportParameters.MonthlyReceiptsAndIssues;
 import org.celllife.idart.gui.reportParameters.MonthlyStockReceipt;
@@ -498,7 +499,8 @@ private void createGrpClinicManagementReports() {
 		reportGUIs.put(
 				GenericReportGuiInterface.REPORT_PATIENTS_EXPECTED_ON_A_DAY,
 				new PatientsExpected(getShell(), false));
-
+                reportGUIs.put(GenericReportGuiInterface.REPORT_MISSED_APPOINTMENTS_NEW,
+				new MissedAppointmentsNew(getShell(), false));
 		reportGUIs.put(GenericReportGuiInterface.REPORT_MISSED_APPOINTMENTS,
 				new MissedAppointments(getShell(), false));
                 
