@@ -411,7 +411,31 @@ public class PatientManager {
 			return new Episode();
 		return episodes.get(0);
 	}
-
+ 	/**
+	 * Return a patients last Episode or a new Episode if the patient does not
+	 * have any Episodes.
+	 * 
+     * @param session
+	 * @param patient
+	 * @return Last Episode for patient p
+	 */
+        public static Episode getLastEpisode (Session session, String patientid) throws HibernateException{
+            
+            @SuppressWarnings("unchecked")
+		List<String> patientLastEpisode = session
+				.createSQLQuery(
+"select  v.startreason  from ( select t.startreason,t.patient, t.maxtime from  (select patient, startreason , max(startdate) as maxtime "
+        + " from episode group by patient,startreason ) t inner join episode ep on ep.patient=t.patient and ep.startdate = t.maxtime ) v " 
+        + "inner join patient pat on pat.id = v.patient  and pat.patientid = :identifier ")
+				.setString("identifier", patientid).list();
+                if(patientLastEpisode.isEmpty()){
+                 return new Episode();
+                }
+		Episode e = new Episode();
+                e.setStartReason(patientLastEpisode.get(0));
+                return e;
+        
+        }
 	/**
 	 * Method getLastPackageOnScript.
 	 * 
