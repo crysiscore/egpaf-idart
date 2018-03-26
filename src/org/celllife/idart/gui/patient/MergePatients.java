@@ -21,14 +21,17 @@ package org.celllife.idart.gui.patient;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
 import model.manager.PackageManager;
 import model.manager.PatientManager;
+import model.manager.TemporaryRecordsManager;
 import model.manager.reports.PatientHistoryReport;
 
 import org.apache.log4j.Logger;
@@ -40,6 +43,7 @@ import org.celllife.idart.database.hibernate.Patient;
 import org.celllife.idart.database.hibernate.PatientIdentifier;
 import org.celllife.idart.database.hibernate.Pregnancy;
 import org.celllife.idart.database.hibernate.Prescription;
+import org.celllife.idart.database.hibernate.tmp.PackageDrugInfo;
 import org.celllife.idart.database.hibernate.util.HibernateUtil;
 import org.celllife.idart.gui.platform.GenericFormGui;
 import org.celllife.idart.gui.reportParameters.PatientHistory;
@@ -1449,6 +1453,19 @@ public class MergePatients extends GenericFormGui {
 			PatientManager.savePatient(getHSession(), leftPatient);
 			PatientManager.deleteSecondaryPatient(getHSession(), rightPatient);
 
+                        // update Packagedruginfos : Unsubmitted  records m  to openmrs  due to patientid mismatch
+                        List<PackageDrugInfo> pdiList = TemporaryRecordsManager.getOpenmrsUnsubmittedPackageDrugInfos(getHSession(), rightPatient);
+       
+                        if(!pdiList.isEmpty()){
+                           
+                            TemporaryRecordsManager.updateOpenmrsUnsubmittedPackageDrugInfos(getHSession(), pdiList, leftPatient);
+                          
+                           }                 
+                        else{
+                         // No records to update in PackagedruginfoTmp
+                         // Do nothing
+                        }
+                        
 			getHSession().flush();
 			tx.commit();
 			return true;

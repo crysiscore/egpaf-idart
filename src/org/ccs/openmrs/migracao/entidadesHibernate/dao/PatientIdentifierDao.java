@@ -11,6 +11,7 @@ package org.ccs.openmrs.migracao.entidadesHibernate.dao;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.util.List;
+import java.util.Locale;
 import org.ccs.openmrs.migracao.connection.hibernateConection;
 import org.ccs.openmrs.migracao.entidades.PatientIdentifier;
 import org.ccs.openmrs.migracao.entidadesHibernate.Interfaces.PatientIdentifierDaoInterface;
@@ -89,7 +90,7 @@ public class PatientIdentifierDao
                 + "from PatientIdentifier p,PersonName pn "
                 + "where p.identifier like '%" + nid+"' "
                 + // "AND pn.givenName like '%"+name+"%' "+
-                "AND pn.familyName like '%" + surname + "%' "
+                "AND LOWER(TRIM(pn.familyName)) like '%" + surname.trim().toLowerCase(Locale.ENGLISH) + "%' "
                 + "AND p.patientId = pn.personId)").list();
 
         return patientIdentifiers;
@@ -114,9 +115,9 @@ public class PatientIdentifierDao
     public List<PatientIdentifier> findByNidAndNameAndSurname(String nid, String name, String surname) {
         List<PatientIdentifier> patientIdentifiers = this.getCurrentSession().createQuery("from PatientIdentifier pa where pa.patientIdentifierId in (select p.patientIdentifierId "
                 + "from PatientIdentifier p,PersonName pn "
-                + "where p.identifier = '" + nid + "' "
+                + "where p.identifier = '" + nid.trim() + "' "
                 + //     "AND pn.givenName like '%"+name+"%' "+
-                "AND pn.familyName like '%" + surname + "%' "
+            "AND LOWER(TRIM(pn.familyName)) like '%" + surname.trim().toLowerCase(Locale.ENGLISH) + "%' "
                 + "AND p.patientId = pn.personId)").list();
         return patientIdentifiers;
     }
