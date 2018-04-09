@@ -3574,13 +3574,12 @@ boolean jatemFilaInicio=false;
  */
 public int totalPacientesNovosDispensaTrimestral(String startDate, String endDate) throws ClassNotFoundException, SQLException{
 
-      String query=" select sum(dispensatrimestral) "
-              + "from prescription where reasonforupdate="+ "\'"+"Inicia"+"\'"+" OR reasonforupdate="+ "\'"+"Novo"+"\'"+" "
-              + "and "
-              	+ "  date::timestamp::date >=  "
-			+ "\'"+startDate+"\'"
-			+ "AND date::timestamp::date <= "
-			+ " \'"+endDate+"\'";
+      String query= " SELECT count(*) soma " +
+                          " FROM ( SELECT patient, dispensatrimestral,min(date) date " +
+                                        "FROM prescription " +
+                                        "WHERE dispensatrimestral=1 " +
+                                        "group by  patient, dispensatrimestral  having count(dispensatrimestral) < 2 ) v " +
+                    " WHERE   v.date::timestamp::date BETWEEN " + "\'"+startDate+"\'" + " AND " + " \'"+endDate+"\'";
      
 	int total=0;
 	conecta(iDartProperties.hibernateUsername, iDartProperties.hibernatePassword);
@@ -3588,7 +3587,7 @@ public int totalPacientesNovosDispensaTrimestral(String startDate, String endDat
 		if (rs != null)
 	        {      
                    rs.next();
-	           total=rs.getInt("sum");
+	           total=rs.getInt("soma");
  	           rs.close(); //
 	        }
     
@@ -3607,13 +3606,12 @@ public int totalPacientesNovosDispensaTrimestral(String startDate, String endDat
  */
 public int totalPacientesManterDispensaTrimestral(String startDate, String endDate) throws ClassNotFoundException, SQLException{
 
-      String query=" select sum(dispensatrimestral) "
-              + "from prescription where reasonforupdate like "+ "\'"+"Man%"+"\'"+" "
-              + "and "
-              	+ "  date::timestamp::date >=  "
-			+ "\'"+startDate+"\'"
-			+ "AND date::timestamp::date <= "
-			+ " \'"+endDate+"\'";
+      String query= " SELECT count(*) soma " +
+                    " FROM ( SELECT patient, dispensatrimestral, max(date) date " +
+                    " FROM prescription " +
+                    " WHERE dispensatrimestral=1 " +
+                    " group by  patient, dispensatrimestral  having count(dispensatrimestral) > 1 ) v " +
+                    " WHERE   v.date::timestamp::date BETWEEN " + "\'"+startDate+"\'" + " AND " + " \'"+endDate+"\'";
      
 	int total=0;
 	conecta(iDartProperties.hibernateUsername, iDartProperties.hibernatePassword);
@@ -3621,7 +3619,7 @@ public int totalPacientesManterDispensaTrimestral(String startDate, String endDa
 		if (rs != null)
 	        {          
 	           rs.next();
-	           total=rs.getInt("sum");
+	           total=rs.getInt("soma");
  	           rs.close(); //
 	        }
     

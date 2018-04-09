@@ -74,7 +74,7 @@ public class DispensaTrimestral extends AbstractJasperReport {
             map.put("facilityName", LocalObjects.currentClinic.getClinicName());
             map.put("dateStart",  theStartDate);
             map.put("dateEnd", theEndDate);
-            
+            map.put("path", getReportPath());
            // map.put("dataelaboracao", new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
 
         } catch (ClassNotFoundException e) {

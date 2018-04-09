@@ -710,7 +710,7 @@ public class AddPatient extends GenericFormGui implements iDARTChangeListener {
         Label lblEpisodeStart = new Label(grpEpisodes, SWT.NONE);
         lblEpisodeStart.setBounds(new Rectangle(16, 45 + spacer, 84, 20));
         spacer += more;
-        lblEpisodeStart.setText(Messages.getString("patient.label.episode.start")); //$NON-NLS-1$
+        lblEpisodeStart.setText(Messages.getString("patient.label.episode.start")); //$NON-NLS-1$ 
         lblEpisodeStart.setFont(ResourceUtils.getFont(iDartFont.VERASANS_8));
 
         cmbEpisodeStartReason = new CCombo(grpEpisodes, SWT.BORDER);
@@ -1831,7 +1831,7 @@ public class AddPatient extends GenericFormGui implements iDARTChangeListener {
 
         if (isAddnotUpdate) {
             btnEpisodeStartDate.setDate(new Date());
-            cmbEpisodeStartReason.setText(Episode.REASON_NEW_PATIENT);
+            cmbEpisodeStartReason.setText(Episode.REASON_PATIENT_TRANSIT);
             lblPastEpisodeTitle.setText(Messages.getString("patient.label.noPreviousEpisodes")); //$NON-NLS-1$
         } else if (PatientManager.hasPreviousEpisodes(localPatient)) {
             btnEditEpisodes.setEnabled(true);

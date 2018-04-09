@@ -138,6 +138,7 @@ public class PatientSearch extends GenericOthersGui {
 	}
 	
 	private void updateTable(){
+            
 		tblViewer.setInput(identifiers);
 		selectFirstExactMatch();
 	}
@@ -231,11 +232,17 @@ public class PatientSearch extends GenericOthersGui {
 							if (searchBar.isDisposed()){
 								return;
 							}
-							searchBar.setEnabled(false);
+                                                        try {   // sometime the widget dispose
+                                                         searchBar.setEnabled(false);
 							loadPatientIdentifiers();
 							updateTable();
 							searchBar.setEnabled(true);
 							searchBar.setFocus();
+                                                        
+                                                    } catch (org.eclipse.swt.SWTException e) {
+                                                        return;
+                                                    }
+							
 						}
 					};
 				}
