@@ -25,7 +25,7 @@
 		<defaultValueExpression><![CDATA[new Boolean(true)]]></defaultValueExpression>
 	</parameter>
 	<parameter name="path" class="java.lang.String">
-		<defaultValueExpression><![CDATA["C://Users//colaco//Documents//Projectos CCS//Sub//idart//idart//Reports"]]></defaultValueExpression>
+		<defaultValueExpression></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[select

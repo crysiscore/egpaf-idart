@@ -2270,7 +2270,7 @@ public class AddPrescription extends GenericFormGui implements
         // .parseInt(cmbClinicalStage.getText()));
         // }
         // duration
-        if (cmbDuration.getText().endsWith("semanas") || cmbDuration.getText().endsWith("weeks")) {
+        if (cmbDuration.getText().contains("semana") || cmbDuration.getText().endsWith("weeks")) {
             String[] s = cmbDuration.getText().split(" ");
 
             localPrescription.setDuration(Integer.parseInt(s[0]));

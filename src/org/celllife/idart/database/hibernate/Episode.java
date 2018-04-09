@@ -20,6 +20,7 @@ public class Episode {
          */
 	//public static final String REASON_NEW_PATIENT = "Paciente em Transito";
         public static final String REASON_NEW_PATIENT = "Novo Paciente";
+        public static final String REASON_PATIENT_TRANSIT = "Paciente em Transito";
 
 	@Id
 	@GeneratedValue
