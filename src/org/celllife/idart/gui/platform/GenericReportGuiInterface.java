@@ -17,6 +17,7 @@ public interface GenericReportGuiInterface {
 	static String REPORT_PEPFAR = Messages.getString("reports.pepfar"); //$NON-NLS-1$
 	static String REPORT_MISSED_APPOINTMENTS = Messages.getString("reports.missedAppointments");  //$NON-NLS-1$
         static String REPORT_MISSED_APPOINTMENTS_NEW = Messages.getString("reports.missedAppointmentsNew");  //$NON-NLS-1$
+        static String REPORT_MISSED_APPOINTMENTS_APSS = Messages.getString("reports.missedAppointmentsApss");  //$NON-NLS-1$
 	static String REPORT_DAILY_DISPENSING_TOTALS = Messages.getString("reports.dailyDispensingTotals");  //$NON-NLS-1$
 	static String REPORT_TRANSACTION_LOG = Messages.getString("reports.transactionLog");  //$NON-NLS-1$
 	static String REPORT_PRESCRIBING_DOCTORS = Messages.getString("reports.prescribingDoctors");  //$NON-NLS-1$
