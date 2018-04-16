@@ -48,7 +48,7 @@ END
   AS datelostfollowup,
 
   CASE
-    WHEN (app.visitdate::date - app.appointmentdate::date) > 0 THEN app.visitdate::date
+    WHEN (app.visitdate::date - app.appointmentdate::date) < 0 THEN app.visitdate::date
     ELSE null
   END
   AS datereturn,
@@ -60,7 +60,7 @@ and pi.value = pat.patientid
 and idt.id = pi.type_id
 and $P{clinicid} = pat.clinic
 and app.appointmentDate is not null
-and (app.visitDate is null OR (app.visitdate::date - app.appointmentdate::date)::integer > 0 )
+and (app.visitDate is null)
 and ($P{date}::date - app.appointmentDate::date) between $P{minDays} and $P{maxDays}
 and exists (select prescription.id
 from prescription

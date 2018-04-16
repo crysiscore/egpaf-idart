@@ -50,6 +50,15 @@ END
     ELSE null
   END
   AS datereturn,
+  pat.address1 ||
+case when ((pat.address2 is null)or(pat.address2 like ''))  then ''
+else ',' || pat.address2
+end
+||
+case when ((pat.address3 is null)or(pat.address3 like '')) then ''
+else ',' || pat.address3
+end
+as address,
 max(app.appointmentDate) as ultimaData
 from patient as pat, appointment as app, patientidentifier as pi,identifiertype as idt
 where app.patient = pat.id
@@ -58,7 +67,7 @@ and pi.value = pat.patientid
 and idt.id = pi.type_id
 and $P{clinicid} = pat.clinic
 and app.appointmentDate is not null
-and (app.visitDate is null OR (app.visitdate::date - app.appointmentdate::date)::integer > 0 )
+and (app.visitDate is null )
 and (app.appointmentDate::date) between ($P{date}::date - INTERVAL '90 days') and $P{date}::date
 and exists (select prescription.id
 from prescription
@@ -67,7 +76,7 @@ and prescription.dispensatrimestral = 1
 and (($P{date} between prescription.date and prescription.endDate)or(($P{date} > prescription.date)) and (prescription.endDate is null)))
 and exists (select id from episode where episode.patient = pat.id
 and (($P{date} between episode.startdate and episode.stopdate)or(($P{date} > episode.startdate)) and (episode.stopdate is null)))
-group by 1,2,3,4,5,6,7,8,9,10
+group by 1,2,3,4,5,6,7,8,9,10,11
 order by dayssinceexpected]]>
 	</queryString>
 	<field name="patid" class="java.lang.String"/>
@@ -80,6 +89,7 @@ order by dayssinceexpected]]>
 	<field name="dayssinceexpected" class="java.lang.Integer"/>
 	<field name="datelostfollowup" class="java.sql.Timestamp"/>
 	<field name="datereturn" class="java.sql.Date"/>
+	<field name="address" class="java.lang.String"/>
 	<field name="ultimadata" class="java.sql.Timestamp"/>
 	<sortField name="dayssinceexpected"/>
 	<background>
