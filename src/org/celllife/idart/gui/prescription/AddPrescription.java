@@ -163,7 +163,11 @@ public class AddPrescription extends GenericFormGui implements
     //lbl Dispensa Trimestral
     private Label lblDispensaTrimestral;
     private CCombo cmbDispensaTristral;
-    private Label lblInfoDispensaTrimestral;
+    //lbl for tipo dispensa trimestral
+
+    // Tipo de Dispensa trimestral(Novo na DT, Manutencao)
+    private CCombo cmbTipoDispensaTristral;
+    private Label lblTipoDispensaTrimestral;
 
     //Data de inicio noutro serviço
     private DateButton btnDataInicioNoutroServico;
@@ -374,7 +378,7 @@ public class AddPrescription extends GenericFormGui implements
 
         // grpPatientID
         grpPatientID = new Group(getShell(), SWT.NONE);
-        grpPatientID.setBounds(new Rectangle(235, 68, 430, 140));
+        grpPatientID.setBounds(new Rectangle(235, 68, 480, 140));
 
         // Patient ID
         Label lblPatientId = new Label(grpPatientID, SWT.NONE);
@@ -397,7 +401,7 @@ public class AddPrescription extends GenericFormGui implements
 
         btnSearch = new Button(grpPatientID, SWT.NONE);
         btnSearch.setFont(ResourceUtils.getFont(iDartFont.VERASANS_8));
-        btnSearch.setBounds(new Rectangle(320, 4, 105, 30));
+        btnSearch.setBounds(new Rectangle(320, 9, 105, 30));
         btnSearch.setText("Procurar Paciente");
         btnSearch
                 .setToolTipText("Pressione este botão para procurar um paciente existente");
@@ -406,8 +410,8 @@ public class AddPrescription extends GenericFormGui implements
                     @Override
                     public void widgetSelected(
                             org.eclipse.swt.events.SelectionEvent e) {
-                        cmdSearchWidgetSelected();
-                    }
+                                cmdSearchWidgetSelected();
+                            }
                 });
 
         btnEkapaSearch = new Button(grpPatientID, SWT.NONE);
@@ -429,8 +433,8 @@ public class AddPrescription extends GenericFormGui implements
                     @Override
                     public void widgetSelected(
                             org.eclipse.swt.events.SelectionEvent e) {
-                        cmdEkapaSearchWidgetSelected();
-                    }
+                                cmdEkapaSearchWidgetSelected();
+                            }
                 });
 
         if (thePatient != null) {
@@ -527,16 +531,40 @@ public class AddPrescription extends GenericFormGui implements
         cmbDispensaTristral.setBackground(ResourceUtils.getColor(iDartColor.WHITE));
         CommonObjects.populateDispensaTrimestral(getHSession(), cmbDispensaTristral);
 
-        // Not sure if we need this
-//	cmbMotivoMudanca.addFocusListener(new FocusAdapter() {
-//		@Override
-//		public void focusGained(FocusEvent e) {
-//			cmbMotivoMudanca.removeAll();
-//			CommonObjects.populateMotivoMudanca(getHSession(), cmbMotivoMudanca, false);
-//			cmbMotivoMudanca.setVisibleItemCount(Math.min(
-//					cmbMotivoMudanca.getItemCount(), 25));
-//		}
-//	});
+        lblTipoDispensaTrimestral = new Label(grpPatientID, SWT.NONE);
+        lblTipoDispensaTrimestral.setBounds(new Rectangle(320, 116, 50, 20));
+        lblTipoDispensaTrimestral.setFont(ResourceUtils.getFont(iDartFont.VERASANS_8));
+        lblTipoDispensaTrimestral.setText("* Tipo DT:");
+
+        cmbTipoDispensaTristral = new CCombo(grpPatientID, SWT.BORDER | SWT.READ_ONLY);
+        cmbTipoDispensaTristral.setBounds(new Rectangle(370, 116, 100, 20));
+        cmbTipoDispensaTristral.setEditable(true);
+        cmbTipoDispensaTristral.setFont(ResourceUtils.getFont(iDartFont.VERASANS_8));
+        cmbTipoDispensaTristral.setBackground(ResourceUtils.getColor(iDartColor.WHITE));
+        cmbTipoDispensaTristral.setEnabled(true);
+
+        //POPULA combo dispensa trimestral
+        cmbTipoDispensaTristral.setBackground(ResourceUtils.getColor(iDartColor.WHITE));
+        CommonObjects.populateTipoDispensaTrimestral(getHSession(), cmbTipoDispensaTristral);
+
+        //By fchaguala, Abril 2018
+        cmbDispensaTristral.addSelectionListener(new SelectionListener() {
+            @Override
+            public void widgetSelected(SelectionEvent arg0) {
+                // TODO Auto-generated method stub
+                if (cmbDispensaTristral.getText().equals("Sim")) {
+                    lblTipoDispensaTrimestral.setVisible(true);
+                    cmbTipoDispensaTristral.setVisible(true);
+                } else {
+                    lblTipoDispensaTrimestral.setVisible(false);
+                    cmbTipoDispensaTristral.setVisible(false);
+                }
+            }
+
+            @Override
+            public void widgetDefaultSelected(SelectionEvent arg0) {}
+        });
+
         cmbMotivoMudanca = new CCombo(grpPatientID, SWT.BORDER | SWT.READ_ONLY);
         cmbMotivoMudanca.setBounds(new Rectangle(160, 90, 150, 20));
         cmbMotivoMudanca.setEditable(false);
@@ -757,8 +785,8 @@ public class AddPrescription extends GenericFormGui implements
                     @Override
                     public void widgetSelected(
                             org.eclipse.swt.events.SelectionEvent e) {
-                        cmdAddDoctorWidgetSelected();
-                    }
+                                cmdAddDoctorWidgetSelected();
+                            }
                 });
         btnAddDoctor.setToolTipText("Pressionar este botão para adicionar um novo clínico");
 
@@ -898,8 +926,8 @@ public class AddPrescription extends GenericFormGui implements
                     @Override
                     public void widgetSelected(
                             org.eclipse.swt.events.SelectionEvent e) {
-                        cmdAddDrugWidgetSelected();
-                    }
+                                cmdAddDrugWidgetSelected();
+                            }
                 });
         btnAddDrug.setFont(ResourceUtils.getFont(iDartFont.VERASANS_8));
 
@@ -913,8 +941,8 @@ public class AddPrescription extends GenericFormGui implements
                     @Override
                     public void widgetSelected(
                             org.eclipse.swt.events.SelectionEvent e) {
-                        cmdRemoveDrugWidgetSelected();
-                    }
+                                cmdRemoveDrugWidgetSelected();
+                            }
                 });
         btnRemoveDrug.setFont(ResourceUtils.getFont(iDartFont.VERASANS_8));
 
@@ -942,16 +970,16 @@ public class AddPrescription extends GenericFormGui implements
                     public void widgetSelected(
                             org.eclipse.swt.events.SelectionEvent e) {
 
-                        if (tblDrugs.getSelectionIndex() != -1) {
-                            cmdMoveDrug(-1);
-                        } else {
-                            MessageBox mb = new MessageBox(getShell(),
-                                    SWT.ICON_QUESTION | SWT.OK);
-                            mb.setText("No Drug Selected ");
-                            mb.setMessage("Please select a drug to move.");
-                            mb.open();
-                        }
-                    }
+                                if (tblDrugs.getSelectionIndex() != -1) {
+                                    cmdMoveDrug(-1);
+                                } else {
+                                    MessageBox mb = new MessageBox(getShell(),
+                                            SWT.ICON_QUESTION | SWT.OK);
+                                    mb.setText("No Drug Selected ");
+                                    mb.setMessage("Please select a drug to move.");
+                                    mb.open();
+                                }
+                            }
                 });
 
         btnMoveDown = new Button(grpDrugs, SWT.NONE);
@@ -963,16 +991,16 @@ public class AddPrescription extends GenericFormGui implements
                     @Override
                     public void widgetSelected(
                             org.eclipse.swt.events.SelectionEvent e) {
-                        if (tblDrugs.getSelectionIndex() != -1) {
-                            cmdMoveDrug(1);
-                        } else {
-                            MessageBox mb = new MessageBox(getShell(),
-                                    SWT.ICON_QUESTION | SWT.OK);
-                            mb.setText("No Drug Selected ");
-                            mb.setMessage("Please select a drug to move.");
-                            mb.open();
-                        }
-                    }
+                                if (tblDrugs.getSelectionIndex() != -1) {
+                                    cmdMoveDrug(1);
+                                } else {
+                                    MessageBox mb = new MessageBox(getShell(),
+                                            SWT.ICON_QUESTION | SWT.OK);
+                                    mb.setText("No Drug Selected ");
+                                    mb.setMessage("Please select a drug to move.");
+                                    mb.open();
+                                }
+                            }
                 });
 
         createDrugsTable();
@@ -1238,8 +1266,9 @@ public class AddPrescription extends GenericFormGui implements
             cmbUpdateReason.setFocus();
             missingUpdateReason.open();
             return false;
-        }else if (!cheackDispensaTrimestral()) {return false;}
-        else if (!txtWeight.getText().equals("")) {
+        } else if (!cheackDispensaTrimestral()) {
+            return false;
+        } else if (!txtWeight.getText().equals("")) {
             try {
                 Double.parseDouble(txtWeight.getText());
             } catch (NumberFormatException nfe) {
@@ -1253,6 +1282,14 @@ public class AddPrescription extends GenericFormGui implements
                 return false;
             }
 
+        } else if (lblTipoDispensaTrimestral.isVisible() && cmbTipoDispensaTristral.getText().trim().equals("")) {
+            MessageBox missingTipoDispensaTrimestral = new MessageBox(getShell(),
+                    SWT.ICON_ERROR | SWT.OK);
+            missingTipoDispensaTrimestral
+                    .setMessage("O campo 'Tipo DT: Deve ser preenchido(Novo ou Manutencao)?");
+            cmbUpdateReason.setFocus();
+            missingTipoDispensaTrimestral.open();
+            return false;
         }
         return true;
 
@@ -1310,16 +1347,16 @@ public class AddPrescription extends GenericFormGui implements
     private void loadPrescriptionDetails() {
 
         /*
-		 * // set restrictions on the capture date try {
-		 * setCaptureDateRestrictions(); } catch (DateException e) {
-		 * e.printStackTrace(); }
+         * // set restrictions on the capture date try {
+         * setCaptureDateRestrictions(); } catch (DateException e) {
+         * e.printStackTrace(); }
          */
         cmbUpdateReason.setText("");
         String tempAmtPerTime = "";
         cmbDoctor.setText(""
                 + AdministrationManager.getDoctor(getHSession(),
                         localPrescription.getDoctor().getFullname())
-                        .getFullname());
+                .getFullname());
 
         try {
             cmbRegime.setText(""
@@ -1348,8 +1385,12 @@ public class AddPrescription extends GenericFormGui implements
             int estaNaDispensaTrimestral = AdministrationManager.loadDispensaTrimestral(localPrescription.getPatient().getId());
             if (estaNaDispensaTrimestral == 0) {
                 cmbDispensaTristral.select(1);
+                lblTipoDispensaTrimestral.setVisible(false);
+                cmbTipoDispensaTristral.setVisible(false);
             } else {
                 cmbDispensaTristral.select(0);
+                lblTipoDispensaTrimestral.setVisible(true);
+                cmbTipoDispensaTristral.setVisible(true);
             }
 
         } catch (ClassNotFoundException e) {
@@ -1374,116 +1415,116 @@ public class AddPrescription extends GenericFormGui implements
             }
         }
 
-            // cmbClinicalStage.setText("" + localPrescription.getClinicalStage());
-            // set previous note details
-            if (localPrescription.getNotes() != null) {
-                txtAreaNotes.setText(localPrescription.getNotes());
-            }
-            // set the previous weight
-
-            if (localPrescription.getWeight() != null) {
-                txtWeight.setText(localPrescription.getWeight().toString());
-            }
-
-            // set the previous ppe
-            try {
-
-                String ppe = (AdministrationManager.loadPpe(localPrescription.getPatient().getId()));
-
-                System.out.println(" PPE actual " + ppe);
-
-                if (ppe.trim().equals("T")) {
-                    chkBtnPPE.setSelection(true);
-                }
-            } catch (ClassNotFoundException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (SQLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-
-            // set the previous TB
-            try {
-
-                String tb = (AdministrationManager.loadTb(localPrescription.getPatient().getId()));
-
-                System.out.println(" TB actual " + tb);
-
-                if (tb.trim().equals("T")) {
-                    chkBtnTB.setSelection(true);
-                }
-            } catch (ClassNotFoundException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (SQLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-
-            // set the previous ptv
-            try {
-
-                String ptv = (AdministrationManager.loadPtv(localPrescription.getPatient().getId()));
-
-                System.out.println(" PTV actual " + ptv);
-                if (ptv.trim().equals("T")) {
-                    chkBtnPTV.setSelection(true);
-                }
-            } catch (ClassNotFoundException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (SQLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-
-            // Generate a new prescription id
-            cmdUpdatePrescriptionId();
-
-            List<PrescribedDrugs> drugs = localPrescription.getPrescribedDrugs();
-            for (int i = 0; i < drugs.size(); i++) {
-
-                PrescribedDrugs pd = drugs.get(i);
-                Drug theDrug = pd.getDrug();
-                Form theForm = theDrug.getForm();
-
-                if (theForm.getFormLanguage1().equals("")) // is a cream - no amnt per time
-                {
-                    tempAmtPerTime = "";
-                } else {
-                    if (new BigDecimal(pd.getAmtPerTime()).scale() == 0) {
-                        tempAmtPerTime = ""
-                                + new BigDecimal(pd.getAmtPerTime())
-                                        .unscaledValue().intValue();
-                    } else {
-                        tempAmtPerTime = "" + pd.getAmtPerTime();
-                    }
-                }
-
-                TableItem ti = new TableItem(tblDrugs, SWT.NONE);
-                String[] temp = new String[8];
-                temp[0] = "" + intDrugTableSize;
-                // temp[1] = "0";
-                temp[1] = theDrug.getName();
-                temp[2] = theForm.getActionLanguage1();
-                temp[3] = tempAmtPerTime;
-                temp[4] = theForm.getFormLanguage1();
-                temp[5] = "" + pd.getTimesPerDay();
-                temp[6] = "Vezes por dia";
-
-                ti.setText(temp);
-                ti.setData(pd);
-                intDrugTableSize += 1;
-
-            }
+        // cmbClinicalStage.setText("" + localPrescription.getClinicalStage());
+        // set previous note details
+        if (localPrescription.getNotes() != null) {
+            txtAreaNotes.setText(localPrescription.getNotes());
         }
-        /**
-         * This method is called if the user clicks on a row in the drugs table.
-         * The user is then asked if they want to delete the drug that they've
-         * selected.
-         *
-         */
+        // set the previous weight
+
+        if (localPrescription.getWeight() != null) {
+            txtWeight.setText(localPrescription.getWeight().toString());
+        }
+
+        // set the previous ppe
+        try {
+
+            String ppe = (AdministrationManager.loadPpe(localPrescription.getPatient().getId()));
+
+            System.out.println(" PPE actual " + ppe);
+
+            if (ppe.trim().equals("T")) {
+                chkBtnPPE.setSelection(true);
+            }
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        // set the previous TB
+        try {
+
+            String tb = (AdministrationManager.loadTb(localPrescription.getPatient().getId()));
+
+            System.out.println(" TB actual " + tb);
+
+            if (tb.trim().equals("T")) {
+                chkBtnTB.setSelection(true);
+            }
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        // set the previous ptv
+        try {
+
+            String ptv = (AdministrationManager.loadPtv(localPrescription.getPatient().getId()));
+
+            System.out.println(" PTV actual " + ptv);
+            if (ptv.trim().equals("T")) {
+                chkBtnPTV.setSelection(true);
+            }
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        // Generate a new prescription id
+        cmdUpdatePrescriptionId();
+
+        List<PrescribedDrugs> drugs = localPrescription.getPrescribedDrugs();
+        for (int i = 0; i < drugs.size(); i++) {
+
+            PrescribedDrugs pd = drugs.get(i);
+            Drug theDrug = pd.getDrug();
+            Form theForm = theDrug.getForm();
+
+            if (theForm.getFormLanguage1().equals("")) // is a cream - no amnt per time
+            {
+                tempAmtPerTime = "";
+            } else {
+                if (new BigDecimal(pd.getAmtPerTime()).scale() == 0) {
+                    tempAmtPerTime = ""
+                            + new BigDecimal(pd.getAmtPerTime())
+                            .unscaledValue().intValue();
+                } else {
+                    tempAmtPerTime = "" + pd.getAmtPerTime();
+                }
+            }
+
+            TableItem ti = new TableItem(tblDrugs, SWT.NONE);
+            String[] temp = new String[8];
+            temp[0] = "" + intDrugTableSize;
+            // temp[1] = "0";
+            temp[1] = theDrug.getName();
+            temp[2] = theForm.getActionLanguage1();
+            temp[3] = tempAmtPerTime;
+            temp[4] = theForm.getFormLanguage1();
+            temp[5] = "" + pd.getTimesPerDay();
+            temp[6] = "Vezes por dia";
+
+            ti.setText(temp);
+            ti.setData(pd);
+            intDrugTableSize += 1;
+
+        }
+    }
+
+    /**
+     * This method is called if the user clicks on a row in the drugs table. The
+     * user is then asked if they want to delete the drug that they've selected.
+     *
+     */
     private void cmdRemoveDrugWidgetSelected() {
 
         TableItem[] ti = tblDrugs.getSelection();
@@ -1639,8 +1680,8 @@ public class AddPrescription extends GenericFormGui implements
         patientsPrescriptions = thePatient.getPrescriptions();
 
         /*
-		 * // set date restrictions try { setCaptureDateRestrictions(); } catch
-		 * (DateException e) { e.printStackTrace(); }
+         * // set date restrictions try { setCaptureDateRestrictions(); } catch
+         * (DateException e) { e.printStackTrace(); }
          */
         if (patientsPrescriptions.size() > 0) {
             // Patient has previous Prescription
@@ -1735,8 +1776,8 @@ public class AddPrescription extends GenericFormGui implements
     }
 
     /*
-	 * This method called a "Search" GUI. Upon successful selection from the
-	 * user, the PackageManager loads the selected patient's information
+     * This method called a "Search" GUI. Upon successful selection from the
+     * user, the PackageManager loads the selected patient's information
      */
     private void cmdSearchWidgetSelected() {
 
@@ -1876,25 +1917,25 @@ public class AddPrescription extends GenericFormGui implements
 
             mSave
                     .setText(isInitialPrescription ? "Registar a prescrição inicial do paciente "
-                            .concat(txtPatientId.getText())
-                            : "Registar Nova prescrição do paciente "
+                                    .concat(txtPatientId.getText())
+                                    : "Registar Nova prescrição do paciente "
                                     .concat(txtPatientId.getText()));
             mSave
                     .setMessage(isInitialPrescription ? "Quer registar esta prescrição para o paciente "
-                            .concat(txtPatientId.getText()).concat("?")
-                            : "Quer actualizar as mudanças para o paciente "
+                                    .concat(txtPatientId.getText()).concat("?")
+                                    : "Quer actualizar as mudanças para o paciente "
                                     .concat(txtPatientId.getText()).concat("?"));
 
             //Para reasonforupdate inicia
             mSaveInicia
                     .setText(isInitialPrescription ? "Registar a prescrição inicial do paciente "
-                            .concat(txtPatientId.getText())
-                            : "Registar Nova prescrição do paciente "
+                                    .concat(txtPatientId.getText())
+                                    : "Registar Nova prescrição do paciente "
                                     .concat(txtPatientId.getText()));
             mSaveInicia
                     .setMessage(isInitialPrescription ? "ATENÇÃO: SELECCIONOU O TIPO TARV INICIAL\nTEM A CERTEZA DE QUE ESTE PACIENTE ESTÁ A INICIAR O TARV? \n NID:  "
-                            .concat(txtPatientId.getText()).concat("?")
-                            : "ATENÇÃO: SELECCIONOU O TIPO TARV INICIAL\nTEM A CERTEZA DE QUE ESTE PACIENTE ESTÁ A INICIAR O TARV? \n NID: "
+                                    .concat(txtPatientId.getText()).concat("?")
+                                    : "ATENÇÃO: SELECCIONOU O TIPO TARV INICIAL\nTEM A CERTEZA DE QUE ESTE PACIENTE ESTÁ A INICIAR O TARV? \n NID: "
                                     .concat(txtPatientId.getText()).concat(""));
 
             if (cmbUpdateReason.getText().trim().equals("Inicia")) {
@@ -1928,7 +1969,7 @@ public class AddPrescription extends GenericFormGui implements
                                     drugs = drugs
                                             + "\n\t\t"
                                             + prescribedDrugs.get(i).getDrug()
-                                                    .getName();
+                                            .getName();
                                 }
                                 MessageBox box = new MessageBox(getShell(),
                                         SWT.ICON_QUESTION | SWT.YES | SWT.NO);
@@ -1941,10 +1982,10 @@ public class AddPrescription extends GenericFormGui implements
                                                 + " (detalhes abaixo). \n\n"
                                                 + "Clínico: "
                                                 + oldPrescription.getDoctor()
-                                                        .getFullname()
+                                                .getFullname()
                                                 + "\nRegime: "
                                                 + oldPrescription.getRegimeTerapeutico()
-                                                        .getRegimeesquema()
+                                                .getRegimeesquema()
                                                 + "\nDuração: "
                                                 + oldPrescription.getDuration()
                                                 + " semanas "
@@ -1994,7 +2035,7 @@ public class AddPrescription extends GenericFormGui implements
                             done.setText("Base de dados actualizada");
                             done.setMessage("Prescrição '".concat(
                                     localPrescription.getPrescriptionId()).concat(
-                                    "' foi adicionado ao paciente '").concat(
+                                            "' foi adicionado ao paciente '").concat(
                                             localPrescription.getPatient().getPatientId())
                                     .concat("'."));
                             done.open();
@@ -2008,7 +2049,7 @@ public class AddPrescription extends GenericFormGui implements
                                     .setMessage("A prescrição '"
                                             .concat(
                                                     localPrescription
-                                                            .getPrescriptionId())
+                                                    .getPrescriptionId())
                                             .concat(
                                                     "' tem a data de registo antes da data de de registo da prescrição anterior. A Prescrição não pôde ser salvo "));
                             errorBox.open();
@@ -2069,7 +2110,7 @@ public class AddPrescription extends GenericFormGui implements
                                     drugs = drugs
                                             + "\n\t\t"
                                             + prescribedDrugs.get(i).getDrug()
-                                                    .getName();
+                                            .getName();
                                 }
                                 MessageBox box = new MessageBox(getShell(),
                                         SWT.ICON_QUESTION | SWT.YES | SWT.NO);
@@ -2082,10 +2123,10 @@ public class AddPrescription extends GenericFormGui implements
                                                 + " (detalhes abaixo). \n\n '"
                                                 + "Clínico: "
                                                 + oldPrescription.getDoctor()
-                                                        .getFullname()
+                                                .getFullname()
                                                 + "\nRegime: "
                                                 + oldPrescription.getRegimeTerapeutico()
-                                                        .getRegimeesquema()
+                                                .getRegimeesquema()
                                                 + "\nDuração: "
                                                 + oldPrescription.getDuration()
                                                 + " semanas "
@@ -2135,7 +2176,7 @@ public class AddPrescription extends GenericFormGui implements
                             done.setText("Base de dados actualizada");
                             done.setMessage("Prescrição '".concat(
                                     localPrescription.getPrescriptionId()).concat(
-                                    "' foi adicionado ao paciente '").concat(
+                                            "' foi adicionado ao paciente '").concat(
                                             localPrescription.getPatient().getPatientId())
                                     .concat("'."));
                             done.open();
@@ -2149,7 +2190,7 @@ public class AddPrescription extends GenericFormGui implements
                                     .setMessage("A prescrição '"
                                             .concat(
                                                     localPrescription
-                                                            .getPrescriptionId())
+                                                    .getPrescriptionId())
                                             .concat(
                                                     "' tem a data de registo antes da data de de registo da prescrição anterior. A Prescrição não pôde ser salvo "));
                             errorBox.open();
@@ -2217,7 +2258,8 @@ public class AddPrescription extends GenericFormGui implements
         localPrescription.setPatient(thePatient);
         localPrescription.setReasonForUpdate(cmbUpdateReason.getText());
         localPrescription.setDatainicionoutroservico(btnDataInicioNoutroServico.getDate());
-
+        localPrescription.setTipoDT(cmbTipoDispensaTristral.getText());
+        
         //PTV , PPE and Tb
         if (chkBtnPPE.getSelection()) {
             localPrescription.setPpe('T');
@@ -2270,7 +2312,7 @@ public class AddPrescription extends GenericFormGui implements
         // .parseInt(cmbClinicalStage.getText()));
         // }
         // duration
-        if (cmbDuration.getText().contains("semana") || cmbDuration.getText().endsWith("weeks")) {
+        if (cmbDuration.getText().endsWith("semanas") || cmbDuration.getText().endsWith("weeks")) {
             String[] s = cmbDuration.getText().split(" ");
 
             localPrescription.setDuration(Integer.parseInt(s[0]));
@@ -2335,10 +2377,10 @@ public class AddPrescription extends GenericFormGui implements
 
         localPrescription.setPrescribedDrugs(prescribedDrugsList);
         // set dispensatrimestral
-        if(cmbDispensaTristral.getText().contentEquals("Sim")){
+        if (cmbDispensaTristral.getText().contentEquals("Sim")) {
             localPrescription.setDispensaTrimestral(1);
         }
-        if(cmbDispensaTristral.getText().contentEquals("Nao")){
+        if (cmbDispensaTristral.getText().contentEquals("Nao")) {
             localPrescription.setDispensaTrimestral(0);
         }
     }
@@ -2413,7 +2455,7 @@ public class AddPrescription extends GenericFormGui implements
                     if (new BigDecimal(rd.getAmtPerTime()).scale() == 0) {
                         tempAmtPerTime = ""
                                 + new BigDecimal(rd.getAmtPerTime())
-                                        .unscaledValue().intValue();
+                                .unscaledValue().intValue();
                     } else {
                         tempAmtPerTime = "" + rd.getAmtPerTime();
                     }
@@ -2454,6 +2496,7 @@ public class AddPrescription extends GenericFormGui implements
             txtPatientId.setText("");
             cmbMotivoMudanca.setText("");
             cmbDispensaTristral.setText("");
+            cmbTipoDispensaTristral.setText("");
             txtName.setText("");
             txtSurname.setText("");
             txtClinic.setText("");
@@ -2471,6 +2514,8 @@ public class AddPrescription extends GenericFormGui implements
             cmbUpdateReason.setEnabled(false);
             cmbMotivoMudanca.setEnabled(false);
             cmbDispensaTristral.setEnabled(false);
+            lblTipoDispensaTrimestral.setVisible(false);
+            cmbTipoDispensaTristral.setVisible(false);
             txtAreaNotes.setText("");
             btnDataInicioNoutroServico.setEnabled(false);
             lblHeader.setText("Prescrição do Paciente");
@@ -2553,6 +2598,8 @@ public class AddPrescription extends GenericFormGui implements
         cmbMotivoMudanca.setBackground(theColour);
         cmbDispensaTristral.setEnabled(enable);
         cmbDispensaTristral.setBackground(theColour);
+        cmbTipoDispensaTristral.setEnabled(enable);
+        cmbTipoDispensaTristral.setBackground(theColour);
     }
 
     /**
@@ -2576,8 +2623,8 @@ public class AddPrescription extends GenericFormGui implements
                     @Override
                     public void widgetSelected(
                             org.eclipse.swt.events.SelectionEvent e) {
-                        cmdDispenseARVDrugsSelected();
-                    }
+                                cmdDispenseARVDrugsSelected();
+                            }
                 });
         btnDispenseDrugs.setEnabled(false);
     }
@@ -2606,68 +2653,70 @@ public class AddPrescription extends GenericFormGui implements
     }
 
     private boolean cheackDispensaTrimestral() {
-        try{
-        String result = cmbDispensaTristral.getItem(cmbDispensaTristral.getSelectionIndex());
-        String prescritionDuration = null;
-        switch (result) {
-            case "Sim":
-            {
-              if(cmbDuration.getSelectionIndex() < 0)
-                    prescritionDuration = cmbDuration.getItem(2);
-              else
-                    prescritionDuration = cmbDuration.getItem(cmbDuration.getSelectionIndex());
-              
-                if (("3 meses".equals(prescritionDuration) || ("3 months".equals(prescritionDuration))))
-                    return true;
-                else{
-                  MessageBox mb = new MessageBox(getShell(),SWT.ICON_QUESTION | SWT.YES | SWT.NO);                
-                    mb.setText("Dispensa Trimestral");
-                    mb.setMessage("Selecionou dispensa trimestral, mas a duracao da prescricao nao e de 3 meses. PRETENDE MESMO DISPENSAR ESTA PRESCRIÇÃO?");
-                    int resposta = mb.open();
-                        if(resposta == SWT.NO)
-                        return false;
-                    else
-                        return true;
-                } 
-            }
-            case "Nao":
-                {
-                    if(cmbDuration.getSelectionIndex() < 0)
+        try {
+            String result = cmbDispensaTristral.getItem(cmbDispensaTristral.getSelectionIndex());
+            String prescritionDuration = null;
+            switch (result) {
+                case "Sim": {
+                    if (cmbDuration.getSelectionIndex() < 0) {
                         prescritionDuration = cmbDuration.getItem(2);
-                    else
+                    } else {
                         prescritionDuration = cmbDuration.getItem(cmbDuration.getSelectionIndex());
-                    
+                    }
+
+                    if (("3 meses".equals(prescritionDuration) || ("3 months".equals(prescritionDuration)))) {
+                        return true;
+                    } else {
+                        MessageBox mb = new MessageBox(getShell(), SWT.ICON_QUESTION | SWT.YES | SWT.NO);
+                        mb.setText("Dispensa Trimestral");
+                        mb.setMessage("Selecionou dispensa trimestral, mas a duracao da prescricao nao e de 3 meses. PRETENDE MESMO DISPENSAR ESTA PRESCRIÇÃO?");
+                        int resposta = mb.open();
+                        if (resposta == SWT.NO) {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    }
+                }
+                case "Nao": {
+                    if (cmbDuration.getSelectionIndex() < 0) {
+                        prescritionDuration = cmbDuration.getItem(2);
+                    } else {
+                        prescritionDuration = cmbDuration.getItem(cmbDuration.getSelectionIndex());
+                    }
+
                     if (prescritionDuration.contentEquals("3 meses") || prescritionDuration.contentEquals("3 months")) {
-                        MessageBox mb = new MessageBox(getShell(),SWT.ICON_QUESTION | SWT.YES | SWT.NO);                
+                        MessageBox mb = new MessageBox(getShell(), SWT.ICON_QUESTION | SWT.YES | SWT.NO);
                         mb.setText("Dispensa Trimestral");
                         mb.setMessage("A duração da prescrição é de 3 meses e não está na Dispensa Trimestral. PRETENDE MESMO DISPENSAR ESTA PRESCRIÇÃO?");
                         int resposta = mb.open();
-                        if(resposta == SWT.NO)
-                        return false;
-                    else
+                        if (resposta == SWT.NO) {
+                            return false;
+                        } else {
+                            return true;
+                        }
+
+                    } else {
                         return true;
-                        
-                    } 
-                    else { return true; }
+                    }
                 }
-            default:
-                MessageBox mb = new MessageBox(getShell());
-                mb.setText("Dispensa Trimestral");
-                mb.setMessage("Especifique se é dispensa trimestral ou nao");
-                mb.open();
-                return false;
+                default:
+                    MessageBox mb = new MessageBox(getShell());
+                    mb.setText("Dispensa Trimestral");
+                    mb.setMessage("Especifique se é dispensa trimestral ou nao");
+                    mb.open();
+                    return false;
+            }
+        } catch (java.lang.IllegalArgumentException ex) {
+
+            MessageBox mb = new MessageBox(getShell());
+            mb.setText("Dispensa Trimestral");
+            mb.setMessage("Dispensa trimestral nao foi Selecionada");
+            mb.open();
+            return false;
+
         }
-        } catch(java.lang.IllegalArgumentException ex){
-            
-               MessageBox mb = new MessageBox(getShell());
-                mb.setText("Dispensa Trimestral");
-                mb.setMessage("Dispensa trimestral nao foi Selecionada");
-                mb.open();
-                return false;
-                        
-        }
-       
-   
+
     }
 
     /**

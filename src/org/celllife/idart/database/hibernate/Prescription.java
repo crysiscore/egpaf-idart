@@ -95,15 +95,9 @@ public class Prescription {
 	private String drugTypes;
         
         private int dispensaTrimestral;
-
-    public int getDispensaTrimestral() {
-        return dispensaTrimestral;
-    }
-
-    public void setDispensaTrimestral(int dispensaTrimestral) {
-        this.dispensaTrimestral = dispensaTrimestral;
-    }
-
+        //Para referencia o tipo de Dispensa trimestral(Novo, Manutensao)
+        private String tipoDT;
+           
 	@Transient
 	private HashSet<Drug> arvDrugSet;
 
@@ -141,6 +135,7 @@ public class Prescription {
 	 *@param tpi
 	 *@param tpc
          *@param dispensaTrimestral
+         *@param tipoDT
 	 */
 	public Prescription(int clinicalStage, char current, Date date,
 			Doctor doctor, int duration, int id, char modified,
@@ -148,7 +143,7 @@ public class Prescription {
 			List<PrescribedDrugs> prescribedDrugs, String prescriptionId,
 			String reasonForUpdate, String notes, RegimeTerapeutico regimeTerapeutico, 
                         Clinic clinic, Date datainicionoutroservico, String motivoMudanca, 
-                        char ppe, char ptv, char tb, char tpc, char tpi,int dispensaTrimestral) {
+                        char ppe, char ptv, char tb, char tpc, char tpi,int dispensaTrimestral, String tipoDT) {
 		super();
 		this.clinicalStage = clinicalStage;
 		this.current = current;
@@ -172,12 +167,11 @@ public class Prescription {
 		this.tpc=tpc;
 		this.tpi=tpi;
                 this.dispensaTrimestral=dispensaTrimestral;
-
+                this.tipoDT=tipoDT;
 	}
 
 	public Prescription() {
 		super();
-
 	}
 
 	/**
@@ -575,5 +569,20 @@ public class Prescription {
 		this.tpi = tpi;
 	}
 	
+        public int getDispensaTrimestral() {
+        return dispensaTrimestral;
+        }
+
+        public void setDispensaTrimestral(int dispensaTrimestral) {
+            this.dispensaTrimestral = dispensaTrimestral;
+        }
+        
+        public void setTipoDT(String tipoDT){
+        this.tipoDT=tipoDT;
+        }
+
+        public String getTipoDT(){
+            return tipoDT;
+        }
 	
 }

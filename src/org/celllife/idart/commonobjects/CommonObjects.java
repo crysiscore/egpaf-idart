@@ -722,5 +722,19 @@ public static void populateDispensaTrimestral(Session hSession, CCombo cmbDispen
 
 }
 
+public static void populateTipoDispensaTrimestral(Session hSession, CCombo cmbDispensaTrimestral){
+  
+    
+					cmbDispensaTrimestral.add("Novo");
+                                        cmbDispensaTrimestral.add("Manuntencao");
+				
+//			if (cmbDispensaTrimestral.getItemCount() > 0) {
+//				// Set the combo box to blank -> ensures that user
+//				// is forced to enter the information
+//				cmbDispensaTrimestral.setText("");
+//			}
+
+
+}
 
 }
