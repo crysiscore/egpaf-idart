@@ -2663,7 +2663,16 @@ public class AddPrescription extends GenericFormGui implements
                     } else {
                         prescritionDuration = cmbDuration.getItem(cmbDuration.getSelectionIndex());
                     }
-
+                  
+                    if(cmbTipoDispensaTristral.getSelectionIndex() < 0){
+                        MessageBox mb = new MessageBox(getShell(),
+                        SWT.ICON_ERROR | SWT.OK);
+                        mb.setText("Dispensa Trimestral");
+                        mb.setMessage("Selecionou dispensa trimestral, especifique o tipo de Dispensa Trimesteal do Paciente");
+                        mb.open();
+                        return false;
+                    }
+                    
                     if (("3 meses".equals(prescritionDuration) || ("3 months".equals(prescritionDuration)))) {
                         return true;
                     } else {
