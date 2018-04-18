@@ -3610,8 +3610,8 @@ public int totalPacientesManterDispensaTrimestral(String startDate, String endDa
                     " FROM ( SELECT patient, dispensatrimestral, max(date) date " +
                     " FROM prescription " +
                     " WHERE dispensatrimestral=1 " +
-                    " group by  patient, dispensatrimestral  having count(dispensatrimestral) > 1 ) v " +
-                    " WHERE   v.date::timestamp::date BETWEEN " + "\'"+startDate+"\'" + " AND " + " \'"+endDate+"\'";
+                    " group by  patient, dispensatrimestral ) v " +
+                    " WHERE v.date::timestamp::date < " + "\'"+startDate+"\'";
      
 	int total=0;
 	conecta(iDartProperties.hibernateUsername, iDartProperties.hibernatePassword);
@@ -3639,13 +3639,11 @@ public int totalPacientesManterDispensaTrimestral(String startDate, String endDa
  */
 public int totalPacientesAlteracaoDispensaTrimestral(String startDate, String endDate) throws ClassNotFoundException, SQLException{
 
-      String query=" select sum(dispensatrimestral) "
-              + "from prescription where reasonforupdate like"+ "\'"+"Rein%"+"\'"+" "
-              + "and "
-              	+ "  date::timestamp::date >=  "
-			+ "\'"+startDate+"\'"
-			+ "AND date::timestamp::date <= "
-			+ " \'"+endDate+"\'";
+      String query= " SELECT count(*) soma " +
+                          " FROM ( SELECT patient, dispensatrimestral,min(date) date " +
+                                  "FROM prescription " +
+                                  "WHERE dispensatrimestral=1 " +
+                                  "group by  patient, dispensatrimestral ) v";
      
 	int total=0;
 	conecta(iDartProperties.hibernateUsername, iDartProperties.hibernatePassword);
@@ -3653,7 +3651,7 @@ public int totalPacientesAlteracaoDispensaTrimestral(String startDate, String en
 		if (rs != null)
 	        {          
 	           rs.next();
-	           total=rs.getInt("sum");
+	           total=rs.getInt("soma");
  	           rs.close(); //
 	        }
     
