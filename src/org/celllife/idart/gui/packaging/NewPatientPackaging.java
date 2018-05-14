@@ -694,6 +694,18 @@ public class NewPatientPackaging extends GenericFormGui implements
      */
     @SuppressWarnings("unchecked")
     private void cmdDispenseDrugsSelected(boolean dispenseNow) throws Exception {
+        
+        String title = EMPTY;
+        String message = EMPTY;
+
+        if (!rdBtnNoAppointmentDate.getSelection() && !rdBtnYesAppointmentDate.getSelection()) { //$NON-NLS-1$
+                showMessage(MessageDialog.ERROR, "Seleccione se o paciente levou ou não cotrimoxazol", "Seleccione se o paciente levou ou não cotrimoxazol.");
+                return;
+        }else
+        if (!rdBtnPrintSummaryLabelNo.getSelection() && !rdBtnPrintSummaryLabelYes.getSelection()) { //$NON-NLS-1$
+                showMessage(MessageDialog.ERROR, "Seleccione se o paciente levou ou não isoniazida", "Seleccione se o paciente levou ou não isoniazida.");
+                return;
+        }else {
         java.util.List<PackageDrugInfo> allPackagedDrugsList = new ArrayList<PackageDrugInfo>();
         // remove pdis with none dispensed
         for (int i = 0; i < tblPrescriptionInfo.getItemCount(); i++) {
@@ -716,11 +728,19 @@ public class NewPatientPackaging extends GenericFormGui implements
                 && ((allPackagedDrugsList.size() > 0) || (accumDrugSet.size() > 0))) {
             submitForm(dispenseNow, allPackagedDrugsList);
             getLog().info("submitForm() called");
+           
+            // Actuluza MMIA na Dispensa Trimenstral
+            int meses = allPackagedDrugsList.get(0).getWeeksSupply()/4;
+            if(meses > 1)
+                for(int i = 1; i < meses;i++)
+                 saveDispenseQty0(allPackagedDrugsList,i);
+                   
             initialiseSearchList();
             clearForm();
         }
     }
-
+    }
+    
     private void initialiseSearchList() {
         java.util.List<PatientIdAndName> patients = null;
         patients = SearchManager
