@@ -21,14 +21,19 @@ package org.celllife.idart.gui.reportParameters;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import model.manager.AdministrationManager;
 import model.manager.reports.MiaReportMISAU;
 import org.apache.log4j.Logger;
+import org.ccs.openmrs.migracao.entidadesHibernate.ExportDispense.PackageDrugInfoExportService;
 import org.celllife.idart.commonobjects.CommonObjects;
 import org.celllife.idart.database.hibernate.StockCenter;
+import org.celllife.idart.database.hibernate.tmp.PackageDrugInfo;
+import org.celllife.idart.gui.packaging.NewPatientPackaging;
 import org.celllife.idart.gui.platform.GenericReportGui;
 import org.celllife.idart.gui.utils.ResourceUtils;
 import org.celllife.idart.gui.utils.iDartColor;
@@ -240,24 +245,19 @@ public class MmiaReportMISAU extends GenericReportGui {
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MMM-dd");
 				 
 //				String strTheDate = "" + cmbYear.getText() + "-"
-//				+ cmbMonth.getText() + "-01";
-				
-				
+//				+ cmbMonth.getText() + "-01";		
 				
 				Date theStartDate = calendarStart.getCalendar().getTime(); 
 			
 				Date theEndDate=  calendarEnd.getCalendar().getTime(); 
 				
 				//theStartDate = sdf.parse(strTheDate);
-				
-				MiaReportMISAU report = new MiaReportMISAU(
-						getShell(), pharm, theStartDate, theEndDate);
+                                //Verifica pacientes na dispensa trimestral que nao tem disensas dentro do periodo de 2 meses para o MMIA
+				// harmozinaDispensaTrimestral(theStartDate, theEndDate);
+				MiaReportMISAU report = new MiaReportMISAU(getShell(), pharm, theStartDate, theEndDate);
 				viewReport(report);
 			} catch (Exception e) {
-				getLog()
-				.error(
-						"Exception while running Monthly Receipts and Issues report",
-						e);
+				getLog().error("Exception while running Monthly Receipts and Issues report",e);
 			}
 		}
 
@@ -400,4 +400,25 @@ public class MmiaReportMISAU extends GenericReportGui {
 
 		calendarStart.addSWTCalendarListener(listener);
 	}
+        
+        public void harmozinaDispensaTrimestral(Date dataInicio, Date dataFim){
+            // find todos os pacientes que entraram na dispensa a tres meses
+         PackageDrugInfoExportService packageDrugInfoExportService = new PackageDrugInfoExportService();
+       
+         // Lista todos pacientes na dispensa Trimestral
+         
+         List<PackageDrugInfo> pdiList = packageDrugInfoExportService.findAllbyDateFromDT(dataInicio, dataFim);
+         NewPatientPackaging t = new NewPatientPackaging(myShell);
+         java.util.List<PackageDrugInfo> allPackagedDrugsListTemp = null;
+         for(int i = 0; i < pdiList.size();i++){
+              int meses = pdiList.get(i).getWeeksSupply()/4;
+                if(meses > 1)
+                    for(int a = 1; a < meses;i++){
+                       allPackagedDrugsListTemp = new ArrayList<PackageDrugInfo>();
+                       allPackagedDrugsListTemp.add(pdiList.get(i));
+                     t.saveDispenseQty0(allPackagedDrugsListTemp,i);
+                    }
+         }
+         
+        }
 }

@@ -6,6 +6,7 @@
  */
 package org.ccs.openmrs.migracao.entidadesHibernate.ExportDispense;
 
+import java.util.Date;
 import java.util.List;
 import org.ccs.openmrs.migracao.entidadesHibernate.ExportDao.PackageDrugInfoExportDao;
 import org.celllife.idart.database.hibernate.tmp.PackageDrugInfo;
@@ -64,7 +65,14 @@ public class PackageDrugInfoExportService {
         packageDrugInfoExportDao.closeCurrentSession();
         return packageDrugInfos;
     }
-            
+         
+        public List<PackageDrugInfo> findAllbyDateFromDT(Date dataIncial, Date dataFim) {
+        packageDrugInfoExportDao.openCurrentSession();
+        List<PackageDrugInfo> packageDrugInfos = packageDrugInfoExportDao.findAllbyDateFromDT(dataIncial,dataFim);
+        packageDrugInfoExportDao.openCurrentSession();
+        return packageDrugInfos;
+    }
+             
     public void deleteAll() {
         packageDrugInfoExportDao.openCurrentSessionwithTransaction();
         packageDrugInfoExportDao.deleteAll();

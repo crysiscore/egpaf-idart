@@ -709,8 +709,7 @@ public class NewPatientPackaging extends GenericFormGui implements
         java.util.List<PackageDrugInfo> allPackagedDrugsList = new ArrayList<PackageDrugInfo>();
         // remove pdis with none dispensed
         for (int i = 0; i < tblPrescriptionInfo.getItemCount(); i++) {
-            java.util.List<PackageDrugInfo> pdiList = (java.util.List<PackageDrugInfo>) tblPrescriptionInfo
-                    .getItem(i).getData();
+            java.util.List<PackageDrugInfo> pdiList = (java.util.List<PackageDrugInfo>) tblPrescriptionInfo.getItem(i).getData();
             Iterator<PackageDrugInfo> it = pdiList.iterator();
             while (it.hasNext()) {
                 PackageDrugInfo pdi = it.next();
@@ -723,28 +722,27 @@ public class NewPatientPackaging extends GenericFormGui implements
                 }
             }
         }
+        
         Set<AccumulatedDrugs> accumDrugSet = getAccumDrugsToSave();
-        if (fieldsOkay(allPackagedDrugsList)
-                && ((allPackagedDrugsList.size() > 0) || (accumDrugSet.size() > 0))) {
-            submitForm(dispenseNow, allPackagedDrugsList);
-            getLog().info("submitForm() called");
-           
-            // Actuluza MMIA na Dispensa Trimenstral
-            int meses = allPackagedDrugsList.get(0).getWeeksSupply()/4;
-            if(meses > 1)
-                for(int i = 1; i < meses;i++)
-                 saveDispenseQty0(allPackagedDrugsList,i);
-                   
-            initialiseSearchList();
-            clearForm();
+            if (fieldsOkay(allPackagedDrugsList) && ((allPackagedDrugsList.size() > 0) || (accumDrugSet.size() > 0))) {
+                submitForm(dispenseNow, allPackagedDrugsList);
+                getLog().info("submitForm() called");
+
+                // Actuluza MMIA na Dispensa Trimenstral
+                int meses = allPackagedDrugsList.get(0).getWeeksSupply()/4;
+                if(meses > 1)
+                    for(int i = 1; i < meses;i++)
+                     saveDispenseQty0(allPackagedDrugsList,i);
+
+                initialiseSearchList();
+                clearForm();
+            }
         }
-    }
     }
     
     private void initialiseSearchList() {
         java.util.List<PatientIdAndName> patients = null;
-        patients = SearchManager
-                .getActivePatientWithValidPrescriptionIDsAndNames(getHSession());
+        patients = SearchManager.getActivePatientWithValidPrescriptionIDsAndNames(getHSession());
 
         lstWaitingPatients.setInput(patients);
     }
@@ -2851,7 +2849,7 @@ public class NewPatientPackaging extends GenericFormGui implements
     }
 
         // Add for dispense more than 1 month with Qty = 0
-    private void saveDispenseQty0(java.util.List<PackageDrugInfo> allPackagedDrugsList, int i) {
+    public void saveDispenseQty0(java.util.List<PackageDrugInfo> allPackagedDrugsList, int i) {
 
         Transaction tx = null;
         try {
@@ -2863,7 +2861,7 @@ public class NewPatientPackaging extends GenericFormGui implements
             theCal.add(Calendar.DATE, (4 * i * 7) + (i * 2));
 
             Prescription prescription = getPrescritionQty0(localPatient.getCurrentPrescription(), i, numMeses);
-
+//fazer find prescricao
             java.util.List<PackageDrugInfo> allPackagedDrugsListTemp = new ArrayList<PackageDrugInfo>();
 
             for (int a = 0; a < allPackagedDrugsList.size(); a++) {
@@ -2915,7 +2913,7 @@ public class NewPatientPackaging extends GenericFormGui implements
         }
     }
 
-    private void savePackageAndPackagedDrugsWhithQty0(boolean dispenseNow,
+    public void savePackageAndPackagedDrugsWhithQty0(boolean dispenseNow,
             java.util.List<PackageDrugInfo> allPackageDrugsList, Prescription prescription, int i) {
 
         // if pack date is today, store the time too, else store 12am
