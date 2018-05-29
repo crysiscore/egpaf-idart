@@ -67,7 +67,6 @@ and pi.value = pat.patientid
 and idt.id = pi.type_id
 and $P{clinicid} = pat.clinic
 and app.appointmentDate is not null
-and (app.visitDate is null )
 and (app.appointmentDate::date) between ($P{date}::date - INTERVAL '90 days') and $P{date}::date
 and exists (select prescription.id
 from prescription

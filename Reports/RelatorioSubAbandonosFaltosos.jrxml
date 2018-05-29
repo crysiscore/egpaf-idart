@@ -69,7 +69,6 @@ and pi.value = pat.patientid
 and idt.id = pi.type_id
 and $P{clinicid} = pat.clinic
 and app.appointmentDate is not null
-and (app.visitDate is null )
 and (app.appointmentDate::date) between ($P{date}::date - INTERVAL '90 days') and $P{date}::date
 and exists (select prescription.id
 from prescription
@@ -208,7 +207,7 @@ order by dayssinceexpected]]>
 				<textFieldExpression class="java.lang.String"><![CDATA[new SimpleDateFormat("dd-MM-yyyy").format($F{dateexpected})]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="344" y="1" width="97" height="19"/>
+				<reportElement x="344" y="-3" width="97" height="19"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression class="java.lang.String"><![CDATA[new SimpleDateFormat("dd-MM-yyyy").format($F{datelostfollowup})]]></textFieldExpression>
 			</textField>

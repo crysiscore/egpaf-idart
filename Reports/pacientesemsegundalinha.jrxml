@@ -255,7 +255,7 @@ order by pr.date]]>
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="59" splitType="Stretch">
+		<band height="20" splitType="Stretch">
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement key="textField-10" stretchType="RelativeToBandHeight" mode="Transparent" x="20" y="0" width="104" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
