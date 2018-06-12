@@ -38,10 +38,10 @@ date_part('year',age(pat.dateofbirth)) as age,
 app.appointmentDate::date as dateexpected,
 ($P{date}::date-app.appointmentDate::date)::integer as dayssinceexpected,
 CASE
-    WHEN (($P{date}::date-app.appointmentDate::date) > 59 AND app.visitdate::date IS NULL) THEN (app.appointmentDate::date + INTERVAL '61 days')
+    WHEN (($P{date}::date-app.appointmentDate::date) > 59 AND app.visitdate::date IS NULL) THEN (app.appointmentDate::date + INTERVAL '60 days')
     ELSE
 	CASE
-	    WHEN ((app.appointmentDate::date - app.visitdate::date) > 61) THEN (app.appointmentDate::date + INTERVAL '61 days')
+	    WHEN ((app.appointmentDate::date - app.visitdate::date) > 61) THEN (app.appointmentDate::date + INTERVAL '60 days')
               ELSE null
     	END
 END
