@@ -46,6 +46,8 @@ import org.celllife.idart.gui.reportParameters.DrugsDispensed;
 import org.celllife.idart.gui.reportParameters.EpisodeStats;
 import org.celllife.idart.gui.reportParameters.EpisodesStartedOrEndedReportGUI;
 import org.celllife.idart.gui.reportParameters.FilaGeralReport;
+import org.celllife.idart.gui.reportParameters.LostToFollowUp;
+import org.celllife.idart.gui.reportParameters.LostToFollowUpReturned;
 import org.celllife.idart.gui.reportParameters.MissedAppointments;
 import org.celllife.idart.gui.reportParameters.MissedAppointmentsAPSS;
 import org.celllife.idart.gui.reportParameters.MissedAppointmentsDT;
@@ -492,13 +494,9 @@ private void createGrpClinicManagementReports() {
 		packsCollected.setPackageStage(PackageLifeStage.PICKED_UP);
 		reportGUIs.put(GenericReportGuiInterface.REPORT_PACKAGES_COLLECTED,
 				packsCollected);
-
-		reportGUIs.put(
-				GenericReportGuiInterface.REPORT_PACKAGES_AWAITING_PICKUP,
+		reportGUIs.put(GenericReportGuiInterface.REPORT_PACKAGES_AWAITING_PICKUP,
 				new PackagesAwaiting(getShell(), false));
-
-		reportGUIs.put(
-				GenericReportGuiInterface.REPORT_PATIENTS_EXPECTED_ON_A_DAY,
+		reportGUIs.put(GenericReportGuiInterface.REPORT_PATIENTS_EXPECTED_ON_A_DAY,
 				new PatientsExpected(getShell(), false));
                 reportGUIs.put(GenericReportGuiInterface.REPORT_MISSED_APPOINTMENTS_APSS,
 				new MissedAppointmentsAPSS(getShell(), false));
@@ -506,9 +504,12 @@ private void createGrpClinicManagementReports() {
 				new MissedAppointmentsNew(getShell(), false));
 		reportGUIs.put(GenericReportGuiInterface.REPORT_MISSED_APPOINTMENTS,
 				new MissedAppointments(getShell(), false));
-                
                 reportGUIs.put(GenericReportGuiInterface.REPORT_MISSED_APPOINTMENTS_DT,
 				new MissedAppointmentsDT(getShell(), false));
+                 reportGUIs.put(GenericReportGuiInterface.REPORT_LOST_TO_FOLLOW_UP,
+				new LostToFollowUp(getShell(), false));
+                  reportGUIs.put(GenericReportGuiInterface.REPORT_LOST_TO_FOLLOW_UP_RETURNED,
+				new LostToFollowUpReturned(getShell(), false));
 
 		// M & E Reports
 		reportGUIs.put(GenericReportGuiInterface.REPORT_DRUG_COMBINATIONS,
