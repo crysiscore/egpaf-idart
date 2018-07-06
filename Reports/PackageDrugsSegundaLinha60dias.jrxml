@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PackageDrugs" pageWidth="70" pageHeight="20" orientation="Landscape" whenNoDataType="BlankPage" columnWidth="70" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.scriptlethandling" value="2"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<property name="ireport.zoom" value="1.771561000000003"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="parentpackid" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[new Integer(156624)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="path" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="pickdate" class="java.util.Date"/>
+	<parameter name="patientId" class="java.lang.String">
+		<defaultValueExpression><![CDATA["11010601/10/0996"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select pre.id as preid, drug.id as drugId, drug.name, sum(packdrug.amount) as amount,
+predrug.amtpertime*predrug.timesperday as perday,
+pack.id as packId, pack.pickupDate as dateRec,
+pdit.dispensedqty,
+pdit.dispensedate,
+pdit.dateexpectedstring,
+ pre.regimeid
+from packageddrugs as packdrug, stock, drug, prescribeddrugs as predrug, patient,packagedruginfotmp as pdit,
+package as pack,
+prescription as pre
+where packdrug.stock = stock.id
+and stock.drug = drug.id
+and packdrug.parentPackage = pack.id
+and pack.prescription = pre.id
+and predrug.prescription = pre.id
+and predrug.drug = drug.id
+and patient.id = pre.patient
+and pdit.packageddrug = packdrug.id
+and pdit.patientid = $P{patientId}
+and pdit.dispensedate between ($P{pickdate}::date - INTERVAL '60 days') and ($P{pickdate}::date - INTERVAL '30 days')
+group by drugId, drug.name, perday, pack.id, pack.pickupDate, pre.id,pdit.dispensedqty,pdit.dispensedate,pdit.dateexpectedstring
+order by dispensedate DESC]]>
+	</queryString>
+	<field name="name" class="java.lang.String"/>
+	<variable name="accum" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="68" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
