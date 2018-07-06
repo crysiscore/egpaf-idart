@@ -54,17 +54,16 @@ END as sex,
 rt.regimeesquema as esquematerapeutico,
 l.linhanome as linhaterapeutica,
 pr.reasonforupdate as tipoPaciente,
-($P{date}::date - INTERVAL '91 days') as data90dias,
-($P{date}::date - INTERVAL '61 days') as data60dias,
-($P{date}::date - INTERVAL '30 days') as data30dias
+($P{date}::date - INTERVAL '3 Month') as data90dias,
+($P{date}::date - INTERVAL '2 Month') as data60dias,
+($P{date}::date - INTERVAL '1 Month') as data30dias
 from Patient as p
 inner join clinic c on c.id = p.clinic
 inner join prescription pr on pr.patient = p.id
 inner join regimeterapeutico rt on rt.regimeid = pr.regimeid
 inner join linhat l on l.linhaid = pr.linhaid
-where (l.linhanome like '%2%') and pr.date between ($P{date}::date - INTERVAL '30 days') and $P{date}
-group by p.id,c.clinicname,l.linhanome,pr.reasonforupdate,pr.date,rt.regimeesquema
-]]>
+where (l.linhanome like '%2%') and pr.date between ($P{date}::date - INTERVAL '1 month' + INTERVAL '1 day') and $P{date}
+group by p.id,c.clinicname,l.linhanome,pr.reasonforupdate,pr.date,rt.regimeesquema]]>
 	</queryString>
 	<field name="id" class="java.lang.Integer"/>
 	<field name="patientid" class="java.lang.String"/>
@@ -79,9 +78,9 @@ group by p.id,c.clinicname,l.linhanome,pr.reasonforupdate,pr.date,rt.regimeesque
 	<field name="esquematerapeutico" class="java.lang.String"/>
 	<field name="linhaterapeutica" class="java.lang.String"/>
 	<field name="tipopaciente" class="java.lang.String"/>
-	<field name="data90dias" class="java.util.Date"/>
-	<field name="data60dias" class="java.util.Date"/>
-	<field name="data30dias" class="java.util.Date"/>
+	<field name="data90dias" class="java.sql.Timestamp"/>
+	<field name="data60dias" class="java.sql.Timestamp"/>
+	<field name="data30dias" class="java.sql.Timestamp"/>
 	<variable name="test" class="java.lang.String" resetType="None">
 		<variableExpression><![CDATA["test"]]></variableExpression>
 		<initialValueExpression><![CDATA["test"]]></initialValueExpression>
@@ -364,7 +363,7 @@ group by p.id,c.clinicname,l.linhanome,pr.reasonforupdate,pr.date,rt.regimeesque
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
 					<font fontName="Arial" size="6" isBold="true" isItalic="true" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{data90dias}) +" - "+new SimpleDateFormat("dd/MM/yyyy").format(new Date($F{data60dias}.getTime() - 24*60*60*1000))]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format(new Date($F{data90dias}.getTime() + 24*60*60*1000)) +" - "+new SimpleDateFormat("dd/MM/yyyy").format($F{data60dias})]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement key="tf_date" mode="Transparent" x="619" y="131" width="75" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -377,7 +376,7 @@ group by p.id,c.clinicname,l.linhanome,pr.reasonforupdate,pr.date,rt.regimeesque
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
 					<font fontName="Arial" size="6" isBold="true" isItalic="true" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{data60dias}) +" - "+new SimpleDateFormat("dd/MM/yyyy").format(new Date($F{data30dias}.getTime() - 24*60*60*1000))]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format(new Date($F{data60dias}.getTime() + 24*60*60*1000)) +" - "+new SimpleDateFormat("dd/MM/yyyy").format($F{data30dias})]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement key="tf_date" mode="Transparent" x="537" y="131" width="75" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -390,7 +389,7 @@ group by p.id,c.clinicname,l.linhanome,pr.reasonforupdate,pr.date,rt.regimeesque
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
 					<font fontName="Arial" size="6" isBold="true" isItalic="true" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{data30dias}) +" - "+new SimpleDateFormat("dd/MM/yyyy").format($P{date})]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format(new Date($F{data30dias}.getTime() + 24*60*60*1000))  +" - "+new SimpleDateFormat("dd/MM/yyyy").format($P{date})]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
@@ -499,20 +498,6 @@ group by p.id,c.clinicname,l.linhanome,pr.reasonforupdate,pr.date,rt.regimeesque
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipopaciente}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
-				<reportElement key="textField-11" stretchType="RelativeToBandHeight" mode="Transparent" x="376" y="0" width="51" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
-				<box leftPadding="0">
-					<pen lineWidth="0.5"/>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-					<font fontName="Arial" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{linhaterapeutica}]]></textFieldExpression>
-			</textField>
 			<rectangle>
 				<reportElement stretchType="RelativeToBandHeight" x="534" y="0" width="82" height="20"/>
 				<graphicElement>
@@ -573,6 +558,20 @@ group by p.id,c.clinicname,l.linhanome,pr.reasonforupdate,pr.date,rt.regimeesque
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "PackageDrugsSegundaLinha90dias.jasper"]]></subreportExpression>
 			</subreport>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+				<reportElement key="textField-11" stretchType="RelativeToBandHeight" mode="Transparent" x="375" y="0" width="52" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box leftPadding="0">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font fontName="Arial" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{linhaterapeutica}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>

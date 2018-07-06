@@ -39,7 +39,7 @@ and predrug.drug = drug.id
 and patient.id = pre.patient
 and pdit.packageddrug = packdrug.id
 and pdit.patientid = $P{patientId}
-and pdit.dispensedate between ($P{pickdate}::date - INTERVAL '90 days') and ($P{pickdate}::date - INTERVAL '59 days')
+and pdit.dispensedate between ($P{pickdate}::date - INTERVAL '3 months' + INTERVAL '1 day') and ($P{pickdate}::date - INTERVAL '2 months')
 group by drugId, drug.name, perday, pack.id, pack.pickupDate, pre.id,pdit.dispensedqty,pdit.dispensedate,pdit.dateexpectedstring
 order by dispensedate DESC]]>
 	</queryString>
