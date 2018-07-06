@@ -53,6 +53,7 @@ public interface GenericReportGuiInterface {
         static String REPORT_FILA_GERAL = Messages.getString("reports.fila");
         static String REPORT_SECOND_LINE = Messages.getString("reports.secondLine");
         static String REPORT_LOST_TO_FOLLOW_UP  = Messages.getString("reports.losttofollowup");
-         static String REPORT_LOST_TO_FOLLOW_UP_RETURNED  = Messages.getString("reports.losttofollowupreturned");
+        static String REPORT_LOST_TO_FOLLOW_UP_RETURNED  = Messages.getString("reports.losttofollowupreturned");
+        static String REPORT_SEGUNDA_LINHA_AVALIACAO  = Messages.getString("reports.segundaslinhasavaliacao");
 	
 }

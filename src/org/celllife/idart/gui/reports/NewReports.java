@@ -34,6 +34,7 @@ import org.celllife.idart.gui.platform.GenericAdminGui;
 import org.celllife.idart.gui.platform.GenericReportGui;
 import org.celllife.idart.gui.platform.GenericReportGuiInterface;
 import org.celllife.idart.gui.reportParameters.ARVDrugUsage;
+import org.celllife.idart.gui.reportParameters.AvaliacaoSegundasLinhas;
 import org.celllife.idart.gui.reportParameters.ClinicIndicators;
 import org.celllife.idart.gui.reportParameters.CohortDrugCollections;
 import org.celllife.idart.gui.reportParameters.CotrimoxazolReport;
@@ -440,6 +441,8 @@ private void createGrpClinicManagementReports() {
 				new RegimeTerapeuticoReport(getShell(), false));
                  reportGUIs.put(GenericReportGuiInterface.REPORT_SECOND_LINE,
 				new SecondLineReport(getShell(), false));
+                 reportGUIs.put(GenericReportGuiInterface.REPORT_SEGUNDA_LINHA_AVALIACAO,
+				new AvaliacaoSegundasLinhas(getShell(), false));
 
 		// Patient Reports
 		reportGUIs.put(GenericReportGuiInterface.REPORT_PATIENT_HISTORY,
