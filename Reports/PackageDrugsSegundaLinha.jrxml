@@ -41,7 +41,8 @@ and pdit.packageddrug = packdrug.id
 and pdit.patientid = $P{patientId}
 and pdit.dispensedate between ($P{pickdate}::date - INTERVAL '1 Month' + INTERVAL '1 day') and $P{pickdate}
 group by drugId, drug.name, perday, pack.id, pack.pickupDate, pre.id,pdit.dispensedqty,pdit.dispensedate,pdit.dateexpectedstring
-order by dispensedate DESC]]>
+order by dispensedate DESC
+]]>
 	</queryString>
 	<field name="name" class="java.lang.String"/>
 	<variable name="accum" class="java.lang.String"/>
