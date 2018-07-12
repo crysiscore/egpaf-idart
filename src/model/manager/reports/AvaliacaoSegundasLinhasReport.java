@@ -73,7 +73,7 @@ public class AvaliacaoSegundasLinhasReport extends AbstractJasperReport {
 		Map<String, Object> map = new HashMap<String, Object>();
                 map.put("path", getReportPath());
 		map.put("clinic", clinicName);
-		map.put("clinicid", new Integer(c.getId()));
+		map.put("clinicid", c.getId());
 		map.put("stockCenterId", stockCenter.getId());
 		map.put("stockCenterName", stockCenter.getStockCenterName());
 		map.put("date", theDate);

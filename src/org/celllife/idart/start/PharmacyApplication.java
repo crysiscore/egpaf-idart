@@ -230,6 +230,7 @@ public class PharmacyApplication {
 	private static void performStartupChecks() {
 		try {
 			if (!DatabaseTools._().checkDatabase()) {
+                        //    if (!DatabaseTools._().checkDatabase()) {
 				startSetupWizard(DatabaseWizard.PAGE_CREATE_DB);
 			}
 		} catch (ConnectException e) {
