@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PackageDrugs" pageWidth="532" pageHeight="842" whenNoDataType="BlankPage" columnWidth="532" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PackageDrugs" pageWidth="534" pageHeight="840" whenNoDataType="BlankPage" columnWidth="534" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
 	<property name="ireport.scriptlethandling" value="2"/>
 	<property name="ireport.encoding" value="UTF-8"/>
 	<property name="ireport.zoom" value="1.771561000000003"/>
@@ -20,66 +20,20 @@
 		<defaultValueExpression><![CDATA["11010601/10/0996"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[select rt.regimeesquema, packdrugquery.amount,
-packdrugquery.dispensedqty,
-packdrugquery.dispensedate,
-packdrugquery.dateexpectedstring,
-dosagem.dosage
-from
-(select pre.id as preid, drug.id as drugId, drug.name, sum(packdrug.amount) as amount,
-predrug.amtpertime*predrug.timesperday as perday,
-pack.id as packId, pack.pickupDate as dateRec,
-pdit.dispensedqty,
-pdit.dispensedate,
-pdit.dateexpectedstring,
- pre.regimeid
-from packageddrugs as packdrug, stock, drug, prescribeddrugs as predrug, patient,packagedruginfotmp as pdit,
-package as pack,
-prescription as pre
-where packdrug.stock = stock.id
-and stock.drug = drug.id
-and packdrug.parentPackage = pack.id
-and pack.prescription = pre.id
-and predrug.prescription = pre.id
-and predrug.drug = drug.id
-and patient.id = pre.patient
-and pdit.packageddrug = packdrug.id
-and pdit.patientid = $P{patientId}
-group by drugId, drug.name, perday, pack.id, pack.pickupDate, pre.id,pdit.dispensedqty,pdit.dispensedate,pdit.dateexpectedstring
-) as packdrugquery
-inner join
-regimeterapeutico rt on rt.regimeid = packdrugquery.regimeid
-inner join
-(select pre.id as preid,d.name as name,
-CASE WHEN preDrugs.amtPerTime > 1
-THEN
-	CASE WHEN substring(f.formLanguage1,char_length(f.formLanguage1),1) = 's'
-		THEN ''
-		ELSE (f.formLanguage1 || 's')
-	END
-ELSE
-	''
-END || ' ' ||
-CAST(preDrugs.timesPerDay as CHAR) || ' vez(es) por dia' AS dosage
-
-from Prescription as pre, PrescribedDrugs as preDrugs, Drug as d, form as f
-where preDrugs.prescription = pre.id
-and preDrugs.drug = d.id
-and f.id = d.form
-) as dosagem on dosagem.preid = packdrugquery.preid
-group by  rt.regimeesquema, packdrugquery.amount,
-packdrugquery.dispensedqty,
-packdrugquery.dispensedate,
-packdrugquery.dateexpectedstring,
-dosagem.dosage
+		<![CDATA[select distinct p.patientid,pre.id as preid,pdit.dispensedate,pdit.dateexpectedstring
+from patient p
+inner join packagedruginfotmp as pdit on pdit.patientid = p.patientid
+inner join packageddrugs as pd on pd.id = pdit.packageddrug
+inner join package pg on pg.id = pd.parentpackage
+inner join prescription as pre on pre.id = pg.prescription
+where pdit.dispensedqty <> 0 and  pdit.patientid = $P{patientId}
+group by p.patientid,pre.id,pdit.dispensedate,pdit.dateexpectedstring
 order by dispensedate DESC]]>
 	</queryString>
-	<field name="regimeesquema" class="java.lang.String"/>
-	<field name="amount" class="java.lang.Long"/>
-	<field name="dispensedqty" class="java.lang.Integer"/>
+	<field name="patientid" class="java.lang.String"/>
+	<field name="preid" class="java.lang.Integer"/>
 	<field name="dispensedate" class="java.sql.Timestamp"/>
 	<field name="dateexpectedstring" class="java.lang.String"/>
-	<field name="dosage" class="java.lang.String"/>
 	<variable name="accum" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
@@ -94,63 +48,57 @@ order by dispensedate DESC]]>
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="30" splitType="Stretch">
+		<band height="23" splitType="Stretch">
 			<line>
-				<reportElement key="line-1" stretchType="RelativeToBandHeight" x="0" y="0" width="1" height="29"/>
+				<reportElement key="line-1" stretchType="RelativeToBandHeight" x="0" y="0" width="1" height="22"/>
 			</line>
 			<line>
-				<reportElement key="line-2" stretchType="RelativeToBandHeight" x="120" y="0" width="1" height="29"/>
+				<reportElement key="line-2" stretchType="RelativeToBandHeight" x="120" y="0" width="1" height="22"/>
 			</line>
 			<line>
-				<reportElement key="line-3" stretchType="RelativeToTallestObject" x="411" y="0" width="1" height="29"/>
+				<reportElement key="line-3" stretchType="RelativeToTallestObject" x="411" y="0" width="1" height="22"/>
 			</line>
 			<line>
-				<reportElement key="line-4" stretchType="RelativeToTallestObject" x="532" y="0" width="1" height="29"/>
+				<reportElement key="line-4" stretchType="RelativeToTallestObject" x="532" y="0" width="1" height="22"/>
 			</line>
 			<line>
-				<reportElement key="line-5" positionType="FixRelativeToBottom" x="0" y="29" width="532" height="1" isRemoveLineWhenBlank="true"/>
-			</line>
-			<line>
-				<reportElement key="line-2" stretchType="RelativeToBandHeight" x="303" y="0" width="1" height="29"/>
-			</line>
-			<line>
-				<reportElement x="304" y="14" width="107" height="1"/>
+				<reportElement key="line-5" positionType="FixRelativeToBottom" x="0" y="22" width="533" height="1" isRemoveLineWhenBlank="true"/>
 			</line>
 			<textField>
-				<reportElement x="12" y="6" width="100" height="20"/>
+				<reportElement x="12" y="1" width="100" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[(new SimpleDateFormat("dd MMM yyyy")).format($F{dispensedate})]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
-				<reportElement positionType="Float" mode="Transparent" x="128" y="5" width="165" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{regimeesquema}]]></textFieldExpression>
-			</textField>
 			<textField>
-				<reportElement x="328" y="0" width="51" height="14"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression class="java.lang.Long"><![CDATA[$F{amount}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="319" y="15" width="70" height="15"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{dosage}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="424" y="6" width="100" height="20"/>
+				<reportElement x="424" y="1" width="100" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{dateexpectedstring}]]></textFieldExpression>
 			</textField>
+			<subreport>
+				<reportElement x="121" y="0" width="290" height="23"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{path}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="prescriptionId">
+					<subreportParameterExpression><![CDATA[$F{preid}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="patientId">
+					<subreportParameterExpression><![CDATA[$F{patientid}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="parentpackid"/>
+				<subreportParameter name="path">
+					<subreportParameterExpression><![CDATA[$P{path}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="pickdate">
+					<subreportParameterExpression><![CDATA[$P{pickdate}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "PackageDrugsFILASub.jasper"]]></subreportExpression>
+			</subreport>
 		</band>
 	</detail>
 	<columnFooter>

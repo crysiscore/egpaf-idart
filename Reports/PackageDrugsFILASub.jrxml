@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PackageDrugs" pageWidth="291" pageHeight="31" whenNoDataType="BlankPage" columnWidth="291" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.scriptlethandling" value="2"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<property name="ireport.zoom" value="1.771561000000003"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="parentpackid" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[new Integer(156624)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{path}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="path" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="pickdate" class="java.sql.Timestamp" isForPrompting="false"/>
+	<parameter name="patientId" class="java.lang.String">
+		<defaultValueExpression><![CDATA["6284/10X"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="prescriptionId" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[594234]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select drug.name, sum(packdrug.amount) as amount,
+predrug.amtpertime*predrug.timesperday as perday,
+dosagem.dosage,
+patient.id,
+dosagem.preid
+from packageddrugs as packdrug
+inner join
+stock on packdrug.stock = stock.id
+inner join
+package pack on packdrug.parentPackage = pack.id
+inner join
+packagedruginfotmp pdit on pdit.packageddrug = packdrug.id
+inner join
+prescription pre on pack.prescription = pre.id
+inner join
+prescribeddrugs predrug on predrug.prescription = pre.id
+inner join
+patient on patient.id = pre.patient
+inner join
+drug on predrug.drug = drug.id
+inner join
+(select pre.id as preid,d.name as name,
+CASE WHEN preDrugs.amtPerTime > 1
+THEN
+	CASE WHEN substring(f.formLanguage1,char_length(f.formLanguage1),1) = 's'
+		THEN ''
+		ELSE (f.formLanguage1 || 's')
+	END
+ELSE
+	''
+END || ' ' ||
+CAST(preDrugs.timesPerDay as CHAR) || ' vez(es) por dia' AS dosage
+
+from Prescription as pre, PrescribedDrugs as preDrugs, Drug as d, form as f
+where preDrugs.prescription = pre.id
+and preDrugs.drug = d.id
+and f.id = d.form
+) as dosagem on dosagem.preid = pre.id
+WHERE patient.patientid= $P{patientId}
+ and dosagem.preid = $P{prescriptionId}
+ and pdit.dispensedqty <> 0
+group by drug.name, perday,dosagem.dosage,patient.id,dosagem.preid
+order by drug.name DESC]]>
+	</queryString>
+	<field name="name" class="java.lang.String"/>
+	<field name="amount" class="java.lang.Long"/>
+	<field name="perday" class="java.lang.Double"/>
+	<field name="dosage" class="java.lang.String"/>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="preid" class="java.lang.Integer"/>
+	<variable name="accum" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<line>
+				<reportElement key="line-2" stretchType="RelativeToBandHeight" x="182" y="0" width="1" height="23"/>
+			</line>
+			<line>
+				<reportElement x="182" y="11" width="108" height="1"/>
+			</line>
+			<textField>
+				<reportElement x="202" y="1" width="70" height="9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Long"><![CDATA[$F{amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="202" y="13" width="70" height="9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{dosage}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="0" width="173" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{name}.substring( $F{name}.indexOf( "[" )+1, $F{name}.indexOf( "]" )).replaceAll("/","+")]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="22" width="290" height="1"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
