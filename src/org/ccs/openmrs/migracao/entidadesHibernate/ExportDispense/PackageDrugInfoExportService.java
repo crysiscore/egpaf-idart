@@ -59,13 +59,21 @@ public class PackageDrugInfoExportService {
     }
     
 
-             public List<PackageDrugInfo> findAllbyPatientID(String identifier) {
+        public List<PackageDrugInfo> findAllbyPatientID(String identifier) {
         packageDrugInfoExportDao.openCurrentSession();
         List<PackageDrugInfo> packageDrugInfos = packageDrugInfoExportDao.findAllbyPatientID(identifier);
         packageDrugInfoExportDao.closeCurrentSession();
         return packageDrugInfos;
     }
-         
+      
+        
+        public List<PackageDrugInfo> findAllbyNid(String identifier, Date dataDispensa) {
+        packageDrugInfoExportDao.openCurrentSession();
+        List<PackageDrugInfo> packageDrugInfos = packageDrugInfoExportDao.findAllbyNid(identifier,dataDispensa);
+        packageDrugInfoExportDao.closeCurrentSession();
+        return packageDrugInfos;
+    }
+        
         public List<PackageDrugInfo> findAllbyDateFromDT(Date dataIncial, Date dataFim) {
         packageDrugInfoExportDao.openCurrentSession();
         List<PackageDrugInfo> packageDrugInfos = packageDrugInfoExportDao.findAllbyDateFromDT(dataIncial,dataFim);
@@ -83,4 +91,3 @@ public class PackageDrugInfoExportService {
         return packageDrugInfoExportDao;
     }
 }
-

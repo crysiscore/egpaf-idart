@@ -3,9 +3,9 @@
 <hibernate-configuration>
   <session-factory>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://192.168.1.101:3306/openmrs</property>
-    <property name="hibernate.connection.username">idart</property>
-    <property name="hibernate.connection.password">idart</property>
+    <property name="hibernate.connection.url">jdbc:mysql://192.168.1.5:3306/openmrs</property>
+    <property name="hibernate.connection.username">esaude</property>
+    <property name="hibernate.connection.password">esaude</property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.current_session_context_class">thread</property>
     <property name="hibernate.show_sql">false</property>

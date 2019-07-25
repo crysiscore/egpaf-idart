@@ -19,7 +19,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class ConceptNameDao
-implements ConceptNameDaoInterface<ConceptName, String> {
+        implements ConceptNameDaoInterface<ConceptName, String> {
+
     public Session currentSession;
     public Transaction currentTransaction;
 
@@ -61,28 +62,58 @@ implements ConceptNameDaoInterface<ConceptName, String> {
 
     @Override
     public void persist(ConceptName entity) {
-        this.getCurrentSession().save((Object)entity);
+        this.getCurrentSession().save((Object) entity);
     }
 
     @Override
     public void update(ConceptName entity) {
-        this.getCurrentSession().update((Object)entity);
+        this.getCurrentSession().update((Object) entity);
     }
 
     @Override
     public ConceptName findById(String id) {
-        ConceptName conceptName = (ConceptName)this.getCurrentSession().get((Class)ConceptName.class, (Serializable)((Object)id));
+        ConceptName conceptName = (ConceptName) this.getCurrentSession().get((Class) ConceptName.class, (Serializable) ((Object) id));
         return conceptName;
     }
 
     public ConceptName findByName(String regime) {
-        ConceptName conceptName = (ConceptName)this.getCurrentSession().createQuery("from ConceptName cn where cn.locale = 'pt' AND cn.name = '" + regime + "'").uniqueResult();
+        ConceptName conceptName = null; // (ConceptName)this.getCurrentSession().createQuery("from ConceptName cn where cn.locale = 'pt' AND cn.name = '" + regime + "'").uniqueResult();
+        List<ConceptName> conceptNameList = (List<ConceptName>) this.getCurrentSession().createQuery("from ConceptName cn where cn.name = '" + regime + "'").list();
+
+        if (!conceptNameList.isEmpty()) {
+            conceptName = conceptNameList.get(0);
+        }
+
+        return conceptName;
+    }
+
+    public ConceptName findByName2Line(String regime) {
+
+        ConceptName conceptName = null;
+        List<ConceptName> conceptNameList = (List<ConceptName>) this.getCurrentSession().createQuery("from ConceptName cn where cn.name like '" + regime + "%2%inha%'").list();
+
+        if (!conceptNameList.isEmpty()) {
+            conceptName = conceptNameList.get(0);
+        }
+
+        return conceptName;
+    }
+
+    public ConceptName findByName3Line(String regime) {
+
+        ConceptName conceptName = null;
+        List<ConceptName> conceptNameList = (List<ConceptName>) this.getCurrentSession().createQuery("from ConceptName cn where cn.name like '" + regime + "%3%inha%'").list();
+
+        if (!conceptNameList.isEmpty()) {
+            conceptName = conceptNameList.get(0);
+        }
+
         return conceptName;
     }
 
     @Override
     public void delete(ConceptName entity) {
-        this.getCurrentSession().delete((Object)entity);
+        this.getCurrentSession().delete((Object) entity);
     }
 
     @Override
@@ -99,4 +130,3 @@ implements ConceptNameDaoInterface<ConceptName, String> {
         }
     }
 }
-
