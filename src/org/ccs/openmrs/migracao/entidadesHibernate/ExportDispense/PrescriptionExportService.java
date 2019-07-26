@@ -7,6 +7,7 @@ package org.ccs.openmrs.migracao.entidadesHibernate.ExportDispense;
 
 import java.util.List;
 import org.ccs.openmrs.migracao.entidadesHibernate.ExportDao.PrescriptionExportDao;
+import org.celllife.idart.database.hibernate.LinhaT;
 import org.celllife.idart.database.hibernate.Prescription;
 
 /**
@@ -39,6 +40,13 @@ public class PrescriptionExportService {
         return prescription;
     }
 
+    public LinhaT findByLinhaId(Prescription p) {
+        prescriptionExportDao.openCurrentSession();
+        LinhaT linhaPrescricao = prescriptionExportDao.findLinhaByPrescricaoId(p);
+        prescriptionExportDao.closeCurrentSession();
+        return linhaPrescricao;
+    }
+    
     public Prescription findByPrescricaoId(String id, String nid) {
         prescriptionExportDao.openCurrentSession();
         Prescription prescription = prescriptionExportDao.findByPrescricaoId(id,nid);
@@ -70,4 +78,3 @@ public class PrescriptionExportService {
         return prescriptionExportDao;
     }
 }
-

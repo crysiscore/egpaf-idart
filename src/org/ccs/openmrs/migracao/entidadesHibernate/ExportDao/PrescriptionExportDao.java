@@ -9,7 +9,9 @@ import java.io.Serializable;
 import java.util.List;
 import org.ccs.openmrs.migracao.connection.hibernateConection;
 import org.ccs.openmrs.migracao.entidadesHibernate.Interfaces.PrescriptionInterface;
+import org.celllife.idart.database.hibernate.LinhaT;
 import org.celllife.idart.database.hibernate.Prescription;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -67,6 +69,24 @@ public class PrescriptionExportDao implements PrescriptionInterface<Prescription
         this.getCurrentSession().update((Object)entity);
     }
 
+     public LinhaT findLinhaByPrescricaoId(Prescription p) {
+        LinhaT linhat = null;
+        
+         SQLQuery query = getCurrentSession().createSQLQuery("select * from linhat l where l.linhaid = "+p.getLinha().getLinhaid());
+                  query.addEntity(LinhaT.class);
+        List<LinhaT> linhaTs = query.list();
+        
+        if(!linhaTs.isEmpty()){
+        linhat = linhaTs.get(0);
+        }else{
+        query = getCurrentSession().createSQLQuery("select * from linhat l");
+                  query.addEntity(LinhaT.class);
+                  linhaTs = query.list();
+          linhat = linhaTs.get(0);
+        }
+        return linhat;
+    }   
+    
     @Override
     public Prescription findById(String id) {
         Prescription prescription = (Prescription)this.getCurrentSession().get((Class)Prescription.class, (Serializable)((Object)id));

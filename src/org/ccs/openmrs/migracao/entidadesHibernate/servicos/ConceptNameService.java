@@ -39,15 +39,30 @@ public class ConceptNameService {
 
     public ConceptName findByName(String regime) {
         conceptNameDao.openCurrentSession();
-        ConceptName obs = conceptNameDao.findByName(regime);
+        ConceptName conceptName = conceptNameDao.findByName(regime);
         conceptNameDao.closeCurrentSession();
-        return obs;
+        return conceptName;
     }
 
+    public ConceptName findByName2Line(String regime) {
+        conceptNameDao.openCurrentSession();
+        ConceptName conceptName = conceptNameDao.findByName2Line(regime);
+        conceptNameDao.closeCurrentSession();
+        return conceptName;
+    }
+    
+    public ConceptName findByName3Line(String regime) {
+        conceptNameDao.openCurrentSession();
+        ConceptName conceptName = conceptNameDao.findByName3Line(regime);
+        conceptNameDao.closeCurrentSession();
+        return conceptName;
+    }
+    
+    
     public void delete(String id) {
         conceptNameDao.openCurrentSessionwithTransaction();
-        ConceptName obs = conceptNameDao.findById(id);
-        conceptNameDao.delete(obs);
+        ConceptName conceptName = conceptNameDao.findById(id);
+        conceptNameDao.delete(conceptName);
         conceptNameDao.closeCurrentSessionwithTransaction();
     }
 
@@ -68,4 +83,3 @@ public class ConceptNameService {
         return conceptNameDao;
     }
 }
-

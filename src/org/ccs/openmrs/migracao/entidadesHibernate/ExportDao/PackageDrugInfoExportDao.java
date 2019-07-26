@@ -17,6 +17,7 @@ import java.util.List;
 import org.ccs.openmrs.migracao.connection.hibernateConection;
 import org.ccs.openmrs.migracao.entidadesHibernate.Interfaces.PackageDrugInfoInterface;
 import org.celllife.idart.database.hibernate.tmp.PackageDrugInfo;
+import org.hibernate.HibernateException;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -90,13 +91,43 @@ implements PackageDrugInfoInterface<PackageDrugInfo, String> {
 
     @Override
     public List<PackageDrugInfo> findAll() {
-        List packageDrugInfos = this.getCurrentSession().createQuery("from PackageDrugInfo p where p.notes <> 'Exported' OR p.notes IS NULL ORDER BY p.dispenseDate desc ").list();
+    //  List packageDrugInfos = this.getCurrentSession().createQuery("from PackageDrugInfo p where p.notes <> 'Exported' OR p.notes IS NULL ORDER BY p.dispenseDate desc ").list();
+       
+        SQLQuery query = getCurrentSession().createSQLQuery("select * from packagedruginfotmp pdtmp " +
+                                                             "inner join patient p on p.patientid = pdtmp.patientid " +
+                                                             "inner join patientidentifier pi on pi.patient_id = p.id " +
+                                                             "inner join identifiertype it on it.id = pi.type_id " +
+                                                             "where it.name = 'NID' and (pdtmp.notes <> 'Exported' OR pdtmp.notes IS NULL) " +
+                                                             "ORDER BY pdtmp.dispenseDate desc");
+        query.addEntity(PackageDrugInfo.class);
+        List<PackageDrugInfo> packageDrugInfos = query.list();
+
         return packageDrugInfos;
     }
 
     @Override
     public List<PackageDrugInfo> findAllbyPatientID(String identifier) {
         List packageDrugInfos = this.getCurrentSession().createQuery("from PackageDrugInfo p where p.patientId = '" +identifier+"'").list();
+        return packageDrugInfos;
+    }
+    
+    
+    public List<PackageDrugInfo> findAllbyNid(String identifier, Date dataDispensa) {
+        GregorianCalendar calDispense = new GregorianCalendar();
+                          calDispense.setTime(dataDispensa);
+	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        List<PackageDrugInfo> packageDrugInfos = null;
+   
+        SQLQuery query = this.getCurrentSession().createSQLQuery("select * from packagedruginfotmp pdtmp "
+                                                             + " where pdtmp.patientId = '"+identifier+"'"
+                                                             + " and to_date(to_char(pdtmp.dispenseDate, 'YYYY/MM/DD'), 'YYYY/MM/DD') = '"+format.format(calDispense.getTime())+"'");
+        
+        query.addEntity(PackageDrugInfo.class);
+        try{
+               packageDrugInfos = query.list();
+        }catch(HibernateException e){
+            System.err.println(e.getMessage());}
+        
         return packageDrugInfos;
     }
     
@@ -133,4 +164,3 @@ implements PackageDrugInfoInterface<PackageDrugInfo, String> {
     }
   
 }
-

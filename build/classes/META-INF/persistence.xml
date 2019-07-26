@@ -4,6 +4,9 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>org.ccs.openmrs.migracao.entidades.Program</class>
     <class>org.ccs.openmrs.migracao.entidades.PatientProgram</class>
+    <class>org.ccs.openmrs.migracao.entidades.GlobalProperty</class>
+    <class>org.celllife.idart.database.hibernate.Gaac</class>
+    <class>org.celllife.idart.database.hibernate.GaacMember</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://172.16.92.1:3306/openmrs?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.password" value="root"/>
